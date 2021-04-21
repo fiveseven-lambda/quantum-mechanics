@@ -1,0 +1,147 @@
+@require: stdjareport
+
+let-math \hbar = math-char MathOrd `ℏ`
+in
+
+document(| title={量子力学ノート}; author={とが} |)'<
+	+chapter{2021/4/21}<
+		+section{要点}<
+			+p{
+				 1 次元の直線上を動く質量 ${m} の粒子の波動関数 ${ \Psi: \mathbb{R}^2 \to \mathbb{C} } は
+				Schrödinger 方程式
+				\eqn(${
+					i\hbar \frac{\partial\app{\Psi}{x, t}}{\partial t}
+					= -\frac{\hbar^2}{2m}\frac{\partial^2\app{\Psi}{x, t}}{\partial x^2}
+					+ \app{V}{x, t}\app{\Psi}{x, t}
+				});
+				を満たす．ただし ${V: \mathbb{R}^2 \to \mathbb{R}} はポテンシャル， ${\hbar} は換算プランク定数， ${i} は虚数単位．
+			}
+			+p{
+				暗黙の了解として， ${\Psi} とその ${n} 次導関数は ${x \to \pm\infty} で ${0} に収束するものとする．
+			}
+			+p{
+				ある ${\Psi} が Schrödinger 方程式を満たすなら，
+				定数 ${A} をかけた ${ A\Psi } も Schrödinger 方程式を満たす（計算 1）．
+			}
+			+p{
+				${\Psi} が Schrödinger 方程式を満たすとき，
+				${ \int_{-\infty}^{\infty}\abs{\app{\Psi}{x, t}}^2\ordd x } は ${ t } に依存しない（計算 2）．
+			}
+			+p{
+				ある解 ${ \Psi } があったときに，定数をかけて
+				\eqn(${ \int_{-\infty}^{\infty}\abs{\app{\Psi'}{x, t}}^2\ordd x = 1 });
+				を満たす解 ${\Psi'} を見つける操作を，正規化という．
+			}
+			+p{
+				波動関数 ${ \app{\Psi}{x, t} } で表される粒子の「座標の期待値」 ${ \angle-bracket{x} } を
+				\align[${|
+					\angle-bracket{x}
+					|= \int_{-\infty}^{\infty} x \abs{\app{\Psi}{x, t}}^2 \ordd x
+				|};${|
+					|= \int_{-\infty}^{\infty} \Psi* \sqbracket{x} \Psi \ordd x
+				|}];
+				（ただし ${\Psi*} は ${\Psi} の共役複素数）で定義する． ${ \angle-bracket{x} } の時間微分を計算すると
+				\eqn(${ \frac{\ordd\angle-bracket{x}}{\ordd t} = -\frac{i\hbar}{m}\int_{-\infty}^{\infty}\Psi*\frac{\partial \Psi}{\partial x}\ordd x });
+				となり（計算 3），これが粒子の「速度の期待値」 ${ \angle-bracket{v} } となる．
+				これに ${m} をかけた「運動量の期待値」 ${ \angle-bracket{p} = m\angle-bracket{v} } は
+				\eqn(${ \angle-bracket{p} = \int_{-\infty}^{\infty} \Psi* \sqbracket{-i\hbar\frac{\partial}{\partial x}} \Psi \ordd x });
+				となる．
+				${ \angle-bracket{x} } の定義中の ${ x } ，
+				および ${ \angle-bracket{p} } の定義中の ${ -i\hbar\frac{\partial}{\partial x} } は
+				作用素とみなせる．
+				こうして ${x, p} の関数 ${\app{Q}{x, p}} として表せる任意の物理量の期待値が
+				\eqn(${ \angle-bracket{\app{Q}{x, p}} = \int_{-\infty}^{\infty} \Psi* \sqbracket{\app{Q}{x, -i\hbar\frac{\partial}{\partial x}}} \Psi \ordd x });
+				と書ける．
+			}
+			+p{
+				座標 ${ x } と運動量 ${ p } の標準偏差をそれぞれ ${ \sigma_x } ， ${ \sigma_p } とすると，
+				\eqn(${ \sigma_x\sigma_p \geq \frac{\hbar}{2} }); が成り立つ．
+			}
+		>
+		+section{計算 1}<
+			+p{
+				${\Psi} が Schrödinger 方程式を満たすとする．
+				${ A } を定数とすると
+				\align[${|
+					i\hbar\frac{\partial}{\partial t} \paren{A\Psi}
+					|= A \cdot i\hbar\frac{\partial\Psi}{\partial t}
+				|};${|
+					|= A \cdot \paren{ -\frac{\hbar^2}{2m} \frac{\partial^2\Psi}{\partial x^2} + V\Psi }
+				|};${|
+					|= -\frac{\hbar^2}{2m} \frac{\partial^2}{\partial x^2}\paren{A\Psi} + V\paren{A\Psi}
+				|}];
+				より ${ A\Psi } も Schrödinger 方程式を満たす．
+			}
+		>
+		+section{計算 2}<
+			+p{
+				Schrödinger 方程式を変形すると
+				\eqn(${ \frac{\partial \Psi}{\partial t} = \frac{i\hbar}{2m}\frac{\partial^2 \Psi}{\partial x^2} - \frac{i}{\hbar} V\Psi });
+				となり，両辺の複素共役をとると
+				\eqn(${ \frac{\partial \Psi*}{\partial t} = -\frac{i\hbar}{2m}\frac{\partial^2 \Psi*}{\partial x^2} + \frac{i}{\hbar} V\Psi* });
+				となる．これより
+				\align[${|
+					\frac{\partial}{\partial t}\paren{\Psi*\Psi}
+				       |= \Psi* \frac{\partial \Psi}{\partial t} + \frac{\partial \Psi*}{\partial t} \Psi
+				|};${|
+				       |= \Psi* \paren{\frac{i\hbar}{2m}\frac{\partial^2 \Psi}{\partial x^2} - \frac{i}{\hbar} V\Psi}
+					+\paren{-\frac{i\hbar}{2m}\frac{\partial^2 \Psi*}{\partial x^2} + \frac{i}{\hbar} V\Psi* }\Psi
+				|};${|
+				       |= \frac{i\hbar}{2m}\paren{\Psi*\frac{\partial^2 \Psi}{\partial x^2} - \frac{\partial^2 \Psi*}{\partial x^2} \Psi}
+				|}];
+				である．ここで
+				\align[${|
+					\frac{\partial}{\partial x}\paren{\Psi*\frac{\partial\Psi}{\partial x} - \frac{\partial\Psi*}{\partial x}\Psi}
+				       |= \Psi*\frac{\partial^2\Psi}{\partial x^2} + \frac{\partial\Psi*}{\partial x}\cdot\frac{\partial\Psi}{\partial x}
+				       - \paren{\frac{\partial\Psi*}{\partial x}\cdot\frac{\partial\Psi}{\partial x} + \frac{\partial^2\Psi*}{\partial x^2}\Psi}
+				|};${|
+					|= \Psi*\frac{\partial^2\Psi}{\partial x^2} - \frac{\partial^2\Psi*}{\partial x^2} \Psi
+				|}];
+				に注意すると，
+				\align[${|
+				 	\frac{\ordd}{\ordd t} \int_{-\infty}^{\infty} \abs{\Psi}^2 \ordd x
+					|= \int_{-\infty}^{\infty} \frac{\partial}{\partial t} \Psi*\Psi \ordd x
+				|};${|
+					|= \frac{i\hbar}{2m} \sqbracket{\Psi*\frac{\partial\Psi}{\partial x} - \frac{\partial\Psi*}{\partial x}\Psi} _{-\infty}^{\infty}
+				|};${|
+					|= 0
+				|}];
+				を得るので，
+				${ \int_{-\infty}^{\infty}\abs{\Psi}^2 \ordd x } が ${ t } に依存しないことが分かる．
+			}
+		>
+		+section{計算 3}<
+			+p{
+				計算 2 の途中式を流用すると
+				\align[${|
+					\frac{\ordd}{\ordd t}\angle-bracket{x}
+					|= \frac{\ordd}{\ordd t}\int_{-\infty}^{\infty} x\cdot\Psi*\Psi \ordd x
+				|};${|
+					|= \int_{-\infty}^{\infty} x \cdot \frac{\partial}{\partial t}\paren{\Psi*\Psi} \ordd x
+				|};${|
+					|= \frac{i\hbar}{2m}\int_{-\infty}^{\infty} x \cdot \frac{\partial}{\partial x}\paren{\Psi*\frac{\partial\Psi}{\partial x} - \frac{\partial\Psi*}{\partial x}\Psi} \ordd x
+				|}];
+				となり，部分積分により
+				\align[${|
+					\frac{\ordd}{\ordd t}\angle-bracket{x}
+					|= \frac{i\hbar}{2m}\paren{
+						\sqbracket{x\paren{\Psi*\frac{\partial\Psi}{\partial x} - \frac{\partial\Psi*}{\partial x}\Psi}}_{-\infty}^{\infty}
+						- \int_{-\infty}^{\infty} \paren{\Psi*\frac{\partial\Psi}{\partial x} - \frac{\partial\Psi*}{\partial x}\Psi} \ordd x
+					}
+				|};${|
+					|= -\frac{i\hbar}{2m} \int_{-\infty}^{\infty} \paren{\Psi*\frac{\partial\Psi}{\partial x} - \frac{\partial\Psi*}{\partial x}\Psi} \ordd x
+				|}];
+				となる．ここで部分積分
+				\align[${|
+					\int_{-\infty}^{\infty} \frac{\partial\Psi*}{\partial x}\Psi \ordd x
+					|= \sqbracket{\Psi*\Psi}_{-\infty}^{\infty} - \int_{-\infty}^{\infty} \Psi*\frac{\partial \Psi}{\partial x} \ordd x
+				|};${|
+					|= - \int_{-\infty}^{\infty} \Psi*\frac{\partial \Psi}{\partial x} \ordd x
+				|}];
+				に着目すると
+				\eqn(${ \frac{\ordd}{\ordd t}\angle-bracket{x} = -\frac{i\hbar}{m}\int_{-\infty}^{\infty} \Psi*\frac{\partial\Psi}{\partial x}\ordd x });
+				が得られる．
+			}
+		>
+	>
+>
