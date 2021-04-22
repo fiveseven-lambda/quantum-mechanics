@@ -100,7 +100,7 @@ document(| title={量子力学ノート}; author={とが} |)'<
 				に注意すると，
 				\align[${|
 				 	\frac{\ordd}{\ordd t} \int_{-\infty}^{\infty} \abs{\Psi}^2 \ordd x
-					|= \int_{-\infty}^{\infty} \frac{\partial}{\partial t} \Psi*\Psi \ordd x
+					|= \int_{-\infty}^{\infty} \frac{\partial}{\partial t} \paren{\Psi*\Psi} \ordd x
 				|};${|
 					|= \frac{i\hbar}{2m} \sqbracket{\Psi*\frac{\partial\Psi}{\partial x} - \frac{\partial\Psi*}{\partial x}\Psi} _{-\infty}^{\infty}
 				|};${|
@@ -115,7 +115,7 @@ document(| title={量子力学ノート}; author={とが} |)'<
 				計算 2 の途中式を流用すると
 				\align[${|
 					\frac{\ordd}{\ordd t}\angle-bracket{x}
-					|= \frac{\ordd}{\ordd t}\int_{-\infty}^{\infty} x\cdot\Psi*\Psi \ordd x
+					|= \frac{\ordd}{\ordd t}\int_{-\infty}^{\infty} x\abs{\Psi}^2 \ordd x
 				|};${|
 					|= \int_{-\infty}^{\infty} x \cdot \frac{\partial}{\partial t}\paren{\Psi*\Psi} \ordd x
 				|};${|
@@ -141,6 +141,116 @@ document(| title={量子力学ノート}; author={とが} |)'<
 				に着目すると
 				\eqn(${ \frac{\ordd}{\ordd t}\angle-bracket{x} = -\frac{i\hbar}{m}\int_{-\infty}^{\infty} \Psi*\frac{\partial\Psi}{\partial x}\ordd x });
 				が得られる．
+			}
+		>
+	>
+	+chapter{2021/4/22}<
+		+section{問題 1.9}<
+			+p{
+				${ \app{\Psi}{x, t} = Ae^{-a\sqbracket{\paren{mx^2/\hbar} + it}} } より
+				${ \abs{\app{\Psi}{x, t}}^2 = \app{\Psi}{x, t}\app{\Psi*}{x, t} = A^2e^{-2amx^2/\hbar} } なので
+				\align[${|
+					\int_{-\infty}^{\infty}\abs{\app{\Psi}{x, t}}^2 \ordd x
+					|= A^2\int_{-\infty}^{\infty}e^{-\frac{2am}{\hbar}x^2}\ordd x
+				|};${|
+					|= A^2\sqrt{\frac{\pi\hbar}{2am}}
+				|}];
+			}
+			+p{
+				よって， ${\int_{-\infty}^{\infty}\abs{\app{\Psi}{x, t}}^2 \ordd x = 1} となるためには
+				${ A = \paren{\frac{2am}{\pi\hbar}}^\frac{1}{4} } であればよい．
+			}
+			+p{
+				${\Psi} を微分すると
+				\align[${|
+					\frac{\partial\Psi}{\partial t}
+					|= -ia\Psi
+				|};${|
+					\frac{\partial\Psi}{\partial x}
+					|= -\frac{2amx}{\hbar}\Psi
+				|};${|
+					\frac{\partial^2\Psi}{\partial x^2}
+					|= \frac{2am\paren{2amx^2 - \hbar}}{\hbar^2}\Psi
+				|}];
+				となるので，
+				Schrödinger 方程式より
+				\eqn(${ \hbar a\Psi = -\frac{\hbar^2}{2m} \cdot \frac{2am\paren{2amx^2 - \hbar}}{\hbar^2}\Psi + V\Psi });
+			}
+			+p{
+				${V} について解いて ${ \app{V}{x} = 2a^2mx^2 } ．
+			}
+			+p{
+				${\abs{\Psi}^2} は正規分布 ${ \app{N}{0, \sqrt{\frac{\hbar}{4am}}} } の密度関数なので，
+				${ \angle-bracket{x} = 0 } ，
+				${ \sigma_x = \sqrt{\frac{\hbar}{4am}} } ，
+				${ \angle-bracket{x^2} = \sigma_x^2 = \frac{\hbar}{4am} } ．
+			}
+			+p{
+				${ -i\hbar\frac{\partial\Psi}{\partial x} = \text!{(const)}x\Psi } より，
+				${ \angle-bracket{p} = \text!{(const)}\int_{-\infty}^{\infty}\Psi*x\Psi\ordd x = 0 }．
+				\align[${|
+					\angle-bracket{p^2}
+					|= \int_{-\infty}^{\infty} \Psi* \paren{-h^2\frac{\partial^2\Psi}{\partial x^2}} \ordd x
+				|};${|
+					|= \int_{-\infty}^{\infty} \Psi*\paren{-2am\paren{2amx^2 - \hbar}\Psi} \ordd x
+				|};${|
+					|= -2am\paren{2am\angle-bracket{x^2}-\hbar}
+				|};${|
+					|= \hbar am
+				|}];
+			}
+			+p{
+				${ \sigma_x = \sqrt{\frac{\hbar}{4am}} } ，
+				${ \sigma_p = \sqrt{\hbar am} } より
+				${ \sigma_x \cdot \sigma_p = \sqrt{\frac{\hbar}{4am}\cdot\hbar am} = \frac{\hbar}{2} }．
+			}
+		>
+		+section{問題 1.15}<
+			+p{
+				Schrödinger 方程式より
+				\align[${|
+					\frac{\partial\Psi_1*}{\partial t}
+					|= -\frac{i\hbar}{2m}\frac{\partial^2\Psi_1*}{\partial x^2} + \frac{i}{\hbar}V\Psi_1*
+				|};${|
+					\frac{\partial\Psi_2}{\partial t}
+					|= \frac{i\hbar}{2m}\frac{\partial^2\Psi_2}{\partial x^2} - \frac{i}{\hbar} V\Psi_2
+				|};${|
+					\therefore \frac{\partial}{\partial t}\paren{\Psi_1*\Psi_2}
+					|= \frac{i\hbar}{2m}\paren{\frac{\partial^2\Psi_1*}{\partial x^2}\Psi_2 - \Psi_1*\frac{\partial^2\Psi_2}{\partial x^2}}
+				|}];
+			}
+			+p{
+				よって
+				\eqn(${
+					\frac{\ordd}{\ordd t}\int_{-\infty}^{\infty}\Psi_1*\Psi_2\ordd x
+					= \frac{i\hbar}{2m}\sqbracket{\frac{\partial\Psi_1*}{\partial x}\Psi_2 - \Psi_1*\frac{\partial\Psi_2}{\partial x}}_{-\infty}^{\infty}
+					= 0
+				});
+			}
+		>
+		+section{要点}<
+			+p{
+				${t} に依存しない ${ \app{\psi}{x} } と ${ x } に依存しない ${ \app{\phi}{t} } を用いて
+				${ \app{\Psi}{x, t} = \app{\psi}{x}\app{\phi}{t} } と表せると仮定すると，
+				${ \frac{\partial\Psi}{\partial t} = \psi\frac{\ordd\phi}{\ordd t} }，
+				${ \frac{\partial^2\Psi}{\partial x} = \frac{\ordd^2\psi}{\ordd x^2}\phi } より
+				Schrödinger 方程式は
+				\eqn(${ i\hbar\psi\frac{\ordd\phi}{\ordd t} = -\frac{\hbar^2}{2m}\frac{\ordd^2\psi}{\ordd x^2}\phi + V\psi\phi });
+				となり，両辺を ${ \psi\phi } で割って
+				\eqn(${ i\hbar\frac{1}{\phi}\frac{\ordd\phi}{\ordd t} = -\frac{\hbar^2}{2m}\frac{1}{\psi}\frac{\ordd^2\psi}{\ordd x^2} + V });
+				とすると左辺は ${ \phi } ，右辺は ${ \psi } だけの式になるから，ある定数 ${ E } が存在して
+				\align[${|
+					i\hbar\frac{1}{\phi}\frac{\ordd\phi}{\ordd t} = E
+				|};${|
+					-\frac{\hbar^2}{2m}\frac{1}{\psi}\frac{\ordd^2\psi}{\ordd x^2} + V = E
+				|}];
+			}
+			+p{
+				よって，時間に依存しない Schrödinger 方程式
+				\eqn(${ -\frac{\hbar^2}{2m}\frac{\ordd^2\psi}{\ordd x^2} + V\psi = E\psi });
+				を解けば，
+				そこに ${ i\hbar\frac{\ordd\phi}{\ordd t} = E\phi } の解である ${ \phi = e^{-iEt/\hbar} }
+				をかけることで ${ \Psi } が得られる．
 			}
 		>
 	>
