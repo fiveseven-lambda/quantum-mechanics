@@ -221,11 +221,14 @@ document(| title={量子力学ノート}; author={とが} |)'<
 			}
 			+p{
 				よって
-				\eqn(${
+				\align[${|
 					\frac{\ordd}{\ordd t}\int_{-\infty}^{\infty}\Psi_1*\Psi_2\ordd x
-					= \frac{i\hbar}{2m}\sqbracket{\frac{\partial\Psi_1*}{\partial x}\Psi_2 - \Psi_1*\frac{\partial\Psi_2}{\partial x}}_{-\infty}^{\infty}
-					= 0
-				});
+					|= \frac{i\hbar}{2m} \int_{-\infty}^{\infty} \paren{\frac{\partial^2\Psi_1*}{\partial x^2}\Psi_2 - \Psi_1*\frac{\partial^2\Psi_2}{\partial x^2}} \ordd x
+				|};${|
+					|= \frac{i\hbar}{2m}\sqbracket{\frac{\partial\Psi_1*}{\partial x}\Psi_2 - \Psi_1*\frac{\partial\Psi_2}{\partial x}}_{-\infty}^{\infty}
+				|};${|
+					|= 0
+				|}];
 			}
 		>
 		+section{要点}<
@@ -251,6 +254,157 @@ document(| title={量子力学ノート}; author={とが} |)'<
 				を解けば，
 				そこに ${ i\hbar\frac{\ordd\phi}{\ordd t} = E\phi } の解である ${ \phi = e^{-iEt/\hbar} }
 				をかけることで ${ \Psi } が得られる．
+			}
+		>
+	>
+	+chapter{2021/4/23}<
+		+section{要点}<
+			+p{
+				\eqn(${ \app{V}{x} = \cases![(${0}, {(${0 \leq x \leq a})}); (${\infty}, {(otherwise)})] });
+				とする．
+				${ \app{\psi}{0} = \app{\psi}{a} = 0 } として
+				${ 0 \leq x \leq a } の範囲で
+				時間に依存しない Schrödinger 方程式
+				${ -\frac{\hbar^2}{2m}\frac{\ordd^2\psi}{\ordd x^2} = E\psi }
+				を解くと， ${ n } を正の整数として
+				\align[${|
+					E_n |= \frac{n^2\pi^2\hbar^2}{2ma^2}
+				|};${|
+					\app{\psi_n}{x} |= \sqrt{\frac{2}{a}}\app{\sin}{\frac{n\pi}{a}x}
+				|}];
+				が得られる（計算 1 ）．
+			}
+			+p{
+				波動関数 ${ \Psi } の初期状態 ${ \app{\Psi}{x, 0} } が与えられれば，
+				フーリエ級数展開によって
+				\eqn(${ \app{\Psi}{x, 0} = \sum_{n = 1}^{\infty} c_n \app{\psi_n}{x} });
+				と表すことで
+				\eqn(${ \app{\Psi}{x, t} = \sum_{n = 1}^{\infty} c_n \app{\psi_n}{x} e^{-iE_nt/\hbar} });
+				が得られる．
+			}
+		>
+		+section{計算 1}<
+			+p{
+				${ k = \frac{\sqrt{2mE}}{\hbar} } とおくと
+				時間に依存しない Schrödinger 方程式は
+				\eqn(${ \frac{\ordd^2 \psi}{\ordd x^2} = -k^2\psi });
+				と表せるので，一般解は
+				\eqn(${ \app{\psi}{x} = A\sin kx + B\cos kx });
+			}
+			+p{
+				ここで ${ \app{\psi}{0} = A\sin 0 + B\cos 0 = B } で， ${ \app{\psi}{0} = 0 } なので ${ B = 0 } ．
+				よって ${ \app{\psi}{x} = A\sin kx } だが，
+				${ \app{\psi}{a} = 0 } なのである整数 ${ n } が存在して ${ ka = n\pi } ．
+				よって解は定数 ${ A } と整数 ${ n } を用いて
+				${ A\app{\sin}{\frac{n\pi}{a}x} } と表せる．
+			}
+			+p{
+				 ${ n = 0 } のときは ${ \app{\psi}{x} = 0 } となってしまうので不適．
+				また ${ n } が負のときは定数 ${ A' = -A } と正の整数 ${ n' = -n } を用いて ${ \app{\psi}{x} = A'\app{\sin}{\frac{n'\pi}{a}x} } と表せるので，
+				${ n } が正の整数のときだけを考えればよい．
+			}
+			+p{
+				${ \abs{\psi}^2 = A^2\app{\sin^2}{\frac{n\pi}{a}x} } を
+				${ 0 \leq x \leq a } で積分すると
+				\align[${|
+					A^2\int_0^a\app{\sin^2}{\frac{n\pi}{a}x} \ordd x
+					|= A^2\int_0^a\frac{1 - \app{\cos}{\frac{2n\pi}{a}x}}{2} \ordd x
+				|};${|
+					|= A^2\sqbracket{ \frac{1}{2}x - \frac{a}{4n\pi}\app{\sin}{\frac{2n\pi}{a}x} }_0^a
+				|};${|
+					|= A^2 \cdot \frac{a}{2}
+				|}];
+				より， ${ \int_0^a\abs{\app{\psi}{x}}^2\ordd x = 1 } となるためには ${ A = \pm\sqrt{\frac{2}{a}} } であればよい．
+				ただし物理学の観点では ${ A = \sqrt{\frac{2}{a}} } のときを考えれば十分らしい．
+			}
+			+p{
+				さて，
+				${ k = \frac{\sqrt{2mE}}{\hbar} } と
+				${ ka = n\pi } より
+				${ E } としてありえる値は
+				${ E_n = \frac{n^2\pi^2\hbar^2}{2ma^2} } であり，
+				各 ${ E_n } に対応する ${ \psi } は ${ \app{\psi_n}{x} = \sqrt{\frac{2}{a}}\app{\sin}{\frac{n\pi}{a}x} } である．
+				これが今回の ${ V } に対する時間に依存しない Schrödinger 方程式の解である．
+			}
+		>
+		+section{問題 2.4}<
+			+p{
+				\align[${|
+					\angle-bracket{x}
+					|= \int_0^a x \abs{\app{\psi_n}{x}}^2 \ordd x
+				|};${|
+					|= \frac{2}{a} \int_0^a x \app{\sin^2}{\frac{n\pi}{a}x} \ordd x
+				|};${|
+					|= \frac{1}{a} \paren{
+						\int_0^a x \app{\sin^2}{\frac{n\pi}{a}x} \ordd x
+						+ \int_0^a \paren{a - x} \app{\sin^2}{\frac{n\pi}{a}x} \ordd x
+					}
+				|};${|
+					|= \int_0^a \app{\sin^2}{\frac{n\pi}{a}x} \ordd x
+				|};${|
+					|= \frac{a}{2}
+				|}];
+				\align[${|
+					\angle-bracket{x^2}
+					|= \int_0^a x^2\abs{\app{\psi_n}{x}}^2 \ordd x
+				|};${|
+					|= \frac{2}{a}\int_0^a x^2\app{\sin^2}{\frac{n\pi}{a}x} \ordd x
+				|};${|
+					|= \frac{1}{a} \int_0^a x^2\paren{1 - \app{\cos}{\frac{2n\pi}{a}x}} \ordd x
+				|};${|
+					|= \frac{1}{a} \int_0^a x^2\ordd x - \frac{1}{a}\int_0^a x^2\app{\cos}{\frac{2n\pi}{a}x} \ordd x
+				|};${|
+					|= \frac{a^2}{3} - \frac{1}{a} \paren{
+						\frac{a}{2n\pi} \sqbracket{ x^2 \app{\sin}{\frac{2n\pi}{a}x} }_0^a
+						- \frac{a}{n\pi} \int_0^a x\app{\sin}{\frac{2n\pi}{a}x} \ordd x
+					}
+				|};${|
+					|= \frac{a^2}{3} + \frac{1}{n\pi} \paren{
+						-\frac{a}{2n\pi} \sqbracket{x\app{\cos}{\frac{2n\pi}{a}x}}_0^a
+						+ \frac{a}{2n\pi} \int_0^a \app{\cos}{\frac{2n\pi}{a}x} \ordd x
+					}
+				|};${|
+					|= \frac{a^2}{3} - \frac{a^2}{2n^2\pi^2}
+				|}];
+				\align[${|
+					\angle-bracket{p}
+					|= \int_0^a \app{\psi_n*}{x} \paren{ -i\hbar \frac{\ordd}{\ordd x}\app{\psi_n}{x} } \ordd x
+				|};${|
+					|= \int_0^a \sqrt{\frac{2}{a}}\app{\sin}{\frac{n\pi}{a}x}\paren{ -i\hbar \cdot \frac{n\pi}{a}\sqrt{\frac{2}{a}} \app{\cos}{\frac{n\pi}{a}x} } \ordd x
+				|};${|
+					|= \frac{2n\pi i\hbar}{a^2} \int_0^a \app{\sin}{\frac{n\pi}{a}x} \app{\cos}{\frac{n\pi}{a}x} \ordd x
+				|};${|
+					|= \frac{n\pi i\hbar}{a^2} \int_0^a \app{\sin}{\frac{2n\pi}{a}x} \ordd x
+				|};${|
+					|= 0
+				|}];
+				\align[${|
+					\angle-bracket{p^2}
+					|= \int_0^a \app{\psi_n*}{x} \paren{ -\hbar^2 \frac{\ordd^2}{\ordd^2 x} \app{\psi_n}{x} } \ordd x
+				|};${|
+					|= \int_0^a \sqrt{\frac{2}{a}}\app{\sin}{\frac{n\pi}{a}x} \paren{ \hbar^2 \cdot \frac{n^2\pi^2}{a^2} \sqrt{\frac{2}{a}} \app{\sin}{\frac{n\pi}{a}x} } \ordd x
+				|};${|
+					|= \frac{2n^2\pi^2\hbar^2}{a^3} \int_0^a \app{\sin^2}{\frac{n\pi}{a}x} \ordd x
+				|};${|
+					|= \frac{n^2\pi^2\hbar^2}{a^2}
+				|}];
+				\align[${|
+					\sigma_x
+					|= \sqrt{\angle-bracket{x^2} - \angle-bracket{x}^2}
+				|};${|
+					|= \sqrt{\frac{a^2}{3} - \frac{a^2}{2n^2\pi^2} - \frac{a^2}{4}}
+				|};${|
+					|= a\sqrt{\frac{1}{12} - \frac{1}{2n^2\pi^2}}
+				|}];
+				\align[${|
+					\sigma_p
+					|= \sqrt{\angle-bracket{p^2} - \angle-bracket{p}^2}
+				|};${|
+					|= \frac{n\pi\hbar}{a}
+				|}];
+				より ${ \sigma_x \sigma_p = \hbar\sqrt{\frac{n^2\pi^2}{12} - \frac{1}{2}} } ，
+				これは ${ n = 1 } のとき最小値 ${ \hbar\sqrt{\frac{\pi^2}{12} - \frac{1}{2}} = 0.568\hbar } をとるので
+				不確定性原理は成り立っている．
 			}
 		>
 	>
