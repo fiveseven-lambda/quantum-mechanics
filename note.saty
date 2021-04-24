@@ -1,4 +1,6 @@
 @require: stdjareport
+@require: azmath/accent
+@require: itemize
 
 let-math \hbar = math-char MathOrd `ℏ`
 in
@@ -147,7 +149,7 @@ document(| title={量子力学ノート}; author={とが} |)'<
 	+chapter{2021/4/22}<
 		+section{問題 1.9}<
 			+p{
-				${ \app{\Psi}{x, t} = Ae^{-a\sqbracket{\paren{mx^2/\hbar} + it}} } より
+				${ \app{\Psi}{x, t} = Ae^{-a\paren{\paren{mx^2/\hbar} + it}} } より
 				${ \abs{\app{\Psi}{x, t}}^2 = \app{\Psi}{x, t}\app{\Psi*}{x, t} = A^2e^{-2amx^2/\hbar} } なので
 				\align[${|
 					\int_{-\infty}^{\infty}\abs{\app{\Psi}{x, t}}^2 \ordd x
@@ -252,7 +254,7 @@ document(| title={量子力学ノート}; author={とが} |)'<
 				よって，時間に依存しない Schrödinger 方程式
 				\eqn(${ -\frac{\hbar^2}{2m}\frac{\ordd^2\psi}{\ordd x^2} + V\psi = E\psi });
 				を解けば，
-				そこに ${ i\hbar\frac{\ordd\phi}{\ordd t} = E\phi } の解である ${ \phi = e^{-iEt/\hbar} }
+				そこに ${ i\hbar\frac{\ordd\phi}{\ordd t} = E\phi } の解である ${ \phi = Ae^{-iEt/\hbar} }
 				をかけることで ${ \Psi } が得られる．
 			}
 		>
@@ -405,6 +407,243 @@ document(| title={量子力学ノート}; author={とが} |)'<
 				より ${ \sigma_x \sigma_p = \hbar\sqrt{\frac{n^2\pi^2}{12} - \frac{1}{2}} } ，
 				これは ${ n = 1 } のとき最小値 ${ \hbar\sqrt{\frac{\pi^2}{12} - \frac{1}{2}} = 0.568\hbar } をとるので
 				不確定性原理は成り立っている．
+			}
+		>
+	>
+	+chapter{2021/4/25}<
+		+section{問題 2.1}<
+			+subsection{(a)}<
+				+p{
+					${ \app{\Psi}{x, t} = \app{\psi}{x}\app{\phi}{t} } が Schrödinger 方程式の解ならば，
+					\eqn(${ \int_{-\infty}^{\infty}\abs{\app{\Psi}{x, t}}^2\ordd x = \abs{\app{\phi}{t}}^2 \int_{-\infty}^{\infty}\abs{\app{\psi}{x}}^2\ordd x });
+					は ${ t } によらず一定なので
+					${ \abs{\app{\phi}{t}}^2 } は定数である．
+					ここで ${ \app{\phi}{t} = Ae^{-iEt/\hbar} } より
+					\align[${|
+						\abs{\app{\phi}{t}}^2
+						|= \app{\phi*}{t}\app{\phi}{t}
+					|};${|
+						|= Ae^{iE*t/\hbar} \cdot Ae^{-iEt/\hbar}
+					|};${|
+						|= A^2e^{-i\paren{E - E*}t/\hbar}
+					|}];
+					であるから，一定となるためには ${ E - E* = 0 } ，すなわち ${ E } は実数でなければならない．
+				}
+			>
+			+subsection{(b)}<
+				+p{
+					時間に依存しない Schrödinger 方程式について，任意の解 ${ \psi } が，
+					実数値関数解の線型結合として表せることを示す．
+					${ E } が実数であるから，
+					\eqn(${ -\frac{\hbar^2}{2m} \frac{\ordd^2\psi}{\ordd x^2} + V\psi = E\psi });
+					の両辺の複素共役をとると
+					\eqn(${ -\frac{\hbar^2}{2m} \frac{\ordd^2\psi*}{\ordd x^2} + V\psi* = E\psi* });
+				}
+				+p{
+					よって
+					\align[${|
+						-\frac{\hbar^2}{2m} \frac{\ordd^2}{\ordd x^2}\frac{\psi + \psi*}{2} + V\frac{\psi + \psi*}{2} |= E\frac{\psi + \psi*}{2}
+					|};${|
+						-\frac{\hbar^2}{2m} \frac{\ordd^2}{\ordd x^2}\frac{\psi - \psi*}{2i} + V\frac{\psi - \psi*}{2i} |= E\frac{\psi - \psi*}{2i}
+					|}];
+					より ${ \psi_R = \frac{\psi + \psi*}{2} } と ${ \psi_I = \frac{\psi - \psi*}{2i} } はともに解である．
+					これらはそれぞれ ${ \psi } の実部と虚部であるから，
+					${ \lim_{x \to \pm\infty}\psi = 0 } より
+					${ \lim_{x \to \pm\infty}\psi_R = \lim_{x \to \pm\infty}\psi_I = 0 } であり，また
+					\eqn(${
+						\int_{-\infty}^{\infty} \abs{\psi_R}^2 \ordd x
+						+ \int_{-\infty}^{\infty} \abs{\psi_I}^2 \ordd x
+						= \int_{-\infty}^{\infty} \abs{\psi}^2 \ordd x
+						= 1
+					});
+					である．一方
+					${ \abs{\psi_R}^2 } ， ${ \abs{\psi_I}^2 } は常に ${ 0 } 以上なので
+					${ \int_{-\infty}^{\infty} \abs{\psi_R}^2 \ordd x \geq 0 } ，
+					${ \int_{-\infty}^{\infty} \abs{\psi_I}^2 \ordd x \geq 0 } ．
+					\listing {
+						* ${ \int_{-\infty}^{\infty} \abs{\psi_R}^2 \ordd x = 1 } ，
+						${ \int_{-\infty}^{\infty} \abs{\psi_I}^2 \ordd x = 0 } のとき，
+						${ \psi } は正規化された実数値関数解 ${ \psi_R } に等しい．
+						* ${ 0 < \int_{-\infty}^{\infty} \abs{\psi_R}^2 \ordd x < 1 } ，
+						${ 0 < \int_{-\infty}^{\infty} \abs{\psi_I}^2 \ordd x < 1 } のとき，
+						${ \psi } は正規化可能な 2 つの実数値関数解 ${ \psi_R } ， ${ \psi_I } の線型結合として表される．
+						* ${ \int_{-\infty}^{\infty} \abs{\psi_R}^2 \ordd x = 0 } ，
+						${ \int_{-\infty}^{\infty} \abs{\psi_I}^2 \ordd x = 1 } のとき，
+						${ \psi } は正規化された実数値関数解 ${ \psi_I } の ${ i } 倍に等しい．
+					}
+				}
+				+p{
+					いずれの場合も ${ \psi } を正規化可能な実数値関数解の線型結合として表すことができた．
+				}
+			>
+			+subsection{(c)}<
+				+p{
+					時間に依存しない Schrödinger 方程式
+					\eqn(${ -\frac{\hbar}{2m} \frac{\ordd^2}{\ordd x^2} \app{\psi}{x} + \app{V}{x} \app{\psi}{x} = E\app{\psi}{x} });
+					において ${ \app{V}{x} = \app{V}{-x} } なら
+					\eqn(${ -\frac{\hbar}{2m} \frac{\ordd^2}{\ordd x^2} \app{\psi}{-x} + \app{V}{x} \app{\psi}{-x} = E\app{\psi}{-x} });
+					よって
+					\align[${|
+						-\frac{\hbar}{2m} \frac{\ordd^2}{\ordd x^2} \paren{\app{\psi}{x} + \app{\psi}{-x}} + \app{V}{x} \paren{\app{\psi}{x} + \app{\psi}{-x}} |= E\paren{\app{\psi}{x} + \app{\psi}{-x}}
+					|};${|
+						-\frac{\hbar}{2m} \frac{\ordd^2}{\ordd x^2} \paren{\app{\psi}{x} - \app{\psi}{-x}} + \app{V}{x} \paren{\app{\psi}{x} - \app{\psi}{-x}} |= E\paren{\app{\psi}{x} - \app{\psi}{-x}}
+					|}];
+					より ${ \app{\psi}{x} + \app{\psi}{-x} } と ${ \app{\psi}{x} - \app{\psi}{-x} } はともに解である．
+					前者は偶関数，
+					後者は奇関数であるから，
+					${ \psi } を偶関数解と奇関数解の線型結合として表すことができた．
+				}
+			>
+		>
+		+section{問題 2.2}<
+			+p{
+				任意の ${x} について ${ \app{V}{x} \geq E } が成り立つと仮定する．
+			}
+			+p{
+				時間に依存しない Schrödinger 方程式を変形すると
+				\eqn(${ \frac{\ordd^2}{\ordd x^2}\app{\psi}{x} = \frac{2m}{\hbar}\paren{\app{V}{x} - E}\app{\psi}{x} });
+				となる．ここである ${ x_0 } が存在して ${ \app{\psi}{x_0} > 0 } であると仮定する．
+				${ \app{\psi'}{x_0} \geq 0 } の場合，
+				集合 ${ A = \setsep{ x \geq x_0 }{ \app{\psi}{x} \leq 0 } } が空でないと仮定し，
+				その下限を ${ x_1 } とおく．
+				${ \psi } の連続性より ${ A } は閉であるから ${ x_1 \in A } ，
+				また ${ x_0 \nin A } より ${ x_0 < x_1 } である．
+				${ x_0 \leq x < x_1 } の範囲では，
+				${ \app{\psi}{x} > 0 } と
+				${ \app{V}{x} - E \geq 0 } より ${ \app{\psi''}{x} \geq 0 } であるから，
+				${ \psi' } の単調性より ${ \app{\psi'}{x} \geq \app{\psi'}{x_0} \geq 0 } ．
+				よって ${ \psi } の単調性より ${ \app{\psi}{x_1} \geq \app{\psi}{x_0} > 0 } となるが，
+				${ x_1 \in A } に反する．
+				よって ${ A = \emptyset } である．
+				すると同様に ${ x_0 \leq x } の範囲で
+				${ \app{\psi''}{x} \geq 0 } であるから
+				${ \psi' } の単調性， ${ \psi } の単調性より
+				${ \app{\psi}{x} \geq \app{\psi}{x_0} } となり，
+				${ \psi } は正規化不可能である．
+				同様に ${ \app{\psi'}{x_0} \leq 0 } の場合
+				${ x \leq x_0 } の範囲で ${ \app{\psi}{x} \geq \app{\psi}{x_0} } となるため
+				${\psi} は正規化不可能である．
+				よって ${ \app{\psi}{x_0} > 0 } となる ${ x_0 } は存在しない．
+				同様に ${ \app{\psi}{x_0} < 0 } となる ${ x_0 } も存在しないので，
+				${\psi} は定数 ${ 0 } となるが，これも正規化不可能である．
+			}
+			+p{
+				よって，ある ${ x } が存在して ${ \app{V}{x} < E } である
+				（この証明は \@buta_kimchi_ さんにいただいたリプをもとに書いている）．
+			}
+		>
+		+section{要点}<
+			+p{
+				古典力学の単振動 ${ x = \sin\omega t } を考えると，
+				${ m\ddot{x} = -m\omega^2\sin\omega t = -m\omega^2x } より
+				位置エネルギーは ${ \app{V}{x} = - \int \paren{-m\omega^2x} \mathrm{d}x = \frac{1}{2}m\omega^2x^2 } である．
+				この ${V} について時間に依存しない Schrödinger 方程式
+				\eqn(${ -\frac{\hbar^2}{2m} \frac{\ordd^2\psi}{\ordd x^2} + \frac{1}{2} m \omega^2 x^2 \psi = E\psi });
+				を解く．
+			}
+			+p{
+				運動量を得る作用素 ${ -i\hbar\frac{\ordd}{\ordd x} } を ${ \hat{p} } とおくと，
+				${ \hat{p}^2 = -\hbar^2\frac{\ordd^2}{\ordd x^2} } であるから，
+				方程式は \eqn(${ \frac{1}{2m}\paren{\hat{p}^2 + \paren{m\omega x}^2}\psi = E\psi }); と
+				書き換えられる．
+				ここで ${ \hat{a}_{-}, \hat{a}_{+} } を
+				\eqn(${ \hat{a}_\pm = \frac{1}{\sqrt{2\hbar m\omega}}\paren{\mp i\hat{p} + m\omega x} });
+				と定義すると，方程式はさらに
+				\eqn(${ \hbar\omega\paren{ \hat{a}_\pm \hat{a}_\mp \pm \frac{1}{2} }\psi = E\psi });
+				と書き換えられる（計算 1）．
+			}
+			+p{
+				ある組 ${ \paren{ \psi, E } } がこの方程式の解ならば，
+				組 ${ \paren{ \hat{a}_+ \psi, E + \hbar\omega } } と
+				組 ${ \paren{ \hat{a}_- \psi, E - \hbar\omega } } もこの方程式の解となる（計算 2）．
+				ただし ${ \psi } が正規化可能でも ${ \hat{a}_\pm \psi } が正規化可能とは限らない．
+			}
+			+p{
+				組 ${ \paren{ \hat{a}_- \psi, E - \hbar\omega } } について，
+				もし ${ E - \hbar\omega \leq 0 } （ ${V} の最小値）ならば
+				${ \hat{a}_- \psi } は正規化不可能なので
+				${ \hat{a}_- \psi = 0 } ．
+				よって
+				\eqn(${ \paren{i\hat{p} + m\omega x}\psi = 0 });
+				を解いて ${ \psi = \paren{\frac{m\omega}{\pi\hbar}}^\frac{1}{4}e^{-\frac{m\omega}{2\hbar}x^2} } ．
+				対応する ${ E } を計算すると ${ \frac{1}{2} \hbar \omega } となり，これが基底状態のエネルギー ${ E_0 } である．
+				${ 0 < E \leq \hbar\omega } の範囲の解はこれ 1 つなので，
+				任意の解 ${ E } は ${ E_n = \paren{n + \frac{1}{2}}\hbar\omega } と表せる．
+			}
+		>
+		+section{計算 1}<
+			+p{
+				作用素 ${ \hat{A} } ， ${ \hat{B} } について
+				交換子 ${ \sqbracket{\hat{A}, \hat{B}} } を
+				\eqn(${ \sqbracket{\hat{A}, \hat{B}} = \hat{A}\hat{B} - \hat{B}\hat{A} });
+				で定義すると
+				\align[${|
+					\sqbracket{ x, \hat{p} } \psi
+					|= \paren{ x\hat{p} - \hat{p}x } \psi
+				|};${|
+					|= x\paren{ -i\hbar\frac{\ordd\psi}{\ordd x} } - \paren{- i\hbar\frac{\ordd}{\ordd x}\paren{x\psi}}
+				|};${|
+					|= -i\hbar x\frac{\ordd\psi}{\ordd x} + i\hbar x\frac{\ordd\psi}{\ordd x} + i\hbar\psi
+				|};${|
+					|= i\hbar\psi
+				|}];
+				より ${ \sqbracket{x, \hat{p}} = i\hbar } なので，
+				\align[${|
+					\hbar\omega\paren{\hat{a}_+ \hat{a}_- + \frac{1}{2}}
+					|= \hbar\omega\paren{\frac{1}{2\hbar m\omega}\paren{-i\hat{p} + m\omega x}\paren{i\hat{p} + m\omega x} + \frac{1}{2}}
+				|};${|
+					|= \hbar\omega\paren{\frac{1}{2\hbar m\omega}\paren{\hat{p}^2 + \paren{m\omega x}^2 + im\omega\sqbracket{x, \hat{p}}} + \frac{1}{2}}
+				|};${|
+					|= \hbar\omega\paren{\frac{1}{2\hbar m\omega}\paren{\hat{p}^2 + \paren{m\omega x}^2 - \hbar m\omega} + \frac{1}{2}}
+				|};${|
+					|= \hbar\omega\cdot\frac{1}{2\hbar m\omega}\paren{\hat{p}^2 + \paren{m\omega x}^2 }
+				|};${|
+					|= \frac{1}{2m} \paren{ \hat{p}^2 + \paren{m\omega x}^2 }
+				|}];
+				\align[${|
+					\hbar\omega\paren{\hat{a}_- \hat{a}_+ - \frac{1}{2}}
+					|= \hbar\omega\paren{\frac{1}{2\hbar m\omega}\paren{i\hat{p} + m\omega x}\paren{-i\hat{p} + m\omega x} - \frac{1}{2}}
+				|};${|
+					|= \hbar\omega\paren{\frac{1}{2\hbar m\omega}\paren{\hat{p}^2 + \paren{m\omega x}^2 - im\omega\sqbracket{x, \hat{p}}} - \frac{1}{2}}
+				|};${|
+					|= \hbar\omega\paren{\frac{1}{2\hbar m\omega}\paren{\hat{p}^2 + \paren{m\omega x}^2 + \hbar m\omega} - \frac{1}{2}}
+				|};${|
+					|= \hbar\omega\cdot\frac{1}{2\hbar m\omega}\paren{\hat{p}^2 + \paren{m\omega x}^2 }
+				|};${|
+					|= \frac{1}{2m} \paren{ \hat{p}^2 + \paren{m\omega x}^2 }
+				|}];
+			}
+		>
+		+section{計算 2}<
+			+p{
+				${ \hbar\omega\paren{\hat{a}_- \hat{a}_+ -\frac{1}{2}}\psi = E\psi } より，
+				\align[${|
+					\hbar\omega\paren{\hat{a}_+\hat{a}_- + \frac{1}{2}}\paren{\hat{a}_+\psi}
+					|= \hbar\omega\paren{ \hat{a}_+ \hat{a}_- \hat{a}_+ + \frac{1}{2}\hat{a}_+ }\psi
+				|};${|
+					|= \hbar\omega \hat{a}_+ \paren{ \hat{a}_- \hat{a}_+ + \frac{1}{2} }\psi
+				|};${|
+					|= \hat{a}_+ \paren{\hbar\omega\paren{ \hat{a}_- \hat{a}_+ - \frac{1}{2}} + \hbar\omega}\psi
+				|};${|
+					|= \hat{a}_+ \paren{E + \hbar\omega}\psi
+				|};${|
+					|= \paren{E + \hbar\omega}\paren{\hat{a}_+ \psi}
+				|}];
+			}
+			+p{
+				${ \hbar\omega\paren{\hat{a}_+ \hat{a}_- + \frac{1}{2}}\psi = E\psi } より，
+				\align[${|
+					\hbar\omega\paren{\hat{a}_- \hat{a}_+ - \frac{1}{2}}\paren{\hat{a}_- \psi}
+					|= \hbar\omega\paren{ \hat{a}_- \hat{a}_+ \hat{a}_- - \frac{1}{2}\hat{a}_- }\psi
+				|};${|
+					|= \hbar\omega \hat{a}_- \paren{ \hat{a}_+ \hat{a}_- - \frac{1}{2} }\psi
+				|};${|
+					|= \hat{a}_- \paren{\hbar\omega\paren{ \hat{a}_+ \hat{a}_- + \frac{1}{2}} - \hbar\omega}\psi
+				|};${|
+					|= \hat{a}_- \paren{E - \hbar\omega}\psi
+				|};${|
+					|= \paren{E - \hbar\omega}\paren{\hat{a}_- \psi}
+				|}];
 			}
 		>
 	>
