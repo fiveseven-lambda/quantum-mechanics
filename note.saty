@@ -182,7 +182,7 @@ document(| title={量子力学ノート}; author={とが} |)'<
 				${V} について解いて ${ \app{V}{x} = 2a^2mx^2 } ．
 			}
 			+p{
-				${\abs{\Psi}^2} は正規分布 ${ \app{N}{0, \sqrt{\frac{\hbar}{4am}}} } の密度関数なので，
+				${\abs{\Psi}^2} は正規分布 ${ \app{N}{0, \frac{\hbar}{4am}} } の密度関数なので，
 				${ \angle-bracket{x} = 0 } ，
 				${ \sigma_x = \sqrt{\frac{\hbar}{4am}} } ，
 				${ \angle-bracket{x^2} = \sigma_x^2 = \frac{\hbar}{4am} } ．
@@ -643,6 +643,159 @@ document(| title={量子力学ノート}; author={とが} |)'<
 					|= \hat{a}_- \paren{E - \hbar\omega}\psi
 				|};${|
 					|= \paren{E - \hbar\omega}\paren{\hat{a}_- \psi}
+				|}];
+			}
+		>
+	>
+	+chapter{2021/4/26}<
+		+section{問題 2.10}<
+			+p{
+				${ \app{\psi_0}{x} = \paren{\frac{m\omega}{\pi\hbar}}^\frac{1}{4} e^{-\frac{m\omega}{2\hbar}x^2} } より
+				\align[${|
+					\app{\psi_1}{x}
+					|= \hat{a}_+ \app{\psi_0}{x}
+				|};${|
+					|= \paren{\frac{m\omega}{\pi\hbar}}^{\frac{1}{4}} \frac{1}{\sqrt{2\hbar m\omega}} \paren{-i\hat{p} + m\omega x} e^{-\frac{m\omega}{2\hbar}x^2}
+				|};${|
+					|= \paren{\frac{m\omega}{\pi\hbar}}^{\frac{1}{4}} \frac{1}{\sqrt{2\hbar m\omega}} \paren{-\hbar\frac{\ordd}{\ordd x} + m\omega x} e^{-\frac{m\omega}{2\hbar}x^2}
+				|};${|
+					|= \paren{\frac{m\omega}{\pi\hbar}}^{\frac{1}{4}} \frac{1}{\sqrt{2\hbar m\omega}}
+					\paren{ -\hbar\paren{ -\frac{m\omega}{\hbar} x e^{-\frac{m\omega}{2\hbar}x^2} } + m\omega x e^{-\frac{m\omega}{2\hbar}x^2 } }
+				|};${|
+					|= \paren{\frac{m\omega}{\pi\hbar}}^{\frac{1}{4}} \frac{1}{\sqrt{2\hbar m\omega}}
+					\cdot 2m\omega x e^{-\frac{m\omega}{2\hbar}x^2}
+				|};${|
+					|= \paren{\frac{m\omega}{\pi\hbar}}^{\frac{1}{4}} \sqrt{\frac{2m\omega}{\hbar}} x e^{-\frac{m\omega}{2\hbar}x^2}
+				|}];
+				\align[${|
+					\app{\psi_2}{x}
+					|= \frac{1}{\sqrt{2}} \hat{a}_+ \app{\psi_1}{x}
+				|};${|
+					|= \frac{1}{\sqrt{2}} 
+					\paren{\frac{m\omega}{\pi\hbar}}^{\frac{1}{4}} \sqrt{\frac{2m\omega}{\hbar}}
+					\frac{1}{\sqrt{2\hbar m\omega}}
+					\paren{ -i\hat{p} + m\omega x }
+					\paren{ x e^{-\frac{m\omega}{2\hbar}x^2} }
+				|};${|
+					|= \frac{1}{\sqrt{2}\hbar}
+					\paren{\frac{m\omega}{\pi\hbar}}^{\frac{1}{4}}
+					\paren{ -\hbar\frac{\ordd}{\ordd x} + m\omega x }
+					\paren{ x e^{-\frac{m\omega}{2\hbar}x^2} }
+				|};${|
+					|= \frac{1}{\sqrt{2}\hbar}
+					\paren{\frac{m\omega}{\pi\hbar}}^{\frac{1}{4}}
+					\paren{
+						-\hbar \paren{
+							x\cdot\paren{
+								-\frac{m\omega}{\hbar}
+								x e^{-\frac{m\omega}{2\hbar}x^2}
+							}
+							+ e^{-\frac{m\omega}{2\hbar}x^2}
+						}
+						+m\omega x^2 e^{-\frac{m\omega}{2\hbar}x^2}
+					}
+				|};${|
+					|= \frac{1}{\sqrt{2}\hbar}
+					\paren{\frac{m\omega}{\pi\hbar}}^{\frac{1}{4}}
+					\paren{
+						m\omega x^2 e^{-\frac{m\omega}{2\hbar}x^2}
+						-\hbar e^{-\frac{m\omega}{2\hbar}x^2}
+						+ m\omega x^2 e^{-\frac{m\omega}{2\hbar}x^2}
+					}
+				|};${|
+					|= \frac{1}{\sqrt{2}\hbar}
+					\paren{\frac{m\omega}{\pi\hbar}}^{\frac{1}{4}}
+					\paren{
+						2m\omega x^2 - \hbar
+					}
+					e^{-\frac{m\omega}{2\hbar}x^2}
+				|}];
+				${ \psi_0, \psi_2 } は偶関数，
+				${ \psi_1 } は奇関数なので
+				${ \psi_0*\psi_1 } と
+				${ \psi_1*\psi_2 } は奇関数．
+				よって \eqn(${
+					\int_{-\infty}^{\infty} \psi_0*\psi_1 \ordd x
+					= \int_{-\infty}^{\infty} \psi_1*\psi_2 \ordd x
+					= 0
+				});
+			}
+			+p{
+				一方
+				\align[${|
+					\int \paren{ 2m\omega x^2 - \hbar } e^{-\frac{m\omega}{\hbar}x^2} \ordd x
+					|= 2m\omega\int x^2 e^{-\frac{m\omega}{\hbar}x^2} \ordd x - \hbar \int e^{-\frac{m\omega}{\hbar}x^2} \ordd x
+				|};${|
+					|= - \hbar x e^{-\frac{m\omega}{\hbar}x^2}
+						+ \hbar \int e^{-\frac{m\omega}{\hbar}x^2} \ordd x
+						- \hbar \int e^{-\frac{m\omega}{\hbar}x^2} \ordd x
+				|};${|
+					|= - \hbar x e^{-\frac{m\omega}{\hbar}x^2} + \text!{(const)}
+				|}];
+				より
+				\align[${|
+					\int_{-\infty}^{\infty} \app{\psi_0*}{x} \app{\psi_2}{x} \ordd x
+					|= \text!{(const)} \int_{-\infty}^{\infty} \paren{ 2m\omega x^2 - \hbar } e^{-\frac{m\omega}{\hbar}x^2} \ordd x
+				|};${|
+					|= \text!{(const)} \sqbracket{ x e^{-\frac{m\omega}{\hbar}x^2} }_{-\infty}^{\infty}
+				|};${|
+					|= 0
+				|}];
+				であるから ${ \psi_0, \psi_1, \psi_2 } はそれぞれ直交する．
+			}
+		>
+		+section{問題 2.11}<
+			+p{
+				${ \abs{\psi_0}^2 = \sqrt{\frac{m\omega}{\pi\hbar}} e^{-\frac{m\omega}{\hbar}x^2} } は
+				正規分布 ${ \app{N}{0, \frac{\hbar}{2m\omega}} } の密度関数なので
+				${ \angle-bracket{x} = 0 } ，
+				${ \angle-bracket{x^2} = \frac{\hbar}{2m\omega} } ．
+			}
+			+p{
+				${ \psi_0 } は偶関数なので ${ \frac{\ordd\psi_0}{\ordd x} } は奇関数．よって ${ \psi_0 \frac{\ordd\psi_0}{\ordd x} } は奇関数なので
+				\align[${|
+					\angle-bracket{p}
+					|= \int_{-\infty}^{\infty} \psi_0* \paren{-i\hbar\frac{\ordd\psi_0}{\ordd x}} \ordd x
+				|};${|
+					|= -i\hbar \int_{-\infty}^{\infty} \psi_0 \frac{\ordd\psi_0}{\ordd x} \ordd x
+				|};${|
+					|= 0
+				|}];
+			}
+			+p{
+				また， ${ \xi = \sqrt{\frac{m\omega}{\hbar}}x } ，
+				${ \alpha = \paren{ \frac{m\omega}{\pi\hbar} }^\frac{1}{4} } とおくと
+				${ \psi_0 = \alpha e^{-\frac{\xi^2}{2}} } であるから
+				\align[${|
+					\frac{\ordd^2\psi_0}{\ordd x^2}
+					|=
+					\frac{m\omega}{\hbar}
+					\frac{\ordd^2\psi_0}{\ordd\xi^2}
+				|};${|
+					|= \frac{m\omega\alpha}{\hbar}
+					\paren{ \xi^2 - 1 } e^{-\frac{\xi^2}{2}}
+				|}];
+				\align[${|
+					\angle-bracket{p^2}
+					|= \int_{-\infty}^\infty \psi_0* \paren{ -\hbar^2 \frac{\ordd^2\psi_0}{\ordd x^2} } \ordd x
+				|};${|
+					|= \int_{-\infty}^\infty \alpha e^{-\frac{\xi^2}{2}} \paren{ -\hbar m\omega \alpha \paren{\xi^2 - 1} e^{-\frac{\xi^2}{2}} } \ordd x
+				|};${|
+					|= - \frac{\hbar m\omega}{\sqrt{\pi}}
+					\int_{-\infty}^\infty \paren{\xi^2 - 1} e^{-\xi^2} \ordd \xi
+				|};${|
+					|= - \frac{\hbar m\omega}{\sqrt{\pi}}
+					\paren{ \int_{-\infty}^\infty \xi^2 e^{-\xi^2} \ordd \xi
+					- \int_{-\infty}^\infty e^{-\xi^2} \ordd \xi }
+				|};${|
+					|= - \frac{\hbar m\omega}{\sqrt{\pi}}
+					\paren{ - \frac{1}{2}\sqbracket{ \xi e^{-\xi^2} }_{-\infty}^{\infty}
+					+ \frac{1}{2} \int_{-\infty}^\infty e^{-\xi^2} \ordd \xi 
+					- \int_{-\infty}^\infty e^{-\xi^2} \ordd \xi }
+				|};${|
+					|= \frac{\hbar m\omega}{2\sqrt{\pi}} \int_{-\infty}^\infty e^{-\xi^2} \ordd \xi
+				|};${|
+					|= \frac{\hbar m\omega}{2}
 				|}];
 			}
 		>
