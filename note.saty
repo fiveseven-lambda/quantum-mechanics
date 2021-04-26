@@ -306,17 +306,23 @@ document(| title={量子力学ノート}; author={とが} |)'<
 				${ n } が正の整数のときだけを考えればよい．
 			}
 			+p{
-				${ \abs{\psi}^2 = A^2\app{\sin^2}{\frac{n\pi}{a}x} } を
-				${ 0 \leq x \leq a } で積分すると
+				${
+					\int_0^\frac{a}{2\pi} \sin^2\paren{\frac{n\pi}{a}x} \ordd x
+					= \int_0^\frac{a}{2\pi} \cos^2\paren{\frac{n\pi}{a}x} \ordd x
+				} より
+				${ \int_0^a \sin^2\paren{\frac{n\pi}{a}x} \ordd x
+				= n \int_0^\frac{a}{2\pi} \ordd x
+				= \frac{a}{2}
+				} であるから，
 				\align[${|
-					A^2\int_0^a\app{\sin^2}{\frac{n\pi}{a}x} \ordd x
-					|= A^2\int_0^a\frac{1 - \app{\cos}{\frac{2n\pi}{a}x}}{2} \ordd x
-				|};${|
-					|= A^2\sqbracket{ \frac{1}{2}x - \frac{a}{4n\pi}\app{\sin}{\frac{2n\pi}{a}x} }_0^a
+					\int_0^a \abs{\psi}^2 \ordd x
+					|= A^2\int_0^a\app{\sin^2}{\frac{n\pi}{a}x} \ordd x
 				|};${|
 					|= A^2 \cdot \frac{a}{2}
 				|}];
-				より， ${ \int_0^a\abs{\app{\psi}{x}}^2\ordd x = 1 } となるためには ${ A = \pm\sqrt{\frac{2}{a}} } であればよい．
+			}
+			+p{
+				よって ${ \int_0^a\abs{\app{\psi}{x}}^2\ordd x = 1 } となるためには ${ A = \pm\sqrt{\frac{2}{a}} } であればよい．
 				ただし物理学の観点では ${ A = \sqrt{\frac{2}{a}} } のときを考えれば十分らしい．
 			}
 			+p{
@@ -779,7 +785,7 @@ document(| title={量子力学ノート}; author={とが} |)'<
 					\angle-bracket{p^2}
 					|= \int_{-\infty}^\infty \psi_0* \paren{ -\hbar^2 \frac{\ordd^2\psi_0}{\ordd x^2} } \ordd x
 				|};${|
-					|= \int_{-\infty}^\infty \alpha e^{-\frac{\xi^2}{2}} \paren{ -\hbar m\omega \alpha \paren{\xi^2 - 1} e^{-\frac{\xi^2}{2}} } \ordd x
+					|= \int_{-\infty}^\infty \alpha e^{-\frac{\xi^2}{2}} \paren{ -\hbar m\omega \alpha \paren{\xi^2 - 1} e^{-\frac{\xi^2}{2}} } \sqrt{\frac{\hbar}{m\omega}} \ordd\xi
 				|};${|
 					|= - \frac{\hbar m\omega}{\sqrt{\pi}}
 					\int_{-\infty}^\infty \paren{\xi^2 - 1} e^{-\xi^2} \ordd \xi
@@ -796,6 +802,104 @@ document(| title={量子力学ノート}; author={とが} |)'<
 					|= \frac{\hbar m\omega}{2\sqrt{\pi}} \int_{-\infty}^\infty e^{-\xi^2} \ordd \xi
 				|};${|
 					|= \frac{\hbar m\omega}{2}
+				|}];
+			}
+			+p{
+				${ \abs{\psi_1}^2 = \frac{2m\omega}{\hbar} \sqrt{\frac{m\omega}{\pi\hbar}} x^2 e^{-\frac{m\omega}{\hbar}x^2} } は偶関数なので
+				${ \angle-bracket{x} = \int_{-\infty}^{\infty} x \abs{\psi_1}^2 \ordd x = 0 } ．
+				また上と同じ ${ \xi } と ${ \alpha } を用いて
+				${ \psi_1 = \sqrt{2}\alpha \xi e^{-\frac{\xi^2}{2}} } と表すと
+				\align[${|
+					\angle-bracket{x^2}
+					|= \int_{-\infty}^{\infty} x^2 \abs{\psi_1}^2 \ordd x
+				|};${|
+					|= \int_{-\infty}^{\infty} \frac{\hbar}{m\omega} \xi^2 \cdot 2\alpha^2\xi^2 e^{-\xi^2} \cdot \sqrt{\frac{\hbar}{m\omega}} \ordd\xi
+				|};${|
+					|= \frac{2\hbar}{m\omega\sqrt{\pi}} \int_{-\infty}^{\infty} \xi^4 e^{-\xi^2} \ordd\xi
+				|};${|
+					|= \frac{2\hbar}{m\omega\sqrt{\pi}} \paren{
+						- \frac{1}{2} \sqbracket{ \xi^3 e^{-\xi^2} }_{-\infty}^{\infty}
+						+ \frac{3}{2} \int_{-\infty}^{\infty} \xi^2 e^{-\xi^2} \ordd \xi
+					}
+				|};${|
+					|= \frac{3\hbar}{m\omega\sqrt{\pi}} \paren{
+						- \frac{1}{2} \sqbracket{ \xi e^{-\xi^2} }_{-\infty}^{\infty}
+						+ \frac{1}{2} \int_{-\infty}^{\infty} e^{-\xi^2} \ordd \xi
+					}
+				|};${|
+					|= \frac{3\hbar}{2m\omega}
+				|}];
+			}
+			+p{
+				${ \psi_1 } は奇関数なので
+				${ \frac{\ordd\psi_1}{\ordd x} } は偶関数．
+				よって ${ \psi_1\frac{\ordd\psi_1}{\ordd x} } は奇関数なので
+				\align[${|
+					\angle-bracket{ p }
+					|= \int_{-\infty}^{\infty} \psi_1* \paren{-i\hbar\frac{\ordd\psi_1}{\ordd x}} \ordd x
+				|};${|
+					|= -i\hbar \int_{-\infty}^{\infty} \psi_1 \frac{\ordd\psi_1}{\ordd x} \ordd x
+				|};${|
+					|= 0
+				|}];
+			}
+			+p{
+				また
+				\align[${|
+					\frac{\ordd^2\psi_1}{\ordd x^2}
+					|= \frac{m\omega}{\hbar} \frac{\ordd^2\psi_1}{\ordd\xi^2}
+				|};${|
+					|= \frac{\sqrt{2}m\omega\alpha}{\hbar} \paren{\xi^3 - 3\xi} e^{-\frac{\xi^2}{2}}
+				|}];
+				より
+				\align[${|
+					\angle-bracket{p^2}
+					|= \int_{-\infty}^{\infty} \psi_1* \paren{ -\hbar^2\frac{\ordd^2\psi_1}{\ordd x^2} } \ordd x
+				|};${|
+					|= \int_{-\infty}^\infty \sqrt{2}\alpha \xi e^{-\frac{\xi^2}{2}} \paren{ -\hbar \sqrt{2}m\omega \alpha \paren{\xi^3 - 3\xi} e^{-\frac{\xi^2}{2}} } \sqrt{\frac{\hbar}{m\omega}} \ordd\xi
+				|};${|
+					|= -\frac{2\hbar m\omega}{\sqrt{\pi}} \int_{-\infty}^{\infty} \paren{ \xi^4 - 3\xi^2 } e^{-\xi^2} \ordd \xi
+				|};${|
+					|= -\frac{2\hbar m\omega}{\sqrt{\pi}} \paren{
+						\int_{-\infty}^{\infty} \xi^4 e^{-\xi^2} \ordd \xi
+						-3 \int_{-\infty}^{\infty} \xi^2 e^{-\xi^2} \ordd \xi
+					}
+				|};${|
+					|= -\frac{2\hbar m\omega}{\sqrt{\pi}} \paren{
+						-\frac{1}{2} \sqbracket{ \xi^3e^{-\xi^2} }_{-\infty}^\infty
+						+ \frac{3}{2} \int_{-\infty}^{\infty} \xi^2 e^{-\xi^2} \ordd \xi
+						-3 \int_{-\infty}^{\infty} \xi^2 e^{-\xi^2} \ordd \xi
+					}
+				|};${|
+					|= \frac{3\hbar m\omega}{\sqrt{\pi}} \int_{-\infty}^{\infty} \xi^2 e^{-\xi^2} \ordd \xi
+				|};${|
+					|= \frac{3\hbar m\omega}{\sqrt{\pi}} \paren{ -\frac{1}{2} \sqbracket{\xi e^{-\xi^2}}_{-\infty}^\infty + \frac{1}{2} \int_{-\infty}^{\infty} e^{-\xi^2} \ordd\xi }
+				|};${|
+					|= \frac{3\hbar m\omega}{2}
+				|}];
+			}
+			+p{
+				${ \psi_0 } については ${ \sigma_x = \sqrt{\frac{\hbar}{2m\omega}} } ，
+				${ \sigma_p = \sqrt{\frac{\hbar m\omega}{2}} }
+				より ${ \sigma_x \sigma_p = \frac{\hbar}{2} }．
+				${ \psi_1 } については ${ \sigma_x = \sqrt{\frac{3\hbar}{2m\omega}} } ，
+				${ \sigma_p = \sqrt{\frac{3\hbar m\omega}{2}} }
+				より ${ \sigma_x \sigma_p = \frac{3\hbar}{2} }．
+				いずれについても不確定性原理は成り立っている．
+			}
+			+p{
+				${ T = \frac{p^2}{2m} } ， ${ V = \frac{1}{2}m\omega^2x^2 } であるから，
+				${ \psi_0 } については
+				\align[${|
+					\angle-bracket{T} = \frac{\angle-bracket{p^2}}{2m} |= \frac{\hbar\omega}{4}
+				|};${|
+					\angle-bracket{V} = \frac{1}{2}m\omega^2\angle-bracket{x^2} |= \frac{\hbar\omega}{4}
+				|}];
+				${ \psi_1 } については
+				\align[${|
+					\angle-bracket{T} = \frac{\angle-bracket{p^2}}{2m} |= \frac{3\hbar\omega}{4}
+				|};${|
+					\angle-bracket{V} = \frac{1}{2}m\omega^2\angle-bracket{x^2} |= \frac{3\hbar\omega}{4}
 				|}];
 			}
 		>
