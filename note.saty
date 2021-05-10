@@ -1,6 +1,7 @@
 @require: stdjareport
 @require: azmath/accent
 @require: itemize
+@require: cancel/cancel
 
 let-math \hbar = math-char MathOrd `ℏ`
 in
@@ -900,6 +901,68 @@ document(| title={量子力学ノート}; author={とが} |)'<
 					\angle-bracket{T} = \frac{\angle-bracket{p^2}}{2m} |= \frac{3\hbar\omega}{4}
 				|};${|
 					\angle-bracket{V} = \frac{1}{2}m\omega^2\angle-bracket{x^2} |= \frac{3\hbar\omega}{4}
+				|}];
+			}
+		>
+	>
+	+chapter{2021/5/10}<
+		+section{問題 1.7}<
+			+p{
+				\align[${|
+					\frac{\ordd}{\ordd t}\angle-bracket{p}
+					|= \frac{\ordd}{\ordd t} \int_{-\infty}^{\infty} \psi*\paren{-i\hbar\frac{\partial\psi}{\partial x}} \ordd x
+				|};${|
+					|= \int_{-\infty}^{\infty} \paren{
+						\frac{\partial\psi*}{\partial t} \paren{ -i\hbar\frac{\partial\psi}{\partial x} }
+						+ \psi* \paren{ -i\hbar\frac{\partial^2\psi}{\partial x \partial t} }
+					} \ordd x
+				|};${|
+					|= \int_{-\infty}^{\infty} \paren{
+						\paren{
+							-\frac{\hbar^2}{2m} \frac{\partial^2\psi*}{\partial x^2} + V\psi*
+						} \frac{\partial\psi}{\partial x}
+						- \psi* \frac{\partial}{\partial x} \paren{
+							-\frac{\hbar^2}{2m} \frac{\partial^2\psi}{\partial x^2} + V\psi
+						}
+					} \ordd x
+				|};${|
+					|= -\frac{\hbar^2}{2m} \int_{-\infty}^{\infty} \paren{ \frac{\partial^2\psi*}{\partial x^2} \frac{\partial\psi}{\partial x}
+					- \psi* \frac{\partial^3\psi}{\partial x^3} } \ordd x
+					+ \int_{-\infty}^{\infty} \paren{V\psi*\frac{\partial\psi}{\partial x} - \psi*\frac{\partial}{\partial x}\paren{V\psi}} \ordd x
+				|}];
+			}
+			+p{
+				ここで
+				\align[${|
+					\int_{-\infty}^{\infty} \frac{\partial^2\psi*}{\partial x^2} \frac{\partial\psi}{\partial x} \ordd x
+					|= \cancel{\sqbracket{\frac{\partial\psi*}{\partial x}\frac{\partial\psi}{\partial x}}_{-\infty}^{\infty}}
+					- \int_{-\infty}^{\infty} \frac{\partial\psi*}{\partial x} \frac{\partial^2\psi}{\partial x^2} \ordd x
+				|};${|
+					|= \cancel{ -\sqbracket{\psi*\frac{\partial^2\psi}{\partial x^2}}_{-\infty}^{\infty} }
+					+ \int_{-\infty}^{\infty} \psi*\frac{\partial^3\psi}{\partial x^3} \ordd x
+				|};${|
+					|= \int_{-\infty}^{\infty} \psi*\frac{\partial^3\psi}{\partial x^3} \ordd x
+				|}];
+				より
+				\eqn(${ 
+					\int_{-\infty}^{\infty} \paren{ \frac{\partial^2\psi*}{\partial x^2} \frac{\partial\psi}{\partial x}
+					- \psi* \frac{\partial^3\psi}{\partial x^3} } \ordd x
+					= 0
+				});
+				であるから，
+				\align[${|
+					\frac{\ordd}{\ordd t}\angle-bracket{p}
+					| = \int_{-\infty}^{\infty} \paren{V\psi*\frac{\partial\psi}{\partial x} - \psi*\frac{\partial}{\partial x}\paren{V\psi}} \ordd x
+				|};${|
+					| = \int_{-\infty}^{\infty} \paren{
+						V\psi*\frac{\partial\psi}{\partial x}
+						- \psi*\frac{\partial V}{\partial x} \psi
+						- \psi*V\frac{\partial\psi}{\partial x}
+					} \ordd x
+				|};${|
+					| = \int_{-\infty}^{\infty} \psi*\paren{-\frac{\partial V}{\partial x}} \psi \ordd x
+				|};${|
+					|= \angle-bracket{ -\frac{\partial V}{\partial x} }
 				|}];
 			}
 		>
