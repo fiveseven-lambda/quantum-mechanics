@@ -1010,8 +1010,13 @@ document(| title={量子力学ノート}; author={とが} |)'<
 				${ \int_{-\infty}^{\infty} \psi_{n + 1} * \psi_{n + 1} \ordd x = 1 } を満たすためには
 				\eqn(${ \psi_{n + 1} = \frac{1}{\sqrt{n + 1}} \hat{a}_+ \psi_n });
 				であればよい．
-				よって
-				\eqn(${ \psi_n = \frac{1}{\sqrt{n\!}} \paren{ \hat{a}_+ }^n \psi_0 });
+				これを繰り返して
+				${ \psi_n = \frac{1}{\sqrt{n\!}} \paren{ \hat{a}_+ }^n \psi_0 }
+				を得る．
+			}
+			+p{
+				また，次が成り立つ（計算 2）．
+				\eqn(${ \int_{-\infty}^{\infty} \psi_m \psi_n \ordd x = \delta_{mn} });
 			}
 		>
 		+section{計算 1}<
@@ -1044,6 +1049,22 @@ document(| title={量子力学ノート}; author={とが} |)'<
 					|= - \int_{-\infty}^{\infty} f* \frac{\ordd g}{\ordd x} \ordd x
 				|}];
 				より ${ \int_{-\infty}^\infty f* \paren{ \hat{a}_+ g } \ordd x } と ${ \int_{-\infty}^{\infty} \paren{ \hat{a}_- f }* g \ordd x } は等しい．
+			}
+		>
+		+section{計算 2}<
+			+p{
+				${\hat{a}_+} と ${\hat{a}_-} のエルミート共役性より
+				\align[${|
+					\int_{-\infty}^{\infty} \psi_m* \paren{ \hat{a}_+ \hat{a}_- \psi_n } \ordd x
+					|= \int_{-\infty}^{\infty} \paren{ \hat{a}_- \psi_m}* \paren{ \hat{a}_- \psi_n } \ordd x
+				|};${|
+					|= \int_{-\infty}^{\infty} \paren{ \hat{a}_+ \hat{a}_- \psi_m}* \psi_n \ordd x
+				|}];
+				よって
+				\eqn(${ n \int_{-\infty}^{\infty} \psi_m* \psi_n \ordd x
+				= m \int_{-\infty}^{\infty} \psi_m* \psi_n \ordd x });
+				であるから，
+				${ n \neq m } ならば ${ \int_{-\infty}^{\infty} \psi_m* \psi_n \ordd x = 0 } ．
 			}
 		>
 	>
