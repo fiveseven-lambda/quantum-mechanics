@@ -966,5 +966,85 @@ document(| title={量子力学ノート}; author={とが} |)'<
 				|}];
 			}
 		>
+		+section{要点}<
+			+p{
+				${ E_n = \paren{n + \frac{1}{2}}\hbar\omega } より
+				${ \hbar\omega\paren{ \hat{a}_+ \hat{a}_- + \frac{1}{2} } \psi_n = \paren{n + \frac{1}{2}}\hbar\omega\psi_n } なので
+				\eqn(${ \hat{a}_+ \hat{a}_- \psi_n = \paren{n + \frac{1}{2} - \frac{1}{2}} \psi_n = n\psi_n });
+			}
+			+p{
+				同様に ${ \hbar\omega\paren{ \hat{a}_- \hat{a}_+ - \frac{1}{2} } \psi_n = \paren{n + \frac{1}{2}}\hbar\omega\psi_n } なので
+				\eqn(${ \hat{a}_- \hat{a}_+ \psi_n = \paren{n + \frac{1}{2} + \frac{1}{2}} \psi_n = \paren{n + 1}\psi_n });
+			}
+			+p{
+				ここで， ${ \hat{a}_+ } と ${ \hat{a}_- } のエルミート共役性
+				\align[${|
+					\int_{-\infty}^{\infty} f*\paren{ \hat{a}_+ g } \ordd x
+					|= \int_{-\infty}^{\infty} \paren{ \hat{a}_- f }* g \ordd x
+				|};${|
+					\int_{-\infty}^{\infty} f*\paren{ \hat{a}_- g } \ordd x
+					|= \int_{-\infty}^{\infty} \paren{ \hat{a}_+ f }* g \ordd x
+				|}];
+				（計算 1 ）に着目すると，
+				\align[${|
+					\int_{-\infty}^{\infty} \paren{ \hat{a}_- \psi_n }* \paren{ \hat{a}_- \psi_n } \ordd x
+					|= \int_{-\infty}^{\infty} \paren{ \hat{a}_+ \hat{a}_- \psi_n }* \psi_n \ordd x
+				|};${|
+					|= n \int_{-\infty}^{\infty} \psi_n * \psi_n \ordd x
+				|};${|
+					|= n
+				|}];
+				\align[${|
+					\int_{-\infty}^{\infty} \paren{ \hat{a}_+ \psi_n }* \paren{ \hat{a}_+ \psi_n } \ordd x
+					|= \int_{-\infty}^{\infty} \paren{ \hat{a}_- \hat{a}_+ \psi_n }* \psi_n \ordd x
+				|};${|
+					|= \paren{n + 1} \int_{-\infty}^{\infty} \psi_n* \psi_n \ordd x
+				|};${|
+					|= n + 1
+				|}];
+				であるから，
+				${ \hat{a}_- \psi_n } の定数倍である ${ \psi_{n - 1} } が
+				${ \int_{-\infty}^{\infty} \psi_{n - 1} * \psi_{n - 1} \ordd x = 1 } を満たすためには
+				\eqn(${ \psi_{n - 1} = \frac{1}{\sqrt{n}} \hat{a}_- \psi_n });
+				${ \hat{a}_+ \psi_n } の定数倍である ${ \psi_{n + 1} } が
+				${ \int_{-\infty}^{\infty} \psi_{n + 1} * \psi_{n + 1} \ordd x = 1 } を満たすためには
+				\eqn(${ \psi_{n + 1} = \frac{1}{\sqrt{n + 1}} \hat{a}_+ \psi_n });
+				であればよい．
+				よって
+				\eqn(${ \psi_n = \frac{1}{\sqrt{n\!}} \paren{ \hat{a}_+ }^n \psi_0 });
+			}
+		>
+		+section{計算 1}<
+			+p{
+				${ \hat{a}_+ = \frac{1}{\sqrt{2\hbar m\omega}}\paren{ -\hbar \frac{\ordd}{\ordd x} + m\omega x } } より
+				\eqn(${
+					\int_{-\infty}^\infty f* \paren{ \hat{a}_+ g } \ordd x
+					= \frac{1}{\sqrt{2\hbar m \omega}} \paren{
+						-\hbar \int_{-\infty}^{\infty} f* \frac{\ordd g}{\ordd x} \ordd x
+						+ m\omega \int_{-\infty}^{\infty} f*xg \ordd x
+					}
+				});
+			}
+			+p{
+				一方 ${ \hat{a}_- = \frac{1}{\sqrt{2\hbar m\omega}}\paren{ \hbar \frac{\ordd}{\ordd x} + m\omega x } } より
+				\eqn(${
+					\int_{-\infty}^{\infty} \paren{ \hat{a}_- f }* g \ordd x
+					= \frac{1}{\sqrt{2\hbar m\omega}} \paren{
+						\hbar \int_{-\infty}^{\infty} \frac{\ordd f*}{\ordd x} g \ordd x
+						+ m\omega \int_{-\infty}^{\infty} xf*g \ordd x
+					}
+				});
+			}
+			+p{
+				ここで部分積分
+				\align[${|
+					\int_{-\infty}^{\infty} \frac{\ordd f*}{\ordd x} g \ordd x
+					|= \sqbracket{ f* g }_{-\infty}^{\infty} - \int_{-\infty}^{\infty} f* \frac{\ordd g}{\ordd x} \ordd x
+				|};${|
+					|= - \int_{-\infty}^{\infty} f* \frac{\ordd g}{\ordd x} \ordd x
+				|}];
+				より ${ \int_{-\infty}^\infty f* \paren{ \hat{a}_+ g } \ordd x } と ${ \int_{-\infty}^{\infty} \paren{ \hat{a}_- f }* g \ordd x } は等しい．
+			}
+		>
 	>
 >
