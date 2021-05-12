@@ -1086,23 +1086,23 @@ document(| title={量子力学ノート}; author={とが} |)'<
 			}
 		>
 		+section{問題 3.1}<
-				+align[${|
-					\norm{ f + g }
-					|= \int-all \abs{ \app{f}{x} + \app{g}{x} }^2 \ordd x
-				|};${|
-					|\leq \int-all \paren{ \abs{\app{f}{x}} + \abs{\app{g}{x}} }^2 \ordd x
-				|};${|
-					|\leq \int-all \paren{
-						\paren{ \abs{\app{f}{x}} + \abs{\app{g}{x}} }^2
-						+ \paren{ \abs{\app{f}{x}} - \abs{\app{g}{x}} }^2
-					} \ordd x
-				|};${|
-					|= \int-all \paren{ 2\abs{\app{f}{x}}^2 + 2\abs{\app{g}{x}}^2 } \ordd x
-				|};${|
-					|= 2\norm{f} + 2\norm{g}
-				|};${|
-					|< \infty
-				|}];
+			+align[${|
+				\norm{ f + g }^2
+				|= \int-all \abs{ \app{f}{x} + \app{g}{x} }^2 \ordd x
+			|};${|
+				|\leq \int-all \paren{ \abs{\app{f}{x}} + \abs{\app{g}{x}} }^2 \ordd x
+			|};${|
+				|\leq \int-all \paren{
+					\paren{ \abs{\app{f}{x}} + \abs{\app{g}{x}} }^2
+					+ \paren{ \abs{\app{f}{x}} - \abs{\app{g}{x}} }^2
+				} \ordd x
+			|};${|
+				|= \int-all \paren{ 2\abs{\app{f}{x}}^2 + 2\abs{\app{g}{x}}^2 } \ordd x
+			|};${|
+				|= 2\norm{f}^2 + 2\norm{g}^2
+			|};${|
+				|< \infty
+			|}];
 		>
 	>
 >
