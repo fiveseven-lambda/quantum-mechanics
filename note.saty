@@ -1082,27 +1082,62 @@ document(| title={量子力学ノート}; author={とが} |)'<
 				で定義する．
 				このとき，
 				${ \app{L^2}{\mathbb{R}} = \setsep{ f: \mathbb{R} \to \mathbb{C} }{ \norm{f} < \infty } } は
-				和について閉じている（問題 3.1 ）．
+				和とスカラー倍について閉じている（問題 3.1 ）．
+				また， ${ f, g \in \app{L^2}{\mathbb{R}} } ならば ${ \abs{\bra-ket{f}{g}} < \infty } である（計算 1 ）．
 			}
 		>
 		+section{問題 3.1}<
-			+align[${|
-				\norm{ f + g }^2
-				|= \int-all \abs{ \app{f}{x} + \app{g}{x} }^2 \ordd x
-			|};${|
-				|\leq \int-all \paren{ \abs{\app{f}{x}} + \abs{\app{g}{x}} }^2 \ordd x
-			|};${|
-				|\leq \int-all \paren{
-					\paren{ \abs{\app{f}{x}} + \abs{\app{g}{x}} }^2
-					+ \paren{ \abs{\app{f}{x}} - \abs{\app{g}{x}} }^2
-				} \ordd x
-			|};${|
-				|= \int-all \paren{ 2\abs{\app{f}{x}}^2 + 2\abs{\app{g}{x}}^2 } \ordd x
-			|};${|
-				|= 2\norm{f}^2 + 2\norm{g}^2
-			|};${|
-				|< \infty
-			|}];
+			+p{
+				任意の ${ f, g \in \app{L^2}{\mathbb{R}} } について
+				\align[${|
+					\norm{ f + g }^2
+					|= \int-all \abs{ \app{f}{x} + \app{g}{x} }^2 \ordd x
+				|};${|
+					|\leq \int-all \paren{ \abs{\app{f}{x}} + \abs{\app{g}{x}} }^2 \ordd x
+				|};${|
+					|\leq \int-all \paren{
+						\paren{ \abs{\app{f}{x}} + \abs{\app{g}{x}} }^2
+						+ \paren{ \abs{\app{f}{x}} - \abs{\app{g}{x}} }^2
+					} \ordd x
+				|};${|
+					|= \int-all \paren{ 2\abs{\app{f}{x}}^2 + 2\abs{\app{g}{x}}^2 } \ordd x
+				|};${|
+					|= 2\norm{f}^2 + 2\norm{g}^2
+				|};${|
+					|< \infty
+				|}];
+				より ${ f + g \in \app{L^2}{\mathbb{R}} } ．
+			}
+			+p{
+				任意の ${ f \in \app{L^2}{\mathbb{R}} } ， ${ \alpha \in \mathbb{C} } について
+				\align[${|
+					\norm{ \alpha f }^2
+					|= \abs{\alpha}^2\norm{f}^2
+				|};${|
+					|< \infty
+				|}];
+				より ${ \alpha f \in \app{L^2}{\mathbb{R}} } ．
+			}
+		>
+		+section{計算 1}<
+			+p{
+				任意の実数 ${ a, b } について ${ a^2 + b^2 - 2ab = \paren{a - b}^2 \geq 0 } より
+				${ ab \leq \frac{1}{2}\paren{a^2 + b^2} } が成り立つことに注意すると，
+				\align[${|
+					\abs{\bra-ket{f}{g}}
+					|= \abs{ \int_{-\infty}^{\infty} \app{f*}{x}\app{g}{x} \ordd x }
+				|};${|
+					|\leq \int_{-\infty}^{\infty} \abs{ \app{f*}{x}\app{g}{x} } \ordd x
+				|};${|
+					|= \int_{-\infty}^{\infty} \abs{ \app{f}{x}} \cdot \abs{\app{g}{x} } \ordd x
+				|};${|
+					|\leq \frac{1}{2} \int_{-\infty}^{\infty} \paren{ \abs{\app{f}{x}}^2 + \abs{\app{g}{x}}^2 } \ordd x
+				|};${|
+					|= \frac{1}{2} \paren{ \norm{f}^2 + \norm{g}^2 }
+				|};${|
+					|< \infty
+				|}];
+			}
 		>
 	>
 >
