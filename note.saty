@@ -1073,15 +1073,15 @@ document(| title={量子力学ノート}; author={とが} |)'<
 	+chapter{2021/5/12}<
 		+section{要点}<
 			+p{
-				可測関数 ${ f, g: \mathbb{R} \to \mathbb{C} } に対して
-				内積 ${ \bra-ket{f}{g} } を
+				可測関数 ${ f, g: \mathbb{R} \to \mathbb{C} } （可積分とは限らない）に対して
+				内積 ${ \bra-ket{f}{g} } （有限とは限らない）を
 				\eqn(${ \bra-ket{f}{g} = \int_{-\infty}^{\infty} \app{f*}{x} \app{g}{x} \ordd x });
 				で定義すると， ${ \bra-ket{f}{f} } は必ず ${0} 以上の実数あるいは ${\infty} となる．
 				ノルム ${ \norm{f} } を
 				\eqn(${ \norm{f} = \sqrt{\bra-ket{f}{f}} });
 				で定義する．
 				このとき，
-				${ \app{L^2}{\mathbb{R}} = \setsep{ f: \mathbb{R} \to \mathbb{C} }{ \norm{f} < \infty } } は
+				集合 ${ \app{L^2}{\mathbb{R}} = \setsep{ f: \mathbb{R} \to \mathbb{C} }{ \norm{f} < \infty } } は
 				和とスカラー倍について閉じている（問題 3.1 ）．
 				また， ${ f, g \in \app{L^2}{\mathbb{R}} } ならば ${ \abs{\bra-ket{f}{g}} < \infty } である（計算 1 ）．
 			}
