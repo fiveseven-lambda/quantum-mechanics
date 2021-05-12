@@ -153,7 +153,7 @@ document(| title={量子力学ノート}; author={とが} |)'<
 		+section{問題 1.9}<
 			+p{
 				${ \app{\Psi}{x, t} = Ae^{-a\paren{\paren{mx^2/\hbar} + it}} } より
-				${ \abs{\app{\Psi}{x, t}}^2 = \app{\Psi}{x, t}\app{\Psi*}{x, t} = A^2e^{-2amx^2/\hbar} } なので
+				${ \abs{\app{\Psi}{x, t}}^2 = \app{\Psi}{x, t}\app{\Psi*}{x, t} = A^2 e^{-2amx^2/\hbar} } なので
 				\align[${|
 					\int_{-\infty}^{\infty}\abs{\app{\Psi}{x, t}}^2 \ordd x
 					|= A^2\int_{-\infty}^{\infty}e^{-\frac{2am}{\hbar}x^2}\ordd x
@@ -182,7 +182,7 @@ document(| title={量子力学ノート}; author={とが} |)'<
 				\eqn(${ \hbar a\Psi = -\frac{\hbar^2}{2m} \cdot \frac{2am\paren{2amx^2 - \hbar}}{\hbar^2}\Psi + V\Psi });
 			}
 			+p{
-				${V} について解いて ${ \app{V}{x} = 2a^2mx^2 } ．
+				${V} について解いて ${ \app{V}{x} = 2a^2 mx^2 } ．
 			}
 			+p{
 				${\abs{\Psi}^2} は正規分布 ${ \app{N}{0, \frac{\hbar}{4am}} } の密度関数なので，
@@ -434,7 +434,7 @@ document(| title={量子力学ノート}; author={とが} |)'<
 					|};${|
 						|= Ae^{iE*t/\hbar} \cdot Ae^{-iEt/\hbar}
 					|};${|
-						|= A^2e^{-i\paren{E - E*}t/\hbar}
+						|= A^2 e^{-i\paren{E - E*}t/\hbar}
 					|}];
 					であるから，一定となるためには ${ E - E* = 0 } ，すなわち ${ E } は実数でなければならない．
 				}
@@ -545,7 +545,7 @@ document(| title={量子力学ノート}; author={とが} |)'<
 			+p{
 				古典力学の単振動 ${ x = \sin\omega t } を考えると，
 				${ m\ddot{x} = -m\omega^2\sin\omega t = -m\omega^2x } より
-				位置エネルギーは ${ \app{V}{x} = - \int \paren{-m\omega^2x} \mathrm{d}x = \frac{1}{2}m\omega^2x^2 } である．
+				位置エネルギーは ${ \app{V}{x} = - \int \paren{-m\omega^2x} \mathrm{d}x = \frac{1}{2}m\omega^2 x^2 } である．
 				この ${V} について時間に依存しない Schrödinger 方程式
 				\eqn(${ -\frac{\hbar^2}{2m} \frac{\ordd^2\psi}{\ordd x^2} + \frac{1}{2} m \omega^2 x^2 \psi = E\psi });
 				を解く．
@@ -869,7 +869,7 @@ document(| title={量子力学ノート}; author={とが} |)'<
 					}
 				|};${|
 					|= -\frac{2\hbar m\omega}{\sqrt{\pi}} \paren{
-						-\frac{1}{2} \sqbracket{ \xi^3e^{-\xi^2} }_{-\infty}^\infty
+						-\frac{1}{2} \sqbracket{ \xi^3 e^{-\xi^2} }_{-\infty}^\infty
 						+ \frac{3}{2} \int_{-\infty}^{\infty} \xi^2 e^{-\xi^2} \ordd \xi
 						-3 \int_{-\infty}^{\infty} \xi^2 e^{-\xi^2} \ordd \xi
 					}
@@ -891,7 +891,7 @@ document(| title={量子力学ノート}; author={とが} |)'<
 				いずれについても不確定性原理は成り立っている．
 			}
 			+p{
-				${ T = \frac{p^2}{2m} } ， ${ V = \frac{1}{2}m\omega^2x^2 } であるから，
+				${ T = \frac{p^2}{2m} } ， ${ V = \frac{1}{2}m\omega^2 x^2 } であるから，
 				${ \psi_0 } については
 				\align[${|
 					\angle-bracket{T} = \frac{\angle-bracket{p^2}}{2m} |= \frac{\hbar\omega}{4}
@@ -1085,61 +1085,24 @@ document(| title={量子力学ノート}; author={とが} |)'<
 				和について閉じている（問題 3.1 ）．
 			}
 		>
-		+section{問題 3.1 }<
-			+p{
-				任意の複素数 ${ z = a + bi } （ ${a, b \in \mathbb{R} } ）について，
-				${ z + z*
-				= 2a
-				\leq 2\sqrt{ a^2 + b^2 }
-				= 2\abs{ z } } である．
-			}
-			+p{
-				任意の ${ f, g \in \app{L^2}{\mathbb{R}} } について，
-				\eqn(${ \abs{\bra-ket{f}{g}} \leq \norm{f} \cdot \norm{g} });
-				が成り立つことを証明する．
-				${ a } を実数の定数とすると
-				\align[${|
-					\bra-ket{ af + g }{ af + g }
-					|= a^2 \bra-ket{ f }{ f }
-					+ a \bra-ket{ f }{ g }
-					+ a \bra-ket{ g }{ f }
-					+ \bra-ket{ g }{ g }
+		+section{問題 3.1}<
+				+align[${|
+					\norm{ f + g }
+					|= \int-all \abs{ \app{f}{x} + \app{g}{x} }^2 \ordd x
 				|};${|
-					|\leq a^2 \norm{f}^2
-					+ 2a \abs{\bra-ket{f}{g}}
-					+ \norm{g}^2
+					|\leq \int-all \paren{ \abs{\app{f}{x}} + \abs{\app{g}{x}} }^2 \ordd x
+				|};${|
+					|\leq \int-all \paren{
+						\paren{ \abs{\app{f}{x}} + \abs{\app{g}{x}} }^2
+						+ \paren{ \abs{\app{f}{x}} - \abs{\app{g}{x}} }^2
+					} \ordd x
+				|};${|
+					|= \int-all \paren{ 2\abs{\app{f}{x}}^2 + 2\abs{\app{g}{x}}^2 } \ordd x
+				|};${|
+					|= 2\norm{f} + 2\norm{g}
+				|};${|
+					|< \infty
 				|}];
-				である．
-				ここで， ${ \bra-ket{ af + g }{ af + g } \geq 0 } であるから
-				${ \abs{\bra-ket{f}{g}} } は有限（さもなくば ${a < 0} で不等式が成り立たない）かつ判別式より
-				\eqn(${ \abs{\bra-ket{f}{g}}^2 - \norm{f}^2\norm{g}^2 \leq 0 });
-				となるから示された．
-			}
-			+p{
-				${ f, g \in \app{L^2}{\mathbb{R}} } ならば
-				\align[${|
-					\norm{ f + g }^2
-					|= \bra-ket{ f + g }{ f + g }
-				|};${|
-					|= \bra-ket{ f }{ f }
-					+ \bra-ket{ f }{ g }
-					+ \bra-ket{ g }{ f }
-					+ \bra-ket{ g }{ g }
-				|};${|
-					|\leq \norm{ f }^2
-					+ 2\abs{ \bra-ket{f}{g} }
-					+ \norm{ g }^2
-				|};${|
-					|\leq \norm{ f }^2
-					+ 2 \norm{f} \cdot \norm{g}
-					+ \norm{ g }^2
-				|};${|
-					|= \paren{ \norm{f} + \norm{g} }^2
-				|}];
-				より
-				${ \norm{ f + g } \leq \norm{ f } + \norm{ g } < \infty } となり，
-				${ f + g \in \app{L^2}{\mathbb{R}} } がいえる．
-			}
 		>
 	>
 >
