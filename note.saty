@@ -1,4 +1,4 @@
-@require: stdjareport
+@require: class-stjarticle/stjarticle
 @require: azmath/accent
 @require: itemize
 @require: cancel/cancel
@@ -8,9 +8,19 @@ let-math \bra-ket m1 m2 = math-paren-with-middle (Math.angle-left 0.5pt) (Math.a
 let-math \int-all = ${ \int_{-\infty}^{\infty} }
 in
 
-document(| title={量子力学ノート}; author={とが} |)'<
+document(|
+	title = {量子力学ノート};
+	author = {とが};
+	date = {};
+	normal-font-size = 12pt;
+	show-header = false;
+	show-footer = true;
+	show-title = true;
+	show-title-deco = false;
+	show-toc = true;
+|)'<
 	+chapter{2021/4/21}<
-		+section{要点}<
+		+section{要点（ 1 次元 Schrödinger 方程式） }<
 			+p{
 				 1 次元の直線上を動く質量 ${m} の粒子の波動関数 ${ \Psi: \mathbb{R}^2 \to \mathbb{C} } は
 				Schrödinger 方程式
@@ -236,7 +246,7 @@ document(| title={量子力学ノート}; author={とが} |)'<
 				|}];
 			}
 		>
-		+section{要点}<
+		+section{要点（時間に依存しない Schrödinger 方程式）}<
 			+p{
 				${t} に依存しない ${ \app{\psi}{x} } と ${ x } に依存しない ${ \app{\phi}{t} } を用いて
 				${ \app{\Psi}{x, t} = \app{\psi}{x}\app{\phi}{t} } と表せると仮定すると，
@@ -263,7 +273,7 @@ document(| title={量子力学ノート}; author={とが} |)'<
 		>
 	>
 	+chapter{2021/4/23}<
-		+section{要点}<
+		+section{要点（ 1 次元井戸型ポテンシャル）}<
 			+p{
 				\eqn(${ \app{V}{x} = \cases![(${0}, {(${0 \leq x \leq a})}); (${\infty}, {(otherwise)})] });
 				とする．
@@ -541,7 +551,7 @@ document(| title={量子力学ノート}; author={とが} |)'<
 				（この証明は \@buta_kimchi_ さんにいただいたリプをもとに書いている）．
 			}
 		>
-		+section{要点}<
+		+section{要点（ 1 次元調和振動子）}<
 			+p{
 				古典力学の単振動 ${ x = \sin\omega t } を考えると，
 				${ m\ddot{x} = -m\omega^2\sin\omega t = -m\omega^2x } より
@@ -968,7 +978,7 @@ document(| title={量子力学ノート}; author={とが} |)'<
 				|}];
 			}
 		>
-		+section{要点}<
+		+section{要点（ 1 次元調和振動子つづき）}<
 			+p{
 				${ E_n = \paren{n + \frac{1}{2}}\hbar\omega } より
 				${ \hbar\omega\paren{ \hat{a}_+ \hat{a}_- + \frac{1}{2} } \psi_n = \paren{n + \frac{1}{2}}\hbar\omega\psi_n } なので
@@ -1071,7 +1081,7 @@ document(| title={量子力学ノート}; author={とが} |)'<
 		>
 	>
 	+chapter{2021/5/12}<
-		+section{要点}<
+		+section{要点（ヒルベルト空間）}<
 			+p{
 				可測関数 ${ f, g: \mathbb{R} \to \mathbb{C} } （可積分とは限らない）に対して
 				内積 ${ \bra-ket{f}{g} } （有限とは限らない）を
