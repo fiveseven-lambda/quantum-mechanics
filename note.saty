@@ -4,6 +4,7 @@
 @require: cancel/cancel
 
 let-math \hbar = math-char MathOrd `ℏ`
+let-math \dagger = math-char MathOrd `†`
 let-math \bra-ket m1 m2 = math-paren-with-middle (Math.angle-left 0.5pt) (Math.angle-right 0.5pt) Math.bar-middle [m1; m2]
 let-math \int-all = ${ \int_{-\infty}^{\infty} }
 in
@@ -1149,6 +1150,68 @@ document(|
 				|}];
 				となる（この証明は \@nkswtr さんにいただいたリプをもとに書いている）．
 			}
+		>
+	>
+	+chapter{2021/5/15}<
+		+section{要点}<
+			+p{
+				作用素 ${ \hat{Q} } ， ${ \hat{Q}^\dagger } が
+				任意の ${ f, g } について
+				${ \bra-ket{f}{\hat{Q}g} = \bra-ket{\hat{Q}^\dagger f}{g} }
+				を満たすとき，
+				これらはエルミート共役であるという．次が成り立つ：
+				\listing{
+					* ${ \paren{ \hat{Q} + \hat{R} }^\dagger = \hat{Q}^\dagger + \hat{R}^\dagger }
+					* ${\alpha} を複素数とすると ${ \paren{ \alpha \hat{Q} }^\dagger = \alpha*\hat{Q}^\dagger }
+					* ${ \paren{ \hat{Q} \hat{R} }^\dagger = \hat{R}^\dagger \hat{Q}^\dagger }
+				}
+			}
+			+p{
+				${ \frac{\ordd^n}{\ordd x^n}^\dagger = \paren{-1}^n \frac{\ordd^n}{\ordd x^n} } である（計算 1）．
+			}
+			+p{
+				作用素 ${ \hat{Q} } が ${ \hat{Q} = \hat{Q}^\dagger } を満たすとき，
+				これをエルミート作用素という．
+				${ x } ， ${ \hat{p} } はエルミート作用素である（計算 2）．
+			}
+		>
+		+section{計算 1}<
+			+p{
+				\align[${|
+					\bra-ket{ f }{ \frac{\ordd g}{\ordd x} }
+					|= \int-all f* \frac{\ordd g}{\ordd x} \ordd x
+				|};${|
+					|= \sqbracket{ f* g }_{\infty}^{\infty}
+					- \int-all \frac{\ordd f*}{\ordd x} g \ordd x
+				|};${|
+					|= \bra-ket{ -\frac{\ordd f}{\ordd x} }{ g }
+				|}];
+				より ${ \frac{\ordd}{\ordd x}^\dagger = -\frac{ \ordd }{ \ordd x } } であるから，
+				\align[${|
+					\frac{\ordd^n}{\ordd x^n}^\dagger
+					|= \paren{ \frac{\ordd}{\ordd x}^\dagger }^n
+				|};${|
+					|= \paren{ -\frac{\ordd}{\ordd x} }^n
+				|};${|
+					|= \paren{ -1 }^n \frac{\ordd^n}{\ordd x^n}
+				|}];
+			}
+		>
+		+section{計算 2}<
+			+align[${|
+				\bra-ket{ f }{ xg }
+				|= \int-all f* x g \ordd x
+			|};${|
+				|= \int-all \paren{xf}* g \ordd x
+			|};${|
+				|= \bra-ket{ xf }{ g }
+			|}];
+			+align[${|
+				\paren{ -i\hbar\frac{\ordd}{\ordd x} }^\dagger
+				|= i\hbar\frac{\ordd}{\ordd x}^\dagger
+			|};${|
+				|= -i\hbar\frac{\ordd}{\ordd x}
+			|}];
 		>
 	>
 >
