@@ -3,9 +3,22 @@
 @require: itemize
 @require: cancel/cancel
 
+
 let-math \hbar = math-char MathOrd `ℏ`
 let-math \dagger = math-char MathOrd `†`
-let-math \bra-ket m1 m2 = math-paren-with-middle (Math.angle-left 0.5pt) (Math.angle-right 0.5pt) Math.bar-middle [m1; m2]
+  let half-length hgt dpt hgtaxis fontsize =
+    let minhalflen = fontsize *' 0.5 in
+    let lenappend = fontsize *' 0.1 in
+      length-max minhalflen ((length-max (hgt -' hgtaxis) (hgtaxis +' dpt)) +' lenappend)
+  let bar-bra-ket hgt dpt hgtaxis fontsize color =
+    let halflen = half-length hgt dpt hgtaxis fontsize in
+    let halfwid = fontsize *' 0.2 in
+    let graphics (x, y) =
+      [ stroke 0.5pt color (Gr.line (x +' halfwid, y +' hgtaxis -' halflen) (x +' halfwid, y +' hgtaxis +' halflen)); ]
+    in
+    let kerninfo _ = 0pt in
+      (inline-graphics (halfwid *' 2.) (hgtaxis +' halflen) (halflen -' hgtaxis) graphics, kerninfo)
+let-math \bra-ket m1 m2 = math-paren-with-middle (Math.angle-left 0.5pt) (Math.angle-right 0.5pt) bar-bra-ket [m1; m2]
 let-math \int-all = ${ \int_{-\infty}^{\infty} }
 in
 
@@ -1173,6 +1186,27 @@ document(|
 				作用素 ${ \hat{Q} } が ${ \hat{Q} = \hat{Q}^\dagger } を満たすとき，
 				これをエルミート作用素という．
 				${ x } ， ${ \hat{p} } はエルミート作用素である（計算 2）．
+				波動関数 ${ \Psi } から得られる
+				観測可能な量 ${ Q } の期待値は，
+				エルミート作用素 ${ \hat{Q} } を用いて
+				${ \angle-bracket{Q} = \bra-ket{\Psi}{\hat{Q}\Psi} }
+				と表される．
+			}
+			+p{
+				ある波動関数 ${ \Psi } の
+				観測可能な量 ${ Q } の分布が退化して
+				ただ 1 つの値 ${ q } をとるとき，
+				${ q } は ${ \hat{Q} } の固有値，
+				${ \Psi } は ${ \hat{Q} } の固有関数である（計算 3）．
+			}
+			+p{
+				${ \hat{Q} } の
+				全ての固有値の集まりを
+				スペクトルという．
+				線形独立な複数の波動関数が
+				同じ固有値をもつとき，
+				スペクトルは
+				縮退しているという．
 			}
 		>
 		+section{計算 1}<
@@ -1212,6 +1246,25 @@ document(|
 			|};${|
 				|= -i\hbar\frac{\ordd}{\ordd x}
 			|}];
+		>
+		+section{計算 3}<
+			+p{
+				${Q} の期待値は ${ \angle-bracket{Q} = q } ，
+				分散は
+				\align[${|
+					\sigma^2
+					|= \angle-bracket{ \paren{ Q - q }^2 }
+				|};${|
+					|= \bra-ket{ \Psi }{ \paren{ \hat{Q} - q }^2 \Psi }
+				|};${|
+					|= \bra-ket{ \paren{\hat{Q} - q} \Psi }{ \paren{ \hat{Q} - q } \Psi }
+				|};${|
+					|= \norm{ \paren{\hat{Q} - q} \Psi }^2
+				|}];
+				であるから，
+				${ \sigma^2 = 0 } となるのは
+				${ \paren{\hat{Q} - q}\Psi = 0 } のときである．
+			}
 		>
 	>
 >
