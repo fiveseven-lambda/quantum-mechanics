@@ -1191,13 +1191,21 @@ document(|
 				エルミート作用素 ${ \hat{Q} } を用いて
 				${ \angle-bracket{Q} = \bra-ket{\Psi}{\hat{Q}\Psi} }
 				と表される．
-			}
-			+p{
 				ある波動関数 ${ \Psi } の
 				観測可能な量 ${ Q } の分布が退化して
 				ただ 1 つの値 ${ q } をとるとき，
 				${ q } は ${ \hat{Q} } の固有値，
 				${ \Psi } は ${ \hat{Q} } の固有関数である（計算 3）．
+			}
+			+p{
+				エルミート作用素 ${\hat{Q}} について，次が成り立つ（計算 4）：
+				\listing{
+					* ${\bra-ket{\Psi}{\hat{Q}\Psi}} は実数である．
+					* ${\hat{Q}} の固有値は実数である．
+					* ${\hat{Q}} の
+					2 つの固有関数は，
+					固有値が異なるならば直交する．
+				}
 			}
 			+p{
 				${ \hat{Q} } の
@@ -1264,6 +1272,26 @@ document(|
 				であるから，
 				${ \sigma^2 = 0 } となるのは
 				${ \paren{\hat{Q} - q}\Psi = 0 } のときである．
+			}
+		>
+		+section{計算 4}<
+			+listing{
+				* 内積の性質より ${ \bra-ket{\Psi}{\hat{Q}\Psi}* = \bra-ket{\hat{Q}\Psi}{\Psi} } ，
+				エルミート作用素の定義より ${ \bra-ket{\Psi}{\hat{Q}\Psi} = \bra-ket{\hat{Q}\Psi}{\Psi} } であるから，
+				${ \bra-ket{\Psi}{\hat{Q}\Psi} = \bra-ket{\Psi}{\hat{Q}\Psi}* } より
+				${ \bra-ket{\Psi}{\hat{Q}\Psi} } は実数．
+				* 固有値を ${ q } とすると
+				${ \bra-ket{\Psi}{\hat{Q}\Psi} = q\bra-ket{\Psi}{\Psi} = q\norm{\Psi}^2 }
+				であるから， ${ \bra-ket{\Psi}{\hat{Q}\Psi} } が実数より ${ q } も実数．
+				* 固有値を ${ q_1, q_2 } ，
+				対応する固有関数を ${ \Psi_1, \Psi_2 } とすると，
+				\align[
+				${| \bra-ket{\Psi_1}{\hat{Q}\Psi_2} |= q_2\bra-ket{\Psi_1}{\Psi_2} |};
+				${| \bra-ket{\hat{Q}\Psi_1}{\Psi_2} |= q_1\bra-ket{\Psi_1}{\Psi_2} |}
+				];であるが，
+				エルミート作用素の定義より
+				${ \bra-ket{\Psi_1}{\hat{Q}\Psi_2} = \bra-ket{\hat{Q}\Psi_1}{\Psi_2} } であるから，
+				${ q_1 \neq q_2 } ならば ${ \bra-ket{\Psi_1}{\Psi_2} = 0 } ．
 			}
 		>
 	>
