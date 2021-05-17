@@ -568,8 +568,8 @@ document(|
 		+section{要点（ 1 次元調和振動子）}<
 			+p{
 				古典力学の単振動 ${ x = \sin\omega t } を考えると，
-				${ m\ddot{x} = -m\omega^2\sin\omega t = -m\omega^2x } より
-				位置エネルギーは ${ \app{V}{x} = - \int \paren{-m\omega^2x} \mathrm{d}x = \frac{1}{2}m\omega^2 x^2 } である．
+				${ m\ddot{x} = -m\omega^2 \sin\omega t = -m\omega^2 x } より
+				位置エネルギーは ${ \app{V}{x} = - \int \paren{-m\omega^2 x} \mathrm{d}x = \frac{1}{2}m\omega^2 x^2 } である．
 				この ${V} について時間に依存しない Schrödinger 方程式
 				\eqn(${ -\frac{\hbar^2}{2m} \frac{\ordd^2\psi}{\ordd x^2} + \frac{1}{2} m \omega^2 x^2 \psi = E\psi });
 				を解く．
