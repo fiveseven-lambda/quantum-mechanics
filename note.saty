@@ -1360,8 +1360,24 @@ document(|
 				|}];
 				で定義すると
 				\eqn(${ \app{\Psi}{x, t} = \frac{1}{\sqrt{2\pi\hbar}} \int-all e^{\frac{ip}{\hbar}x} \app{\Phi}{p, t} \ordd p });
-				であり，
+				であり（計算 1），
 				時刻 ${ t } における運動量 ${ p } の確率密度関数は ${ \abs{ \app{\Phi}{p, t} }^2 } となる．
+			}
+		>
+		+section{計算 1}<
+			+p{
+				${ \Phi } の定義中の ${ p } を ${ \hbar p } に置き換えると
+				\eqn(${ \app{\Phi}{\hbar p, t} = \frac{1}{\sqrt{2\pi\hbar}}\int-all e^{-ipx} \app{\Psi}{x, t} \ordd x });
+				となるから， ${ \Psi } のフーリエ変換は ${ \sqrt{\hbar}\app{\Phi}{\hbar p, t} } である．
+				よって逆フーリエ変換より
+				\align[${|
+					\app{\Psi}{x, t}
+					|= \frac{1}{\sqrt{2\pi}} \int-all e^{ipx} \sqrt{\hbar} \app{\Phi}{\hbar p, t} \ordd p
+				|};${|
+					|= \frac{1}{\sqrt{2\pi}} \int-all e^{\frac{ip}{\hbar}x} \sqrt{\hbar} \app{\Phi}{p, t} \frac{\ordd p}{\hbar}
+				|};${|
+					|= \frac{1}{\sqrt{2\pi\hbar}} \int-all e^{\frac{ip}{\hbar}x} \app{\Phi}{p, t} \ordd p
+				|}];
 			}
 		>
 		+section{問題 3.11}<
