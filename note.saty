@@ -3,9 +3,9 @@
 @require: itemize
 @require: cancel/cancel
 
-
 let-math \hbar = math-char MathOrd `ℏ`
 let-math \dagger = math-char MathOrd `†`
+let-math \erf = math-char MathOrd `erf`
   let half-length hgt dpt hgtaxis fontsize =
     let minhalflen = fontsize *' 0.5 in
     let lenappend = fontsize *' 0.1 in
@@ -1166,7 +1166,7 @@ document(|
 		>
 	>
 	+chapter{2021/5/15}<
-		+section{要点}<
+		+section{要点（エルミート作用素）}<
 			+p{
 				作用素 ${ \hat{Q} } ， ${ \hat{Q}^\dagger } が
 				任意の ${ f, g } について
@@ -1292,6 +1292,142 @@ document(|
 				エルミート作用素の定義より
 				${ \bra-ket{\Psi_1}{\hat{Q}\Psi_2} = \bra-ket{\hat{Q}\Psi_1}{\Psi_2} } であるから，
 				${ q_1 \neq q_2 } ならば ${ \bra-ket{\Psi_1}{\Psi_2} = 0 } ．
+			}
+		>
+	>
+	+chapter{2021/05/17}<
+		+section{要点（運動量表示）}<
+			+p{
+				関数 ${ \app{f}{x} } のフーリエ変換を
+				\eqn(${ \app{F}{k} = \frac{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty} \app{f}{x} e^{-ikx} \ordd x });
+				で定義すると，その逆変換は
+				\eqn(${ \app{f}{x} = \frac{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty} \app{F}{k} e^{ikx} \ordd k });
+				である．
+				ここで
+				${ \app{f}{x} = \app{\delta}{x} }
+				とすると
+				\align[${|
+					\app{F}{k}
+					|= \frac{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty} \app{\delta}{x} e^{-ikx} \ordd x
+				|};${|
+					|= \frac{1}{\sqrt{2\pi}} e^{-ik \cdot 0}
+				|};${|
+					|= \frac{1}{\sqrt{2\pi}}
+				|}];
+				であるから，逆フーリエ変換より
+				\align[${|
+					\app{\delta}{x}
+					|= \frac{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty} \frac{1}{\sqrt{2\pi}} e^{ikx} \ordd k
+				|};${|
+					|= \frac{1}{2\pi}\int_{-\infty}^{\infty} e^{ikx} \ordd k
+				|}];
+				を得る．
+			}
+			+p{
+				運動量演算子 ${ \hat{p} } の
+				固有値 ${ p } と固有関数 ${ f_p } を考える．
+				${ \hat{p} = -ih\frac{\ordd}{\ordd x} } より
+				\align[${| -i\hbar \frac{\ordd f_p}{\ordd x} |= pf_p |};
+				${| \therefore \app{f_p}{x} |= Ae^{\frac{ip}{\hbar}x} |}];
+			}
+			+p{
+				ここで 2 つの固有値 ${ p_1 } ， ${ p_2 } と対応する固有関数
+				${ \app{f_{p_1}}{x} = A_1 e^{\frac{ip_1}{\hbar}x} } ，
+				${ \app{f_{p_2}}{x} = A_2 e^{\frac{ip_2}{\hbar}x} } について
+				\align[${|
+					\bra-ket{ f_{p_1} }{ f_{p_2} }
+					|= \int_{-\infty}^{\infty} A_1 e^{-\frac{ip_1}{\hbar}x} \cdot A_2 e^{\frac{ip_2}{\hbar}x} \ordd x
+				|};${|
+					|= A_1 A_2 \int_{-\infty}^{\infty} e^{ \frac{i\paren{p_2 - p_1}}{\hbar} x } \ordd x
+				|};${|
+					|= A_1 A_2 \cdot \hbar \int_{-\infty}^{\infty} e^{ i\paren{p_2 - p_1} x } \ordd x
+				|};${|
+					|= A_1 A_2 \cdot 2\pi \hbar \app{\delta}{p_2 - p_1}
+				|}];
+				であるから，
+				${ A_1 = A_2 = \frac{1}{\sqrt{2\pi\hbar}} } とすれば
+				${ \bra-ket{ f_{p_1} }{ f_{p_2} } = \app{\delta}{p_2 - p_1} }
+				となる．
+			}
+			+p{
+				座標表示の波動関数 ${ \app{\Psi}{x, t} } に対して
+				運動量表示の波動関数 ${ \app{\Phi}{p, t} } を
+				\align[${|
+					\app{\Phi}{p, t}
+					|= \bra-ket{ f_p }{ \Psi }
+				|};${|
+					|= \frac{1}{ \sqrt{2\pi\hbar} } \int-all e^{ -\frac{ip}{\hbar} x } \app{\Psi}{x, t} \ordd x
+				|}];
+				で定義すると
+				\eqn(${ \app{\Psi}{x, t} = \frac{1}{\sqrt{2\pi\hbar}} \int-all e^{\frac{ip}{\hbar}x} \app{\Phi}{p, t} \ordd p });
+				であり，
+				時刻 ${ t } における運動量 ${ p } の確率密度関数は ${ \abs{ \app{\Phi}{p, t} }^2 } となる．
+			}
+		>
+		+section{問題 3.11}<
+			+p{
+				1 次元調和振動子の
+				基底状態の座標表示は
+				${
+					\app{ \Psi_0 }{ x, t }
+					= \paren{ \frac{ m \omega }{ \pi \hbar } }^\frac{1}{4}
+					e^{ - \frac{ m \omega }{ 2 \hbar } x^2 - \frac{ i \omega }{ 2 } t }
+				}
+				であるから，運動量表示は
+				\align[${|
+					\app{ \Phi_0 }{ p, t }
+					|= \frac{1}{\sqrt{2\pi\hbar}}
+					\int-all e^{ -\frac{ip}{\hbar} x } \app{\Psi_0}{x, t} \ordd x
+				|};${|
+					|= \frac{1}{\sqrt{2\pi\hbar}}
+					\paren{ \frac{ m \omega }{ \pi \hbar } }^\frac{1}{4}
+					e^{ - \frac{ i \omega }{ 2 } t }
+					\int-all e^{ -\frac{ m \omega }{ 2 \hbar } x^2 -\frac{ip}{\hbar} x } \ordd x
+				|};${|
+					|= \frac{1}{\sqrt{2\pi\hbar}}
+					\paren{ \frac{ m \omega }{ \pi \hbar } }^\frac{1}{4}
+					e^{ - \frac{ i \omega }{ 2 } t }
+					\int-all e^{ -\frac{ m\omega }{ 2\hbar } \paren{ x + \frac{ip}{m\omega} }^2 - \frac{p^2}{2\hbar m \omega} } \ordd x
+				|};${|
+					|= \frac{1}{\sqrt{2\pi\hbar}}
+					\paren{ \frac{ m \omega }{ \pi \hbar } }^\frac{1}{4}
+					e^{ - \frac{ p^2 }{ 2\hbar m \omega } - \frac{ i \omega }{ 2 } t }
+					\int-all e^{ -\frac{ m\omega }{ 2\hbar } x^2 } \ordd x
+				|};${|
+					|= \frac{1}{\sqrt{2\pi\hbar}}
+					\paren{ \frac{ m \omega }{ \pi \hbar } }^\frac{1}{4}
+					e^{ - \frac{ p^2 }{ 2\hbar m \omega } - \frac{ i \omega }{ 2 } t }
+					\sqrt{ \frac{2\pi\hbar}{m\omega} }
+				|};${|
+					|= \paren{ \frac{ 1 }{ \pi \hbar m \omega } }^\frac{1}{4}
+					e^{ - \frac{ p^2 }{ 2\hbar m \omega } - \frac{ i \omega }{ 2 } t }
+				|}];
+			}
+			+p{
+				一方古典力学におけるエネルギー ${ \frac{1}{2}\hbar\omega } の単振動は
+				速度 ${ v } が ${ \frac{1}{2} m v^2 \leq \frac{1}{2}\hbar \omega }
+				すなわち
+				${ -\sqrt{\frac{\hbar\omega}{m}} \leq v \leq \sqrt{\frac{\hbar\omega}{m}} }
+				を満たすので，
+				運動量 ${mv} は
+				区間 ${ \sqbracket{ -\sqrt{ \hbar m \omega }, \sqrt{ \hbar m \omega } } }
+				内の値をとる．
+				基底状態の調和振動子の運動量がこの範囲の値をとる確率は
+				\align[${|
+					\int_{ -\sqrt{\hbar m \omega} }^{ \sqrt{\hbar m \omega} }
+					\abs{ \app{\Phi_0}{ p, t } }^2 \ordd p
+					|= \frac{1}{\sqrt{\pi\hbar m \omega}}
+					\int_{ -\sqrt{\hbar m \omega} }^{ \sqrt{\hbar m \omega} }
+					e^{ -\frac{p^2}{\hbar m \omega} } \ordd p
+				|};${|
+					|= \frac{1}{\sqrt{\pi\hbar m \omega}}
+					\cdot \sqrt{ \hbar m \omega } \int_{-1}^{1} e^{-p^2} \ordd p
+				|};${|
+					|= \app{ \erf }{ 1 }
+				|};${|
+					|= 0.843
+				|}];
+				（ただし ${ \erf } は誤差関数）．
 			}
 		>
 	>
