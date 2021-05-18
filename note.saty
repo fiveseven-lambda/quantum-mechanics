@@ -1532,6 +1532,11 @@ document(|
 			+p{
 				よって ${ \sigma_A \sigma_B \geq \abs{ \frac{1}{2i} \angle-bracket{ \sqbracket{\hat{A}, \hat{B}} } } } が成り立つ．
 			}
+			+p{
+				特に， ${ \hat{A} = x } ， ${ \hat{B} = \hat{p} } のとき
+				${ \angle-bracket{ \sqbracket{x, \hat{p}} } = \sqbracket{x, \hat{p}} = i\hbar } であるから
+				${ \sigma_x \sigma_p \geq \abs{\frac{i\hbar}{2i}} = \frac{\hbar}{2} }．
+			}
 		>
 	>
 >
