@@ -1447,4 +1447,91 @@ document(|
 			}
 		>
 	>
+	+chapter{2021/5/18}<
+		+section{問題 3.12}<
+			+p{
+				自由粒子の波動関数
+				\eqn(${ \app{\Psi}{x, t} = \frac{1}{\sqrt{2\pi}} \int-all \app{\phi}{k} e^{i\paren{kx - \frac{\hbar k^2}{2m}t}} \ordd k });
+				において ${ k = \frac{p}{\hbar} } と置換すると
+				\align[${|
+					\app{\Psi}{x, t}
+					|= \frac{1}{\sqrt{2\pi}} \int-all \app{\phi}{\frac{p}{\hbar}} e^{i\paren{\frac{p}{\hbar}x - \frac{p^2}{2 \hbar m}t}} \frac{\ordd p}{\hbar}
+				|};${|
+					|= \frac{1}{\sqrt{2\pi\hbar}} \int-all e^{\frac{ip}{\hbar}x} \paren{ \frac{1}{\sqrt{\hbar}} \app{\phi}{\frac{p}{\hbar}} e^{-\frac{ip^2}{2\hbar m}t} } \ordd p
+				|}];
+			}
+			+p{
+				よって \eqn(${ \app{\Phi}{p, t} = \frac{1}{\sqrt{\hbar}} \app{\phi}{\frac{p}{\hbar}} e^{-\frac{ip^2}{2\hbar m}t} });
+				であり，
+				\eqn(${ \abs{\app{\Phi}{p, t}}^2 = \frac{1}{\hbar} \abs{\app{\phi}{\frac{p}{\hbar}}}^2 });
+				より ${ \abs{\app{\Phi}{p, t}}^2 } は ${ t } に依らない．
+			}
+		>
+		+section{要点（不確定性原理）}<
+			+p{
+				観測可能な 2 つの量 ${ A } ， ${ B } について，
+				${ \angle-bracket{A} = \bra-ket{\Psi}{\hat{A}\Psi} = a } ，
+				${ \angle-bracket{B} = \bra-ket{\Psi}{\hat{B}\Psi} = b } とおく．
+				このとき，
+				${ \sigma_A = \norm{\paren{\hat{A} - a}\Psi} } と
+				${ \sigma_B = \norm{\paren{\hat{B} - b}\Psi} } の積
+				${ \sigma_A\sigma_B } を，
+				${ \sqbracket{ \hat{A}, \hat{B} } } を用いて評価したい．
+			}
+			+p{
+				まず，シュワルツの不等式より
+				\align[${|
+					\sigma_A \sigma_B
+					|= \norm{\paren{\hat{A} - a}\Psi} \cdot \norm{\paren{\hat{B} - b}\Psi}
+				|};${|
+					|\geq \abs{\bra-ket{\paren{\hat{A} - a}\Psi}{\paren{\hat{B} - b}\Psi}}
+				|}];
+				であり，
+				\align[${|
+					\bra-ket{\paren{\hat{A} - a}\Psi}{\paren{\hat{B} - b}\Psi}
+					|= \bra-ket{\Psi}{\paren{\hat{A} - a}\paren{\hat{B} - b}\Psi}
+				|};${|
+					|= \bra-ket{\Psi}{\hat{A}\hat{B}\Psi}
+					- b\bra-ket{\Psi}{\hat{A}\Psi}
+					- a\bra-ket{\Psi}{\hat{B}\Psi}
+					+ ab\bra-ket{\Psi}{\Psi}
+				|};${|
+					|= \bra-ket{\Psi}{\hat{A}\hat{B}\Psi}
+					- ab - ab + ab
+				|};${|
+					|= \bra-ket{\Psi}{\hat{A}\hat{B}\Psi}
+					- ab
+				|}];
+			}
+			+p{
+				一方
+				\align[${|
+					\angle-bracket{ \sqbracket{\hat{A}, \hat{B}} }
+					|= \bra-ket{\Psi}{\sqbracket{\hat{A}, \hat{B}}\Psi}
+				|};${|
+					|= \bra-ket{\Psi}{\paren{\hat{A}\hat{B} - \hat{B}\hat{A}}\Psi}
+				|};${|
+					|= \bra-ket{\Psi}{\hat{A}\hat{B}\Psi}
+					- \bra-ket{\Psi}{\hat{B}\hat{A}\Psi}
+				|};${|
+					|= \bra-ket{\Psi}{\hat{A}\hat{B}\Psi}
+					- \bra-ket{\Psi}{\hat{A}\hat{B}\Psi}*
+				|};${|
+					|= 2i\cdot\mathrm{Im}\bra-ket{\Psi}{\hat{A}\hat{B}\Psi}
+				|}];
+				であるから，
+				\align[${|
+					\abs{ \bra-ket{\paren{\hat{A} - a}\Psi}{\paren{\hat{B} - b}\Psi} }
+					|\geq \abs{ \mathrm{Im} \bra-ket{\paren{\hat{A} - a}\Psi}{\paren{\hat{B} - b}\Psi} }
+				|};${|
+					|= \abs{ \mathrm{Im}\bra-ket{\Psi}{\hat{A}\hat{B}\Psi} }
+				|};${|
+					|= \abs{ \frac{1}{2i} \angle-bracket{ \sqbracket{\hat{A}, \hat{B}} } }
+				|}];
+			}
+			+p{
+				よって ${ \sigma_A \sigma_B \geq \abs{ \frac{1}{2i} \angle-bracket{ \sqbracket{\hat{A}, \hat{B}} } } } が成り立つ．
+			}
+		>
+	>
 >
