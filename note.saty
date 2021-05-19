@@ -1539,4 +1539,44 @@ document(|
 			}
 		>
 	>
+	+chapter{2021/5/19}<
+		+section{問題 3.13}<
+			+p{
+				${ \Phi } を ${ p } で微分すると
+				\align[${|
+					\frac{ \partial }{ \partial p }\app{\Phi}{p, t}
+					|= \frac{1}{\sqrt{2\pi\hbar}}\int-all \frac{\partial}{\partial p}e^{-\frac{ipx}{\hbar}} \cdot \app{\Psi}{x, t} \ordd x
+				|};${|
+					|= -\frac{i}{\hbar\sqrt{2\pi\hbar}}\int-all xe^{-\frac{ipx}{\hbar}} \app{\Psi}{x, t} \ordd x
+				|}];
+			}
+			+p{
+				よって
+				\align[${|
+					|\app{\Phi*}{p, t} \cdot i\hbar\frac{ \partial }{ \partial p }\app{\Phi}{p, t}
+				|};${|
+					=| \paren{
+						\frac{1}{\sqrt{2\pi\hbar}} \int-all e^{\frac{ipy}{\hbar}} \app{\Psi*}{y, t} \ordd y
+					}\paren{
+						\frac{1}{\sqrt{2\pi\hbar}}\int-all xe^{-\frac{ipx}{\hbar}} \app{\Psi}{x, t} \ordd x
+					}
+				|};${|
+					=| \frac{1}{2\pi\hbar} \int-all \int-all e^{\frac{ip\paren{y - x}}{\hbar}} \app{\Psi*}{y, t} x \app{\Psi}{x, t} \ordd x \ordd y
+				|}];
+				であるから
+				\align[${|
+					|\int-all \app{\Phi*}{p, t} \cdot i\hbar\frac{ \partial }{ \partial p }\app{\Phi}{p, t} \ordd p
+				|};${|
+					=| \frac{1}{2\pi\hbar} \int-all \int-all \paren{\int-all e^{\frac{ip\paren{y - x}}{\hbar}} \ordd p} \app{\Psi*}{y, t} x \app{\Psi}{x, t} \ordd x \ordd y
+				|};${|
+					=| \int-all \int-all \app{\delta}{y - x} \app{\Psi*}{y, t} x \app{\Psi}{x, t} \ordd x \ordd y
+				|};${|
+					=| \int-all \app{\Psi*}{x, t} x \app{\Psi}{x, t} \ordd x
+				|};${|
+					=| \angle-bracket{x}
+				|}];
+			}
+			+p{}
+		>
+	>
 >
