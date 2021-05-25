@@ -12,13 +12,15 @@ let-math \erf = math-char MathOrd `erf`
       length-max minhalflen ((length-max (hgt -' hgtaxis) (hgtaxis +' dpt)) +' lenappend)
   let bar-bra-ket hgt dpt hgtaxis fontsize color =
     let halflen = half-length hgt dpt hgtaxis fontsize in
-    let halfwid = fontsize *' 0.2 in
+    let halfwid = fontsize *' 0.1 in
     let graphics (x, y) =
       [ stroke 0.5pt color (Gr.line (x +' halfwid, y +' hgtaxis -' halflen) (x +' halfwid, y +' hgtaxis +' halflen)); ]
     in
     let kerninfo _ = 0pt in
       (inline-graphics (halfwid *' 2.) (hgtaxis +' halflen) (halflen -' hgtaxis) graphics, kerninfo)
 let-math \bra-ket m1 m2 = math-paren-with-middle (Math.angle-left 0.5pt) (Math.angle-right 0.5pt) bar-bra-ket [m1; m2]
+let-math \ket = math-paren bar-bra-ket (Math.angle-right 0.5pt)
+let-math \bra = math-paren (Math.angle-left 0.5pt) bar-bra-ket
 let-math \int-all = ${ \int_{-\infty}^{\infty} }
 in
 
@@ -1577,6 +1579,132 @@ document(|
 				|}];
 			}
 			+p{}
+		>
+	>
+	+chapter{2021/05/25}<
+		+section{要点}<
+			+p{
+				座標表示の 2 つの波動関数 ${ \Psi_1 }， ${ \Psi_2 } と
+				その運動量表示 ${ \Phi_1 }， ${ \Phi_2 } について
+				\eqn(${ \bra-ket{\Psi_1}{\Psi_2} = \bra-ket{\Phi_1}{\Phi_2} });
+				が成り立つ（計算 1 ）から，
+				波動関数の座標表示と運動量表示は
+				ヒルベルト空間として同型である．
+				そこで，座標表示や運動量表示と同型な何らかのヒルベルト空間を考え，
+				波動関数をその空間上のベクトル ${ \ket{ \app{\mathcal{S}}{t} } } として表すことにする．
+				座標表示における ${ \app{\delta}{x} } に対応する
+				ベクトルを ${ \ket{x} } とすると，
+				${ \app{ \Psi }{ x, t } } だったものは
+				${ \bra-ket{ x }{ \app{\mathcal{S}}{t} } } になり，
+				運動量表示における ${ \app{\delta}{p} } 
+				（座標表示ならば ${ \frac{1}{\sqrt{2\pi\hbar}}e^{\frac{ipx}{\hbar}} } ）に対応する
+				ベクトルを ${ \ket{p} } とすると，
+				${ \app{ \Phi }{ p, t } } だったものは
+				${ \bra-ket{ p }{ \app{\mathcal{S}}{t} } } になる．
+			}
+			+p{
+				作用素はヒルベルト空間上の線形変換として表される．
+				${ 1 } で恒等作用素を表すことにすれば，
+				${ \ket{e_n} } （ ${n = 0, 1, \ldots} ）が
+				正規直交基底をなすというのは
+				\eqn(${ \sum_n \ket{e_n}\bra{e_n} = 1 });
+				と書き表すことができ，同様に ${ \ket{e_z} }（${z \in \mathbb{R}}）が
+				ディラック正規直交連続基底をなすというのは
+				\eqn(${ \int-all \ket{e_z}\bra{e_z} \ordd z = 1 });
+				と書き表すことができる．
+			}
+		>
+		+section{計算 1 }<
+			+p{
+				\align[${|
+					\app{ \Phi_1 }{ p, t }
+					|= \frac{1}{\sqrt{2\pi\hbar}}
+					\int-all e^{-\frac{ip}{\hbar}x} \app{\Psi_1}{x, t} \ordd x
+				|};${|
+					\app{ \Phi_2 }{ p, t }
+					|= \frac{1}{\sqrt{2\pi\hbar}}
+					\int-all e^{-\frac{ip}{\hbar}x} \app{\Psi_2}{x, t} \ordd x
+				|}];
+				のとき，
+				\align[${|
+					\app{ \Phi_1^* }{ p, t }
+					\app{ \Phi_2 }{ p, t }
+					|= \frac{1}{2\pi\hbar}
+					\int-all\int-all
+					e^{\frac{ip}{\hbar}x} \app{ \Psi_1^* }{ x, t }
+					e^{-\frac{ip}{\hbar}y} \app{ \Psi_2 }{ y, t }
+					\ordd x \ordd y
+				|};${|
+					|= \frac{1}{2\pi\hbar}
+					\int-all\int-all
+					e^{\frac{ip}{\hbar}\paren{x - y}} \app{ \Psi_1^* }{ x, t } \app{ \Psi_2 }{ y, t }
+					\ordd x \ordd y
+				|}];
+				より
+				\align[${|
+					\bra-ket{ \Phi_1 }{ \Phi_2 }
+					|= \int-all \app{ \Phi_1^* }{ p, t } \app{ \Phi_2 }{ p, t } \ordd p
+				|};${|
+					|= \frac{1}{2\pi\hbar} \int-all \int-all
+					\paren{ \int-all e^{\frac{ip}{\hbar}\paren{x - y}} \ordd p }
+					\app{ \Psi_1^* }{ x, t }
+					\app{ \Psi_2 }{ y, t }
+					\ordd x \ordd y
+				|};${|
+					|= \int-all \int-all
+					\app{ \delta }{ x - y }
+					\app{ \Psi_1^* }{ x, t }
+					\app{ \Psi_2 }{ y, t }
+					\ordd x \ordd y
+				|};${|
+					|= \int-all
+					\app{ \Psi_1^* }{ x, t }
+					\app{ \Psi_2 }{ x, t }
+					\ordd x
+				|};${|
+					|= \bra-ket{ \Psi_1 }{ \Psi_2 }
+				|}];
+			}
+		>
+		+section{問題 3.23}<
+			+p{
+				${ \hat{P} = \ket{\alpha}\bra{\alpha} }（${\alpha} はベクトル）とすると
+				\align[${|
+					\hat{P}^2
+					|= \ket{\alpha}\bra-ket{\alpha}{\alpha}\bra{\alpha}
+				|};${|
+					|= \ket{\alpha}\bra{\alpha}
+				|};${|
+					|= \hat{P}
+				|}];
+				また ${ \hat{P}\ket{x} = p\ket{x} } （${p \in \mathbb{C}}）のとき
+				\eqn(${ \ket{\alpha}\bra-ket{\alpha}{x} = p\ket{x} });
+				の両辺に ${ \bra{\alpha} } をかけて
+				\eqn(${ \bra-ket{\alpha}{\alpha}\bra-ket{\alpha}{x} = p\bra-ket{\alpha}{x} });
+				\eqn(${ \paren{p - 1}\bra-ket{\alpha}{x} = 0 });
+			}
+			+p{
+				よって ${ p = 1 } または ${ \bra-ket{\alpha}{x} = 0 } である．
+				${ p = 1 } のとき， ${ \ket{x} } は ${ \ket{\alpha} } のスカラー倍で表される任意のベクトル．
+				一方， ${ \bra-ket{\alpha}{x} = 0 } のとき
+				\eqn(${ p\ket{x} = \hat{P}\ket{x} = \ket{\alpha}0 = 0 });
+				なので ${ p = 0 } または ${ \ket{x} = 0 } となる．
+			}
+		>
+		+section{問題 3.24}<
+			+p{
+				内積 ${ \bra-ket{\alpha}{\beta} } が
+				${ \ket{\alpha}^\dagger \ket{\beta} } であることに注意すると
+				\eqn(${ \bra{e_m}\hat{Q}\ket{e_n} = \paren{\paren{\hat{Q}\ket{e_n}}^\dagger \ket{e_m}}^* });
+				であり， ${ \hat{Q} } のエルミート共役性より
+				\eqn(${ \paren{\hat{Q}\ket{e_n}}^\dagger \ket{e_m} = \bra{e_n}\hat{Q}\ket{e_m} });
+				であるから，
+				\eqn(${ \bra{e_m}\hat{Q}\ket{e_n} = \bra{e_n}\hat{Q}\ket{e_m}^* });
+				よって ${ Q_{mn} = Q_{nm}^* } ．
+				（うーんやはり多少不正確でも
+				${ \bra{e_m}\hat{Q}\ket{e_n} = \bra-ket{\hat{Q}e_n}{e_m}^* = \bra{e_n}\hat{Q}\ket{e_m}^* }
+				と書いた方が見やすいし分かりやすい）
+			}
 		>
 	>
 >
