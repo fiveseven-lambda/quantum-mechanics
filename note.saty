@@ -1748,8 +1748,6 @@ document(|
 				より ${ e_3 = \frac{5\sqrt{14}}{4}\paren{x^3 - \frac{3}{5}x} } ．
 			}
 		>
-	>
-	+chapter{2021/5/26}<
 		+section{要点}<
 			+p{
 				3 次元における Schrödinger 方程式は，
