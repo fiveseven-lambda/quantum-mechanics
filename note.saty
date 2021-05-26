@@ -19,6 +19,7 @@ let-math \erf = math-char MathOrd `erf`
     let kerninfo _ = 0pt in
       (inline-graphics (halfwid *' 2.) (hgtaxis +' halflen) (halflen -' hgtaxis) graphics, kerninfo)
 let-math \bra-ket m1 m2 = math-paren-with-middle (Math.angle-left 0.5pt) (Math.angle-right 0.5pt) bar-bra-ket [m1; m2]
+let-math \bra--ket m1 m2 m3 = math-paren-with-middle (Math.angle-left 0.5pt) (Math.angle-right 0.5pt) bar-bra-ket [m1; m2; m3]
 let-math \ket = math-paren bar-bra-ket (Math.angle-right 0.5pt)
 let-math \bra = math-paren (Math.angle-left 0.5pt) bar-bra-ket
 let-math \int-all = ${ \int_{-\infty}^{\infty} }
@@ -1704,6 +1705,46 @@ document(|
 				（うーんやはり多少不正確でも
 				${ \bra{e_m}\hat{Q}\ket{e_n} = \bra-ket{\hat{Q}e_n}{e_m}^* = \bra{e_n}\hat{Q}\ket{e_m}^* }
 				と書いた方が見やすいし分かりやすい）
+			}
+		>
+	>
+	+chapter{2021/5/26}<
+		+section{問題 3.31}<
+			+p{
+				最初の基底は ${ 1 } を正規化したものである．
+				${ \int_{-1}^1 \ordd x = 2 }
+				より ${ e_0 = \frac{\sqrt{2}}{2} }．
+			}
+			+p{
+				次の基底は， ${ x - \bra-ket{e_0}{x}e_0 } を正規化したものである．
+				${ \bra-ket{e_0}{x} = \frac{\sqrt{2}}{2}\int_{-1}^1 x \ordd x = 0 } より
+				${ x - \bra-ket{e_0}{x}e_0 = x } であり，
+				${ \int_{-1}^1 x^2 \ordd x = \frac{2}{3} } より
+				${ e_1 = \frac{\sqrt{6}}{2}x } ．
+			}
+			+p{
+				次の基底は， ${ x^2 - \bra-ket{e_0}{x^2}e_0 - \bra-ket{e_1}{x^2}e_1 } を正規化したものである．
+				\align[${| \bra-ket{e_0}{x^2} |= \frac{\sqrt{2}}{2}\int_{-1}^1 x^2 \ordd x = \frac{\sqrt{2}}{3} |};
+				${| \bra-ket{e_1}{x^2} |= \frac{\sqrt{6}}{2}\int_{-1}^1 x^3 \ordd x = 0 |}]; より
+				${ x^2 - \bra-ket{e_0}{x^2}e_0 - \bra-ket{e_1}{x^2}e_1 = x^2 - \frac{1}{3} } であり，
+				\eqn(${ \norm{x^2 - \frac{1}{3}}^2 = \int_{-1}^1 \paren{x^2 - \frac{1}{3}}^2 \ordd x = \frac{8}{45} });
+				より ${ e_2 = \frac{3\sqrt{10}}{4}\paren{x^2 - \frac{1}{3}} } ．
+			}
+			+p{
+				次の基底は， ${ x^3 - \bra-ket{e_0}{x^3}e_0 - \bra-ket{e_1}{x^3}e_1 - \bra-ket{e_2}{x^3}e_2 } を正規化したものである．
+				\align[${|
+					\bra-ket{e_0}{x^3} |= \frac{\sqrt{2}}{2} \int_{-1}^1 x^3 \ordd x
+					||= 0
+				|};${|
+					\bra-ket{e_1}{x^3} |= \frac{\sqrt{6}}{2} \int_{-1}^1 x^4 \ordd x
+					||= \frac{\sqrt{6}}{5}
+				|};${|
+					\bra-ket{e_2}{x^3} |= \frac{3\sqrt{10}}{4} \int_{-1}^1 \paren{x^5 - \frac{1}{3}x^3} \ordd x
+					||= 0
+				|}];
+				より ${ x^3 - \bra-ket{e_0}{x^3}e_0 - \bra-ket{e_1}{x^3}e_1 - \bra-ket{e_2}{x^3}e_2 = x^3 - \frac{3}{5}x } であり，
+				\eqn(${ \norm{x^3 - \frac{3}{5}x}^2 = \int_{-1}^1 \paren{x^3 - \frac{3}{5}x}^2 \ordd x = \frac{8}{175} });
+				より ${ e_3 = \frac{5\sqrt{14}}{4}\paren{x^3 - \frac{3}{5}x} } ．
 			}
 		>
 	>
