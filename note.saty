@@ -1,5 +1,6 @@
 @require: class-stjarticle/stjarticle
 @require: azmath/accent
+@require: azmath/matrices
 @require: itemize
 @require: cancel/cancel
 
@@ -1745,6 +1746,174 @@ document(|
 				より ${ x^3 - \bra-ket{e_0}{x^3}e_0 - \bra-ket{e_1}{x^3}e_1 - \bra-ket{e_2}{x^3}e_2 = x^3 - \frac{3}{5}x } であり，
 				\eqn(${ \norm{x^3 - \frac{3}{5}x}^2 = \int_{-1}^1 \paren{x^3 - \frac{3}{5}x}^2 \ordd x = \frac{8}{175} });
 				より ${ e_3 = \frac{5\sqrt{14}}{4}\paren{x^3 - \frac{3}{5}x} } ．
+			}
+		>
+	>
+	+chapter{2021/5/26}<
+		+section{要点}<
+			+p{
+				3 次元における Schrödinger 方程式は，
+				${ \nabla = \frac{\partial}{\partial x} + \frac{\partial}{\partial y} + \frac{\partial}{\partial z} } を用いて
+				\eqn(${ i\hbar\frac{\partial\Psi}{\partial t} = -\frac{\hbar^2}{2m}\nabla^2\Psi + V\Psi });
+				と表される．
+				正規化は ${ \int \abs{\Psi}^2 \ordd^3\bm{r} = 1 } を満たすように行われる．
+			}
+			+p{
+				${ V } が時間独立であれば，
+				Schrödinger 方程式の解 ${ \Psi } は
+				時間に依存しない Schrödinger 方程式
+				\eqn(${ -\frac{\hbar^2}{2m} \nabla^2 \psi + V\psi = E\psi });
+				の解 ${ \psi_n, E_n } によって
+				${ \Psi = \sum_n c_n \psi_n e^{-\frac{iE_n t}{\hbar}} } と表される．
+			}
+			+p{
+				極座標 ${\paren{r, \theta, \phi}} で表したときに
+				${ V } が ${ r } のみの関数
+				${ \app{V}{r} } で表されるとする．
+				極座標において
+				時間に依存しない Schrödinger 方程式は
+				\eqn(${ -\frac{\hbar^2}{2m} \paren{
+					\frac{1}{r^2} \frac{\partial}{\partial r}\paren{r^2 \frac{\partial\psi}{\partial r}}
+					+ \frac{1}{r^2\sin\theta}\frac{\partial}{\partial\theta}\paren{\sin\theta\frac{\partial\psi}{\partial\theta}}
+					+ \frac{1}{r^2\sin^2\theta}\frac{\partial^2\psi}{\partial\phi^2}
+				} + V\psi = E\psi });
+				となる（計算 1 ）から，
+				${ \psi } が ${ r } の関数 ${ R } と ${ \theta, \phi } の関数 ${ Y } を用いて
+				${ \app{\psi}{r, \theta, \phi} = \app{R}{r}\app{Y}{\theta, \phi} }
+				と表されると仮定すると，
+				\align[${|
+					\frac{1}{R}\frac{\partial}{\partial r}\paren{r^2\frac{\partial R}{\partial r}}
+					- \frac{2mr^2}{\hbar^2} \paren{ V - E }
+					= l\paren{l + 1}
+				|};${|
+					\frac{1}{\sin\theta}\frac{\partial}{\partial\theta}\paren{\sin\theta\frac{\partial Y}{\partial\theta}}
+					+ \frac{1}{\sin^2\theta}\frac{\partial^2 Y}{\partial\phi^2} = -l\paren{l + 1}Y
+				|}]; （ ${l} は定数）と分けられる．
+			}
+		>
+		+section{計算1}<
+			+p(
+				let-math \d x = ${ \frac{\partial}{\partial #x} } in
+				let-math \dd y x = ${ \frac{\partial #y}{\partial #x} } in
+			{
+				${ \pmatrix!(1){|x|y|z|} = \pmatrix!(1){|r\sin\theta\cos\phi|r\sin\theta\sin\phi|r\cos\theta|} } より
+				\align[${|
+					\pmatrix!(1){| \d{r} | \d{\theta} | \d{\phi} |}
+					|= \pmatrix!(3){| \dd{x}{r} | \dd{y}{r} | \dd{z}{r}
+					| \dd{x}{\theta} | \dd{y}{\theta} | \dd{z}{\theta}
+					| \dd{x}{\phi} | \dd{y}{\phi} | \dd{z}{\phi} |}
+					\pmatrix!(1){| \d{x} | \d{y} | \d{z} |}
+				|};${|
+					|= \pmatrix!(3){| \sin\theta\cos\phi | \sin\theta\sin\phi | \cos\theta
+					| r\cos\theta\cos\phi | r\cos\theta\sin\phi | -r\sin\theta
+					| -r\sin\theta\sin\phi | r\sin\theta\cos\phi | 0 |}
+					\pmatrix!(1){| \d{x} | \d{y} | \d{z} |}
+				|}];
+				であり，ここで
+				\align[${|
+					| \dmatrix!(3){| \sin\theta\cos\phi | \sin\theta\sin\phi | \cos\theta
+					| r\cos\theta\cos\phi | r\cos\theta\sin\phi | -r\sin\theta
+					| -r\sin\theta\sin\phi | r\sin\theta\cos\phi | 0 |}
+				|};${|
+					=| r^2\sin^3\theta\sin^2\phi
+					+ r^2\sin^3\theta\cos^2\phi
+					+ r^2\sin\theta\cos^2\theta\cos^2\phi
+					+ r^2\sin\theta\cos^2\theta\sin^2\phi
+				|};${|
+					=| r^2\sin\theta
+				|}];
+				であるから
+				\align[${|
+					\pmatrix!(1){| \d{x} | \d{y} | \d{z} |}
+					|= \pmatrix!(3){| \sin\theta\cos\phi | \sin\theta\sin\phi | \cos\theta
+					| r\cos\theta\cos\phi | r\cos\theta\sin\phi | -r\sin\theta
+					| -r\sin\theta\sin\phi | r\sin\theta\cos\phi | 0 |}^{-1}
+					\pmatrix!(1){| \d{r} | \d{\theta} | \d{\phi} |}
+				|};${|
+					|= \frac{1}{r^2\sin\theta}
+					\pmatrix!(3){| r^2\sin^2\theta\cos\phi | r\sin\theta\cos\theta\cos\phi | -r\sin\phi
+					| r^2\sin^2\theta\sin\phi | r\sin\theta\cos\theta\sin\phi | r\cos\phi
+					| r^2\sin\theta\cos\theta | -r^2\sin^2\theta | 0 |}
+					\pmatrix!(1){| \d{r} | \d{\theta} | \d{\phi} |}
+				|};${|
+					|= \pmatrix!(3){| \sin\theta\cos\phi | \frac{\cos\theta\cos\phi}{r} | -\frac{\sin\phi}{r\sin\theta}
+					| \sin\theta\sin\phi | \frac{\cos\theta\sin\phi}{r} | \frac{\cos\phi}{r\sin\theta}
+					| \cos\theta | -\frac{\sin\theta}{r} | 0 |}
+					\pmatrix!(1){| \d{r} | \d{\theta} | \d{\phi} |}
+				|}];
+			});
+			+p{
+				よって
+				\align[${|
+					| \frac{\partial^2}{\partial x^2}
+					+ \frac{\partial^2}{\partial y^2}
+					+ \frac{\partial^2}{\partial z^2}
+				|};${|
+					=| \paren{
+						\sin\theta\cos\phi\frac{\partial}{\partial r}
+						+ \frac{\cos\theta\cos\phi}{r}\frac{\partial}{\partial\theta}
+						- \frac{\sin\phi}{r\sin\theta}\frac{\partial}{\partial\phi}
+					}^2
+				|};${|
+					|+ \paren{
+						\sin\theta\sin\phi\frac{\partial}{\partial r}
+						+ \frac{\cos\theta\sin\phi}{r}\frac{\partial}{\partial\theta}
+						+ \frac{\cos\phi}{r\sin\theta}\frac{\partial}{\partial\phi}
+					}^2
+				|};${|
+					|+ \paren{
+						\cos\theta\frac{\partial}{\partial r}
+						-\frac{\sin\theta}{r}\frac{\partial}{\partial\theta}
+					}^2
+				|};${|
+					=| \frac{1}{r^2} \frac{\partial}{\partial r}\paren{r^2\frac{\partial}{\partial r}}
+					+ \frac{1}{r^2\sin\theta}\frac{\partial}{\partial\theta}\paren{\sin\theta\frac{\partial}{\partial\theta}}
+					+ \frac{1}{r^2\sin^2\theta}\frac{\partial^2}{\partial\phi^2}
+				|}];
+			}
+		>
+		+section{問題 4.3}<
+			+p{
+				${ \psi = Ae^{-r/a} } のとき
+				${ \frac{\partial\psi}{\partial r} = -\frac{\psi}{a} } であるから，
+				\align[${|
+					\frac{1}{r^2} \frac{\partial}{\partial r} \paren{ r^2 \frac{\partial\psi}{\partial r} }
+					|= -\frac{1}{ar^2} \frac{\partial}{\partial r} \paren{ r^2 \psi }
+				|};${|
+					|= -\frac{2}{ar}\psi + \frac{1}{a^2}\psi
+				|}];
+			}
+			+p{
+				よって
+				\eqn(${ -\frac{\hbar^2}{2m}\paren{-\frac{2}{ar}\psi + \frac{1}{a^2}\psi} + V\psi = E\psi });
+				\eqn(${ \therefore \frac{\hbar^2}{mar} - \frac{\hbar^2}{2ma^2} + V = E });
+				であるから
+				\align[${|
+					E |= \lim_{r \to \infty} \paren{ \frac{\hbar^2}{mar} - \frac{\hbar^2}{2ma^2} + V }
+				|};${|
+					|= - \frac{\hbar^2}{2ma^2}
+				|}];
+				\align[${|
+					V |= E - \frac{\hbar^2}{mar} + \frac{\hbar^2}{2ma^2}
+				|};${|
+					|= - \frac{\hbar^2}{mar}
+				|}];
+			}
+			+p{
+				${ \psi = Ae^{-r^2/a^2} } のとき
+				${ \frac{\partial\psi}{\partial r} = -\frac{2r}{a^2}\psi } であるから，
+				\align[${|
+					\frac{1}{r^2} \frac{\partial}{\partial r} \paren{ r^2 \frac{\partial\psi}{\partial r} }
+					|= -\frac{2}{a^2 r^2} \frac{\partial}{\partial r} \paren{ r^3 \psi }
+				|};${|
+					|= -\frac{6}{a^2} \psi + \frac{4r^2}{a^4} \psi
+				|}];
+			}
+			+p{
+				よって
+				\eqn(${ -\frac{\hbar^2}{2m}\paren{ -\frac{6}{a^2}\psi + \frac{4r^2}{a^4} \psi } + V\psi = E\psi });
+				\eqn(${ \therefore \frac{3\hbar^2}{ma^2} - \frac{2\hbar^2 r^2}{ma^4} + V = E });
+				であるから ${ V = \frac{2\hbar^2 r^2}{ma^4} } ， ${ E = \frac{3\hbar^2}{ma^2} } ．
 			}
 		>
 	>
