@@ -1584,7 +1584,7 @@ document(|
 		>
 	>
 	+chapter{2021/05/25}<
-		+section{要点}<
+		+section{要点（ベクトル表示）}<
 			+p{
 				座標表示の 2 つの波動関数 ${ \Psi_1 }， ${ \Psi_2 } と
 				その運動量表示 ${ \Phi_1 }， ${ \Phi_2 } について
@@ -1748,7 +1748,7 @@ document(|
 				より ${ e_3 = \frac{5\sqrt{14}}{4}\paren{x^3 - \frac{3}{5}x} } ．
 			}
 		>
-		+section{要点}<
+		+section{要点（ 3 次元における Schrödinger 方程式）}<
 			+p{
 				3 次元における Schrödinger 方程式は，
 				${ \nabla = \frac{\partial}{\partial x} + \frac{\partial}{\partial y} + \frac{\partial}{\partial z} } を用いて
@@ -1780,7 +1780,7 @@ document(|
 				${ \app{\psi}{r, \theta, \phi} = \app{R}{r}\app{Y}{\theta, \phi} }
 				と表されると仮定すると，
 				\align[${|
-					\frac{1}{R}\frac{\partial}{\partial r}\paren{r^2\frac{\partial R}{\partial r}}
+					\frac{1}{R}\frac{\ordd}{\ordd r}\paren{r^2\frac{\ordd R}{\ordd r}}
 					- \frac{2mr^2}{\hbar^2} \paren{ V - E }
 					= l\paren{l + 1}
 				|};${|
@@ -1912,6 +1912,101 @@ document(|
 				\eqn(${ -\frac{\hbar^2}{2m}\paren{ -\frac{6}{a^2}\psi + \frac{4r^2}{a^4} \psi } + V\psi = E\psi });
 				\eqn(${ \therefore \frac{3\hbar^2}{ma^2} - \frac{2\hbar^2 r^2}{ma^4} + V = E });
 				であるから ${ V = \frac{2\hbar^2 r^2}{ma^4} } ， ${ E = \frac{3\hbar^2}{ma^2} } ．
+			}
+		>
+	>
+	+chapter{2021/5/27}<
+		+section{要点（球面調和関数）}<
+			+p{
+				${ \app{Y}{\theta, \phi} } の方程式
+				\eqn(${ \sin\theta\frac{\partial}{\partial\theta}\paren{\sin\theta\frac{\partial Y}{\partial\theta}} + \frac{\partial^2 Y}{\partial\phi^2} = -l\paren{l + 1}\sin^2\theta Y });
+				において ${ \app{Y}{\theta, \phi} = \app{\Theta}{\theta}\app{\Phi}{\phi} } と分けると
+				\eqn(${ \frac{1}{\Theta}\sin\theta\frac{\ordd}{\ordd\theta}\paren{\sin\theta\frac{\ordd\Theta}{\ordd\theta}} + \frac{1}{\Phi}\frac{\ordd^2\Phi}{\ordd\phi^2} = -l\paren{l + 1}\sin^2\theta  });
+				となるから，定数 ${ m } を用いて ${ \text!{(左辺)} = \text!{(右辺)} = m^2 } すなわち
+				\align[${|
+					\sin\theta\frac{\ordd}{\ordd\theta}\paren{ \sin\theta \frac{\ordd\Theta}{\ordd\theta}} + \paren{l\paren{l + 1}\sin^2\theta - m^2 }\Theta |= 0
+				|};${|
+					\frac{\ordd^2\Phi}{\ordd\phi^2} |= -m^2\Phi
+				|}];
+				と書ける．
+			}
+			+p{
+				後者の解 ${ \app{\Phi}{\phi} = e^{im\phi} } （指数の符号は ${ m } に，全体の係数は ${\Theta} に吸収させた）において
+				境界条件 ${ \app{\Phi}{\phi + 2\pi} = \app{\Phi}{\phi} } より
+				${ m = 0, \pm 1, \pm 2, \ldots } が従う．
+			}
+			+p{
+				一方で，前者の解は， Legendre 多項式
+				\eqn(${ \app{P_l}{x} = \frac{1}{2^l l\!}\frac{\ordd^l}{\ordd x^l}\paren{x^2 - 1}^l });
+				を用いて定義される Legendre陪関数
+				\eqn(${ \app{P_l^m}{x} = \paren{-1}^m \paren{1 - x^2}^{\frac{m}{2}} \frac{\ordd^m}{\ordd x^m}\app{P_l}{x} });
+				を用いて ${ \app{\Theta}{\theta} = A\app{P_l^m}{\cos\theta} } と表される．
+			}
+			+p{
+				以上から球面調和関数
+				\eqn(${ \app{Y_l^m}{\theta, \phi} = \sqrt{ \frac{\paren{2l + 1}\paren{l - m}\!}{4\pi\paren{l + m}\!} } e^{im\phi} \app{P_l^m}{\cos\theta} });
+				が得られる．
+			}
+		>
+		+section{問題 4.4}<
+			+p{
+				\eqn(${ \app{P_0^0}{x} = \app{P_0}{x} = \frac{1}{2^0 \cdot 0\!} \paren{x^2 - 1}^0 = 1 } );
+				より
+				\eqn(${ \app{Y_0^0}{\theta, \phi} = \sqrt{\frac{1\cdot 0\!}{4\pi 0\!}} e^0 \cdot 1 = \frac{1}{2\sqrt{\pi}} } );
+			}
+			+p{
+				一方 \eqn(${ \app{P_2}{x} = \frac{1}{2^2\cdot 2\!}\frac{\ordd^2}{\ordd x^2}\paren{x^2 - 1}^2 = \frac{3x^2 - 1}{2} });
+				\eqn(${ \app{P_2^1}{x} = -\paren{1 - x^2}^{\frac{1}{2}}\frac{\ordd}{\ordd x}\app{P_2}{x} = -3x\sqrt{1 - x^2} });
+				より
+				\eqn(${ \app{Y_2^1}{\theta, \phi} = \sqrt{\frac{5\cdot 1\!}{4\pi \cdot 3\!}} e^{i\phi} \paren{ -3\sin\theta\cos\theta} = -\frac{3}{2}\sqrt{\frac{5}{6\pi}} e^{i\phi} \sin\theta\cos\theta });
+			}
+			+p{
+				\eqn(${ \norm{Y_0^0}^2 = \frac{1}{4\pi}\int_0^{\pi}\sin\theta\ordd\theta \int_0^{2\pi}\ordd\phi = 1 });
+				\align[${|
+					\norm{Y_2^1}^2 |= \frac{15}{8\pi}\int_0^{2\pi}\ordd\phi\int_0^{\pi}\sin^3\theta\cos^2\ordd\theta
+				|};${|
+					|= \frac{15}{4} \int_0^{\pi} \sin\theta\paren{ \cos^2\theta - \cos^4\theta } \ordd\theta
+				|};${|
+					|= - \frac{15}{4} \sqbracket{ \frac{1}{3}\cos^3\theta - \frac{1}{5}\cos^5\theta }_0^\pi
+				|};${|
+					|= -\frac{15}{4} \paren{ -\frac{2}{3} + \frac{2}{5} }
+				|}];
+				\align[${|
+					\bra-ket{Y_0^0}{Y_2^1}
+					|= \text!{(const)}
+					\int_0^{2\pi} e^{i\phi} \ordd\phi
+					\int_0^\pi \sin\theta\cos\theta \ordd\theta
+				|};${|
+					|= \text!{(const)}
+					\paren{ e^{2\pi i} - e^0 }
+					\int_0^\pi \sin\theta\cos\theta \ordd\theta
+				|};${|
+					|= 0
+				|}];
+			}
+		>
+		+section{問題 4.5}<
+			+p{
+				${ l = m = 0 } とすると微分方程式は
+				\eqn(${ \sin\theta\frac{\ordd}{\ordd\theta}\paren{\sin\theta\frac{\ordd\Theta}{\ordd\theta}} = 0 });
+				となるから，
+				${ \sin\theta = 0 } となる点以外では
+				${ \frac{\ordd}{\ordd\theta}\paren{\sin\theta\frac{\ordd\Theta}{\ordd\theta}} = 0 } が成り立つので
+				${ \sin\theta\frac{\ordd\Theta}{\ordd\theta} } は定数．
+				よって ${ \sin\theta\frac{\ordd\Theta}{\ordd\theta} = A } とおくと
+				${ \frac{\ordd\Theta}{\ordd\theta} = \frac{A}{\sin\theta} } であるから
+				\align[${|
+					\Theta
+					|= A \int \frac{\ordd\theta}{\sin\theta}
+				|};${|
+					|= A \log\abs{\tan\frac{\theta}{2}} + C
+				|}];
+				（ ${C} は定数）．
+				${ \Theta = A\log\abs{\tan\frac{\theta}{2}} + C } とすると
+				${ \Phi = 1 } より
+				${ Y = \Theta\Phi = A\log\abs{\tan\frac{\theta}{2}} + C } となり，
+				積分 ${ \norm{Y}^2 = \int_0^{2\pi} \ordd\phi \int_0^{\pi} \paren{ A \log\tan\frac{\theta}{2} + C }^2 \sin\theta \ordd\theta }
+				は収束するので何も問題ないように思える……（たすけて）
 			}
 		>
 	>
