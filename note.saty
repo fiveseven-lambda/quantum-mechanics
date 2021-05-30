@@ -1922,7 +1922,7 @@ document(|
 				\eqn(${ \sin\theta\frac{\partial}{\partial\theta}\paren{\sin\theta\frac{\partial Y}{\partial\theta}} + \frac{\partial^2 Y}{\partial\phi^2} = -l\paren{l + 1}\sin^2\theta Y });
 				において ${ \app{Y}{\theta, \phi} = \app{\Theta}{\theta}\app{\Phi}{\phi} } と分けると
 				\eqn(${ \frac{1}{\Theta}\sin\theta\frac{\ordd}{\ordd\theta}\paren{\sin\theta\frac{\ordd\Theta}{\ordd\theta}} + \frac{1}{\Phi}\frac{\ordd^2\Phi}{\ordd\phi^2} = -l\paren{l + 1}\sin^2\theta  });
-				となるから，定数 ${ m } を用いて ${ \text!{(左辺)} = \text!{(右辺)} = m^2 } すなわち
+				となるから，定数 ${ m } を用いて
 				\align[${|
 					\sin\theta\frac{\ordd}{\ordd\theta}\paren{ \sin\theta \frac{\ordd\Theta}{\ordd\theta}} + \paren{l\paren{l + 1}\sin^2\theta - m^2 }\Theta |= 0
 				|};${|
@@ -1961,9 +1961,9 @@ document(|
 				\eqn(${ \app{Y_2^1}{\theta, \phi} = \sqrt{\frac{5\cdot 1\!}{4\pi \cdot 3\!}} e^{i\phi} \paren{ -3\sin\theta\cos\theta} = -\frac{3}{2}\sqrt{\frac{5}{6\pi}} e^{i\phi} \sin\theta\cos\theta });
 			}
 			+p{
-				\eqn(${ \norm{Y_0^0}^2 = \frac{1}{4\pi}\int_0^{\pi}\sin\theta\ordd\theta \int_0^{2\pi}\ordd\phi = 1 });
+				\eqn(${ \int_0^{2\pi} \int_0^\pi \abs{Y_0^0}^2 \sin\theta\ordd\theta\ordd\phi = \frac{1}{4\pi}\int_0^{\pi}\sin\theta\ordd\theta \int_0^{2\pi}\ordd\phi = 1 });
 				\align[${|
-					\norm{Y_2^1}^2 |= \frac{15}{8\pi}\int_0^{2\pi}\ordd\phi\int_0^{\pi}\sin^3\theta\cos^2\ordd\theta
+					\int_0^{2\pi} \int_0^\pi \abs{Y_2^1}^2 \sin\theta\ordd\theta\ordd\phi |= \frac{15}{8\pi}\int_0^{2\pi}\ordd\phi\int_0^{\pi}\sin^3\theta\cos^2\ordd\theta
 				|};${|
 					|= \frac{15}{4} \int_0^{\pi} \sin\theta\paren{ \cos^2\theta - \cos^4\theta } \ordd\theta
 				|};${|
@@ -1972,7 +1972,10 @@ document(|
 					|= -\frac{15}{4} \paren{ -\frac{2}{3} + \frac{2}{5} }
 				|}];
 				\align[${|
-					\bra-ket{Y_0^0}{Y_2^1}
+					\int_0^{2\pi} \int_0^\pi
+					Y_0^{0*}Y_2^1
+					\sin\theta
+					\ordd\theta\ordd\phi
 					|= \text!{(const)}
 					\int_0^{2\pi} e^{i\phi} \ordd\phi
 					\int_0^\pi \sin\theta\cos\theta \ordd\theta
@@ -2002,12 +2005,223 @@ document(|
 					|= A \log\abs{\tan\frac{\theta}{2}} + C
 				|}];
 				（ ${C} は定数）．
-				${ \Theta = A\log\abs{\tan\frac{\theta}{2}} + C } とすると
-				${ \Phi = 1 } より
-				${ Y = \Theta\Phi = A\log\abs{\tan\frac{\theta}{2}} + C } となり，
-				積分 ${ \norm{Y}^2 = \int_0^{2\pi} \ordd\phi \int_0^{\pi} \paren{ A \log\tan\frac{\theta}{2} + C }^2 \sin\theta \ordd\theta }
-				は収束するので何も問題ないように思える……（たすけて）
 			}
 		>
 	>
+	+chapter{2021/5/28}<
+		+section{問題 4.7}<
+			+p{
+				\eqn(${ \app{P_3}{x} = \frac{1}{2^3 \cdot 3\!} \frac{\ordd^3}{\ordd x^3} \paren{x^2 - 1}^3 = \frac{5x^3 - 3x}{2} });
+				\eqn(${ \app{P_3^2}{x} = \paren{1 - x^2} \frac{\ordd^2}{\ordd x^2} \app{P_3}{x} = 15x\paren{1 - x^2} });
+				より
+				\eqn(${ \app{Y_3^2}{\theta, \phi} = \sqrt{\frac{7}{4\pi}\cdot\frac{1}{5\!}} e^{2i\phi} \app{P_3^2}{\cos\theta} = \sqrt{\frac{105}{32\pi}} e^{2i\phi} \sin^2\theta\cos\theta });
+				\eqn(${ \frac{\partial^2 Y_3^2}{\partial\phi^2} = \paren{2i}^2 Y_3^2 = -4 \sqrt{\frac{105}{32\pi}} e^{2i\phi} \sin^2\theta\cos\theta });
+				\align[${|
+					\frac{\partial Y_3^2}{\partial\theta}
+					|= \sqrt{\frac{105}{32\pi}} e^{2i\phi} \paren{ 2\sin\theta\cos^2\theta - \sin^3\theta }
+				|};${|
+					|= \sqrt{\frac{105}{32\pi}} e^{2i\phi} \paren{ 2\sin\theta - 3\sin^3\theta }
+				|}];
+				\align[${|
+					\frac{\partial}{\partial\theta}\paren{\sin\theta\frac{\partial Y_3^2}{\partial\theta}}
+					|= \sqrt{\frac{105}{32\pi}} e^{2i\phi} \frac{\ordd}{\ordd\theta}\paren{ 2\sin^2\theta - 3\sin^4\theta }
+				|};${|
+					|= \sqrt{\frac{105}{32\pi}} e^{2i\phi} \paren{ 4\sin\theta\cos\theta - 12\sin^3\theta\cos\theta }
+				|}];
+				\align[${|
+					| \sin\theta\frac{\partial}{\partial\theta}\paren{\sin\theta\frac{\partial Y_3^2}{\partial\theta}}
+					+ \frac{\partial^2 Y_3^2}{\partial\phi}
+				|};${|
+					|= \sqrt{\frac{105}{32\pi}} e^{2i\phi} \paren{ 4\sin^2\theta\cos\theta - 12\sin^4\theta\cos\theta - 4\sin^2\theta\cos\theta }
+				|};${|
+					|= -12 \sqrt{\frac{105}{32\pi}} e^{2i\phi} \sin^4\theta\cos\theta
+				|};${|
+					|= -3\cdot 4 \sin^2\theta Y_3^2
+				|}];
+			}
+			+p{
+				一方
+				\align[${|
+					\app{P_l^l}{x}
+					|= \paren{-1}^l \paren{1 - x^2}^{\frac{l}{2}} \frac{\ordd^l}{\ordd x^l} \app{P_l}{x}
+				|};${|
+					|= \paren{-1}^l \paren{1 - x^2}^{\frac{l}{2}} \frac{1}{2^l l\!} \frac{\ordd^{2l}}{\ordd x^{2l}} \paren{x^2 - 1}^l
+				|};${|
+					|= \paren{-1}^l \paren{1 - x^2}^{\frac{l}{2}} \frac{1}{2^l l\!} \paren{2l}\!
+				|};${|
+					|= \frac{\paren{2l}\!}{\paren{-2}^l l\!} \paren{1 - x^2}^{\frac{l}{2}}
+				|}];
+				より
+				\align[${|
+					\app{Y_l^l}{\theta, \phi}
+					|= \sqrt{\frac{\paren{2l + 1}}{4\pi}\frac{1}{\paren{2l}\!}} e^{il\phi} \app{P_l^l}{\cos\theta}
+				|};${|
+					|= \frac{1}{\paren{-2}^l l\!}\sqrt{\frac{\paren{2l + 1}\!}{4\pi}} e^{il\phi} \sin^l \theta
+				|}];
+				\eqn(${
+					\int_0^{2\pi}\int_0^\pi\abs{\app{Y_l^l}{\theta, \phi}}^2\sin\theta\ordd\theta\ordd\phi
+					= \frac{\paren{2l + 1}\!}{4\pi \cdot 2^{2l} \paren{l\!}^2} \int_0^\pi \sin^{2l + 1}\theta \ordd\theta \int_0^{2\pi} \ordd\phi
+					= 1
+				});
+				\eqn(${ \frac{\partial^2 Y_l^l}{\partial\phi^2} = \paren{il}^2 Y_l^l = -l^2 Y_l^l });
+				\eqn(${ \frac{\partial Y_l^l}{\partial\theta} = \frac{1}{\paren{-2}^l l\!} \sqrt{\frac{\paren{2l + 1}\!}{4\pi}} e^{il\phi} l\sin^{l - 1}\theta\cos\theta = \frac{l Y_l^l \cos\theta}{\sin\theta} });
+				\align[${|
+					\sin\theta \frac{\partial}{\partial\theta} \paren{ \sin\theta \frac{\partial Y_l^l}{\partial\theta} }
+					|= l\sin\theta\frac{\partial}{\partial\theta} \paren{ Y_l^l \cos\theta }
+				|};${|
+					|= -lY_l^l \sin^2\theta + l^2 Y_l^l \cos^2\theta
+				|}];
+				\align[${|
+					\sin\theta \frac{\partial}{\partial\theta} \paren{ \sin\theta \frac{\partial Y_l^l}{\partial\theta} }
+					+ \frac{\partial^2 Y_l^l}{\partial\phi^2}
+					|= -lY_l^l \sin^2\theta + l^2 Y_l^l \cos^2\theta - l^2 Y_l^l
+				|};${|
+					|= -lY_l^l \sin^2\theta - l^2 Y_l^l \sin^2\theta
+				|};${|
+					|= -l\paren{l + 1} Y_l^l \sin^2\theta
+				|}];
+			}
+		>
+	>
+	+chapter({2021/5/30})( let-math \me = ${ m_\mathrm{e} } in '<
+		+section{要点（ボーアの式）}<
+			+p{
+				動径方向の方程式
+				\eqn(${ \frac{\ordd}{\ordd r}\paren{r^2 \frac{\ordd R}{\ordd r}} - \frac{2mr^2}{\hbar^2}\paren{V - E}R = l\paren{l + 1}R });
+				において，
+				${ \frac{\ordd}{\ordd r}\paren{r^2 \frac{\ordd R}{\ordd r}} } の部分が ${ \app{u}{r} = r\app{R}{r} } という置換によって
+				${ r\frac{\ordd^2 u}{\ordd r^2} } と書ける（計算 1 ）ことに着目すると，方程式は
+				\eqn(${ -\frac{\hbar^2}{2m} \frac{\ordd^2 u}{\ordd r^2} + \paren{V + \frac{\hbar^2}{2m}\frac{l\paren{l + 1}}{r^2}}u = Eu });
+				と書き換えられる．
+				これは遠心項 ${ \frac{\hbar^2}{2m}\frac{l\paren{l + 1}}{r^2} } を除けば
+				1 次元 Schrödinger 方程式と同じ形をしている．
+			}
+			+p{
+				電気素量を ${ e } ，真空の誘電率を ${ \epsilon_0 } とする．
+				水素原子核にある 1 個の陽子が作る電位は，陽子からの距離を ${ r } とすると
+				${ - \int \frac{e}{4\pi\epsilon_0 r^2} \ordd r = \frac{e}{4\pi\epsilon_0 r} }
+				であるから，距離 ${ r } のところにある電子 1 個のもつ位置エネルギーは
+				\eqn(${ \app{V}{r} = -\frac{e^2}{4\pi\epsilon_0}\frac{1}{r} });
+				である．
+				これと電子の質量 ${m = \me} を上の方程式に代入して
+				\eqn(${ -\frac{\hbar^2}{2\me} \frac{\ordd^2 u}{\ordd r^2} + \paren{ -\frac{e^2}{4\pi\epsilon_0}\frac{1}{r} + \frac{\hbar^2}{2\me}\frac{l\paren{l + 1}}{r^2} } u = Eu });
+				を得る．電子が束縛されている ${ E < 0 } のときについてこれを解く．
+			}
+			+p{
+				定数 ${ -\frac{\hbar^2}{2\me} } と ${ E } を整理するために，
+				両辺を ${ E } で割った後 ${ -\frac{\hbar^2}{2\me E} } を ${ \frac{1}{\kappa^2} } とする（すなわち ${ \kappa = \frac{\sqrt{-2\me E}}{\hbar} } とおく）．
+				\eqn(${ \frac{1}{\kappa^2} \frac{\ordd^2 u}{\ordd r^2} + \paren{ \frac{\me e^2}{2\pi\epsilon_0 \hbar^2 \kappa^2} \frac{1}{r} - \frac{1}{\kappa^2} \frac{l\paren{l + 1}}{r^2} }u = u });
+			}
+			+p{
+				さらに ${ \kappa r = \rho } とおくと ${ \frac{\ordd}{\ordd r} = \kappa \frac{\ordd}{\ordd\rho} } より
+				${ \frac{\ordd^2 u}{\ordd r^2} = \kappa^2 \frac{\ordd^2 u}{\ordd\rho^2} } だから
+				\eqn(${ \frac{\ordd^2 u}{\ordd\rho^2} + \paren{ \frac{\me e^2}{2\pi\epsilon_0 \hbar^2 \kappa}\frac{1}{\rho} - \frac{l\paren{l + 1}}{\rho^2} }u = u });
+			}
+			+p{
+				最後に定数 ${ \frac{\me e^2}{2 \pi \epsilon_0 \hbar^2 \kappa} } を ${ \rho_0 } でおいて整理すると
+				\eqn(${ \frac{\ordd^2 u}{\ordd\rho^2} = \paren{ 1 - \frac{\rho_0}{\rho} + \frac{l\paren{l + 1}}{\rho^2} }u });
+			}
+			+p{
+				ここで， ${ \app{u}{\rho} = \rho^{l + 1}e^{-\rho} \app{v}{\rho} } とおくと，方程式は
+				\eqn(${ \rho \frac{\ordd^2 v}{\ordd \rho^2} + 2\paren{l + 1 - \rho}\frac{\ordd v}{\ordd\rho} + \paren{\rho_0 - 2\paren{l + 1}}v = 0 });
+				と書ける（計算 2 ）．
+			}
+			+p{
+				${ v } が ${ \rho } の ${ N } 次多項式であると仮定し，
+				最高次の係数を ${ c_N } とする．
+				すると，
+				方程式中の ${ \rho\frac{\ordd^2 v}{\ordd \rho^2} } と ${ 2\paren{l + 1 - \rho}\frac{\ordd v}{\ordd\rho} } は
+				それぞれ ${ \rho } の ${ N - 1 } 次多項式と ${ N } 次多項式であるから，
+				両辺の ${ N } 次の係数を比較して
+				\eqn(${ -2 N c_N + \paren{ \rho_0 - 2\paren{l + 1} } c_N = 0 });
+				\eqn(${ \therefore \rho_0 = 2\paren{N + l + 1} });
+				${ N + l + 1 = n } とおくと，
+				${ \rho_0 } は整数 ${ n } を用いて ${ \rho_0 = 2n } と表せることが分かる．
+				${ \rho_0 = \frac{ \me e^2 }{2\pi\epsilon_0 \hbar^2 \kappa} } ，
+				${ \kappa = \frac{\sqrt{-2\me E}}{\hbar} } より
+				${ E = -\frac{ \me e^4 }{ 8 \pi^2 \epsilon_0^2 \hbar^2 \rho_0^2 } }
+				であるから，
+				\eqn(${ E_n = -\frac{\me e^4}{32\pi^2\epsilon_0^2\hbar^2} \frac{1}{n^2} });
+			}
+		>
+		+section{計算 1}<
+			+p{
+				${ R = \frac{u}{r} } より
+				\align[${|
+					\frac{\ordd R}{\ordd r}
+					|= \frac{\ordd}{\ordd r} \frac{u}{r}
+				|};${|
+					|= \frac{1}{r} \frac{\ordd u}{\ordd r} - \frac{u}{r^2}
+				|}];
+			}
+			+p{
+				よって ${ r^2 \frac{\ordd R}{\ordd r} = r\frac{\ordd u}{\ordd r} - u } であるから
+				\align[${|
+					\frac{\ordd}{\ordd r}\paren{r^2 \frac{\ordd R}{\ordd r}}
+					|= r\frac{\ordd^2 u}{\ordd r^2} + \frac{\ordd u}{\ordd r} - \frac{\ordd u}{\ordd r}
+				|};${|
+					|= r\frac{\ordd^2 u}{\ordd r^2}
+				|}];
+			}
+		>
+		+section{計算 2}<
+			+p{
+				ライプニッツの公式（っていうとなんだかかっこよく聞こえるね）より
+				\eqn(${
+					\frac{\ordd^2 u}{\ordd\rho^2}
+					= \rho^{l + 1} e^{-\rho} \frac{\ordd^2 v}{\ordd\rho^2}
+					+ 2 \frac{\ordd}{\ordd\rho} \paren{ \rho^{l + 1} e^{-\rho} } \cdot \frac{\ordd v}{\ordd\rho}
+					+ \frac{\ordd^2}{\ordd\rho^2} \paren{ \rho^{l + 1} e^{-\rho} } \cdot v
+				});
+			}
+			+p{
+				ここで
+				\align[${|
+					\frac{\ordd}{\ordd\rho}\paren{ \rho^{l + 1} e^{-\rho} }
+					|= \paren{l + 1} \rho^l e^{-\rho}
+					- \rho^{l + 1} e^{-\rho}
+				|};${|
+					|= \paren{ \frac{l + 1}{\rho} - 1 } \rho^{l + 1} e^{-\rho}
+				|}];
+				\align[${|
+					\frac{\ordd^2}{\ordd\rho^2}\paren{ \rho^{l + 1} e^{-\rho} }
+					|= \paren{ \frac{l + 1}{\rho} - 1 } \frac{\ordd}{\ordd\rho} \paren{ \rho^{l + 1} e^{-\rho} }
+					- \frac{l + 1}{\rho^2} \rho^{l + 1} e^{-\rho}
+				|};${|
+					|= \paren{ \paren{ \frac{l + 1}{\rho} - 1 }^2 - \frac{l + 1}{\rho^2} } \rho^{l + 1} e^{-\rho}
+				|};${|
+					|= \paren{ 1 - \frac{2\paren{l + 1}}{\rho} + \frac{l\paren{l + 1}}{\rho^2} } \rho^{l + 1} e^{-\rho}
+				|}];
+				であるから
+				\align[${|
+					\frac{\ordd^2 u}{\ordd\rho^2}
+					=| \rho^{l + 1} e^{-\rho} \frac{\ordd^2 v}{\ordd\rho^2}
+				|};${|
+					|+ 2 \paren{ \frac{l + 1}{\rho} - 1 } \rho^{l + 1} e^{-\rho} \frac{\ordd v}{\ordd\rho}
+				|};${|
+					|+ \paren{ 1 - \frac{2\paren{l + 1}}{\rho} + \frac{l\paren{l + 1}}{\rho^2} } \rho^{l + 1} e^{-\rho} v
+				|};${|
+					=| \rho^{l + 1} e^{-\rho}
+					\paren{
+						\frac{\ordd^2 v}{\ordd\rho^2}
+						+ 2 \paren{ \frac{l + 1}{\rho} - 1 } \frac{\ordd v}{\ordd\rho}
+						+ \paren{ 1 - \frac{2\paren{l + 1}}{\rho} + \frac{l\paren{l + 1}}{\rho^2} } v
+					}
+				|}];
+			}
+			+p{
+				よって方程式は
+				\eqn(${
+					\frac{\ordd^2 v}{\ordd\rho^2}
+					+ 2 \paren{ \frac{l + 1}{\rho} - 1 } \frac{\ordd v}{\ordd\rho}
+					+ \paren{ \cancel{1} - \frac{2\paren{l + 1}}{\rho} + \cancel{ \frac{l\paren{l + 1}}{\rho^2} } } v
+					= \paren{ \cancel{1} - \frac{\rho_0}{\rho} + \cancel{ \frac{l\paren{l + 1}}{\rho^2} } } v
+				});
+			}
+			+p{
+				整理して
+				\eqn(${ \rho \frac{\ordd^2 v}{\ordd \rho^2} + 2\paren{l + 1 - \rho}\frac{\ordd v}{\ordd\rho} + \paren{\rho_0 - 2\paren{l + 1}}v = 0 });
+			}
+		>
+	>);
 >
