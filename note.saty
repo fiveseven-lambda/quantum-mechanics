@@ -2224,4 +2224,80 @@ document(|
 			}
 		>
 	>);
+	+chapter{2021/5/31}<
+		+section{問題 4.12}<
+			+p{
+				${ n = 3 } ， ${ l = 0 } のときの方程式
+				\eqn(${ \rho \frac{\ordd^2 v}{\ordd\rho^2} + 2\paren{1 - \rho}\frac{\ordd v}{\ordd\rho} + 4v = 0 });
+				の解を ${ \app{v}{\rho} = c_0 + c_1 \rho + c_2 \rho^2 } とおくと，
+				\eqn(${ \frac{\ordd v}{\ordd\rho} = c_1 + 2c_2\rho });
+				\eqn(${ \frac{\ordd^2 v}{\ordd\rho^2} = 2c_2 });
+				より方程式は
+				\eqn(${ 2 c_2 \rho + 2\paren{ 1 - \rho }\paren{ c_1 + 2 c_2 \rho } + 4\paren{ c_0 + c_1 \rho + c_2 \rho^2 } = 0 });
+				\eqn(${ \therefore 4 c_0 + 2 c_1 + \paren{ 2 c_1 + 6 c_2 } \rho = 0 });
+			}
+			+p{
+				係数を比較して
+				\align[${|
+					4 c_0 + 2 c_1 |= 0
+				|};${|
+					2 c_1 + 6 c_2 |= 0
+				|}];
+			}
+			+p{
+				よって ${ c_1 = -2c_0 } ， ${ c_2 = \frac{2}{3} c_0 } だから
+				\eqn(${ \app{v}{\rho} = c_0\paren{ 1 - 2 \rho + \frac{2}{3} \rho^2 } });
+			}
+			+p{
+				${ \rho = \frac{r}{an} = \frac{r}{3a} } より
+				\eqn(${
+					\app{u}{r}
+					= \frac{r}{3a} e^{-\frac{r}{3a}} \app{v}{\frac{r}{3a}}
+					= \text!{(const)} r e^{-\frac{r}{3a}} \paren{1 - \frac{2r}{3a} + \frac{2r^2}{27a^2}}
+				});
+				\eqn(${
+					\app{R_{30}}{r}
+					= \frac{\app{u}{r}}{r}
+					= \text!{(const)} e^{-\frac{r}{3a}} \paren{1 - \frac{2r}{3a} + \frac{2r^2}{27a^2}}
+				});
+			}
+			+p{
+				${ n = 3 } ， ${ l = 1 } のときの方程式
+				\eqn(${ \rho \frac{\ordd^2 v}{\ordd \rho^2} + 2\paren{2 - \rho}\frac{\ordd v}{\ordd\rho} + 2v = 0 });
+				の解を ${ \app{v}{\rho} = c_0 + c_1 \rho } とおくと，
+				\eqn(${ \frac{\ordd v}{\ordd\rho} = c_1 });
+				\eqn(${ \frac{\ordd^2 v}{\ordd\rho^2} = 0 });
+				より方程式は
+				\eqn(${ 2\paren{2 - \rho} c_1 + 2\paren{c_0 + c_1 \rho} = 0 });
+				\eqn(${ \therefore 4 c_1 + 2 c_0 = 0 });
+				よって ${ c_1 = -\frac{1}{2} c_0 } であるから
+				\eqn(${ \app{v}{\rho} = c_0\paren{1 - \frac{1}{2}\rho} });
+				\eqn(${
+					\app{u}{r}
+					= \paren{\frac{r}{3a}}^2 e^{-\frac{r}{3a}} \app{v}{\frac{r}{3a}}
+					= \text!{(const)} r^2 e^{-\frac{r}{3a}} \paren{1 - \frac{r}{6a}}
+				});
+				\eqn(${
+					\app{R_{31}}{r}
+					= \frac{\app{u}{r}}{r}
+					= \text!{(const)} r e^{-\frac{r}{3a}} \paren{1 - \frac{r}{6a}}
+				});
+			}
+			+p{
+				${ n = 3 } ， ${ l = 2 } のとき
+				\eqn(${ \rho \frac{\ordd^2 v}{\ordd \rho^2} + 2\paren{3 - \rho}\frac{\ordd v}{\ordd\rho} = 0 });
+				より ${ v } は定数関数 ${ \app{v}{\rho} = c_0 } であるから
+				\eqn(${
+					\app{u}{r}
+					= \paren{\frac{r}{3a}}^3 e^{-\frac{r}{3a}} c_0
+					= \text!{(const)} r^3 e^{-\frac{r}{3a}}
+				});
+				\eqn(${
+					\app{R_{32}}{r}
+					= \frac{\app{u}{r}}{r}
+					= \text!{(const)} r^2 e^{-\frac{r}{3a}}
+				});
+			}
+		>
+	>
 >
