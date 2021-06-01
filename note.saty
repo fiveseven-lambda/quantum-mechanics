@@ -2300,4 +2300,118 @@ document(|
 			}
 		>
 	>
+	+chapter{2021/6/1}<
+		+section{問題 4.13}<
+			+p{
+				ガンマ関数の定義
+				\eqn(${ \app{\Gamma}{x} = \int_0^\infty t^{x - 1} e^{-t} \ordd t });
+				において ${ t = \frac{r}{a} } と置換すると
+				\eqn(${ \app{\Gamma}{x} = \frac{1}{a} \int_0^\infty \paren{\frac{r}{a}}^{x - 1} e^{-\frac{r}{a}} \ordd r });
+			}
+			+p{
+				よって ${ x - 1 = n } として公式
+				\eqn(${ \int_0^\infty r^n e^{-\frac{r}{a}} \ordd r = n\! a^{n + 1} });
+				を得る．
+			}
+			+subsection{(a)}<
+				+p{
+					${ n = 2 }，${ l = 0 } としたときの方程式
+					\eqn(${ \rho \frac{\ordd^2 v}{\ordd \rho} + 2\paren{1 - \rho}\frac{\ordd v}{\ordd\rho} + 2v = 0 });
+					において ${ v = c_0 + c_1\rho } とおくと ${ c_1 = -c_0 } より ${ v = c_0\paren{1 - \rho} } なので
+					\eqn(${ u = c_0 \frac{r}{2a} e^{-\frac{r}{2a}} \paren{1 - \frac{r}{2a}} });
+					\eqn(${ \app{R_{20}}{r} = \frac{c_0}{2a} \paren{1 - \frac{r}{2a}} e^{-\frac{r}{2a}} });
+					（ 4.82 式）．規格化は ${ \int_0^\infty \abs{\app{R_20}{r}}^2 r^2 \ordd r = 1 } にすればよいから，
+					\align[${|
+						\int_0^\infty \paren{1 - \frac{r}{2a}}^2 e^{-\frac{r}{a}} r^2 \ordd r
+						|= \int_0^\infty \paren{r^2 - \frac{r^3}{a} + \frac{r^4}{4a^2}} e^{-\frac{r}{a}} \ordd r
+					|};${|
+						|= 2\! a^3 - \frac{3\! a^4}{a} + \frac{4\! a^5}{4a^2}
+					|};${|
+						|= 2a^3
+					|}]; より
+					\eqn(${ \app{R_{20}}{r} = \frac{1}{\sqrt{2a^3}} \paren{1 - \frac{r}{2a}} e^{-\frac{r}{2a}} });
+					\align[${|
+						\app{\psi_{200}}{r}
+						|= \frac{1}{\sqrt{4\pi}}\app{R_{20}}{r}
+					|};${|
+						|= \frac{1}{\sqrt{8\pi a^3}}\paren{1 - \frac{r}{2a}} e^{-\frac{r}{2a}}
+					|}];
+				}
+			>
+			+subsection{(b)}<
+				+p{
+					${ n = 2 }， ${ l = 0 } のとき ${ v } は定数関数 ${ \app{v}{r} = c_0 } であるから
+					\eqn(${ u = c_0 \paren{ \frac{r}{2a} }^2 e^{-\frac{r}{2a}} });
+					\eqn(${ \app{R_{21}}{r} = \frac{c_0}{4a^2} r e^{-\frac{r}{2a}} });
+				}
+				+p{
+					積分は
+					\align[${|
+						\int_0^\infty \paren{ r e^{-\frac{r}{2a}} }^2 r^2 \ordd r
+						|= \int_0^\infty r^4 e^{-\frac{r}{a}} \ordd r
+					|};${|
+						|= 24 a^5
+					|}]; となるから
+					\eqn(${ \app{R_{21}}{r} = \frac{1}{\sqrt{24 a^5}} r e^{-\frac{r}{2a}} });
+				}
+				+p{
+					一方で，
+					\align[${|
+						\app{P_1}{x}
+						|= \frac{1}{2 \cdot 1} \frac{\ordd}{\ordd x} \paren{x^2 - 1}
+					|};${|
+						|= x
+					|}];
+					より
+					\align[${|
+						\app{P_1^1}{x}
+						|= -\sqrt{1 - x^2} \frac{\ordd}{\ordd x} \app{P_1}{x}
+					|};${|
+						|= -\sqrt{1 - x^2}
+					|}];
+					\align[${|
+						\app{P_1^{-1}}{x}
+						|= -\frac{0\!}{2\!} \app{P_1^1}{x}
+					|};${|
+						|= \frac{1}{2}\sqrt{1 - x^2}
+					|}];
+					であるから
+					\align[${|
+						\app{Y_1^1}{\theta, \phi}
+						|= \sqrt{\frac{3}{4\pi} \frac{0\!}{2\!}} e^{i\phi} \paren{-\sin\theta}
+						||= -\sqrt{\frac{3}{8\pi}} e^{i\phi} \sin\theta
+					|};${|
+						\app{Y_1^0}{\theta, \phi}
+						|= \sqrt{\frac{3}{4\pi} \frac{1\!}{1\!}} \cos\theta
+						||= \sqrt{\frac{3}{4\pi}} \cos\theta
+					|};${|
+						\app{Y_1^{-1}}{\theta, \phi}
+						|= \sqrt{\frac{3}{4\pi} \frac{2\!}{0\!}} e^{-i\phi} \cdot \frac{1}{2} \sin\theta
+						||= \sqrt{\frac{3}{8\pi}} e^{-i\phi} \sin\theta
+					|}];
+				}
+				+p{
+					よって
+					\align[${|
+						\app{\psi_{211}}{r, \theta, \phi}
+						|= \app{R_{21}}{r} \app{Y_1^1}{\theta, \phi}
+					|};${|
+						|= - \sqrt{\frac{1}{64\pi a^5}} r e^{i\phi - \frac{r}{2a}} \sin\theta
+					|}];
+					\align[${|
+						\app{\psi_{210}}{r, \theta, \phi}
+						|= \app{R_{21}}{r} \app{Y_1^0}{\theta, \phi}
+					|};${|
+						|= \sqrt{\frac{1}{32\pi a^5}} r e^{ - \frac{r}{2a}} \cos\theta
+					|}];
+					\align[${|
+						\app{\psi_{21-1}}{r, \theta, \phi}
+						|= \app{R_{21}}{r} \app{Y_1^{-1}}{\theta, \phi}
+					|};${|
+						|= \sqrt{\frac{1}{64\pi a^5}} r e^{ -i\phi - \frac{r}{2a}} \sin\theta
+					|}];
+				}
+			>
+		>
+	>
 >
