@@ -2414,4 +2414,75 @@ document(|
 			>
 		>
 	>
+	+chapter{2021/6/2}<
+		+section{問題 4.14}<
+			+subsection{(a)}<
+				+align[${|
+					\app{L_0}{x}
+					|= \frac{e^x}{0\!} \cdot e^{-x}
+				|};${|
+					|= 1
+				|}];
+				+align[${|
+					\app{L_1}{x}
+					|= \frac{e^x}{1\!} \frac{\ordd}{\ordd x} \paren{ x e^{-x} }
+				|};${|
+					|= e^x \cdot \paren{1 - x} e^{-x}
+				|};${|
+					|= 1 - x
+				|}];
+				+align[${|
+					\app{L_2}{x}
+					|= \frac{e^x}{2\!} \frac{\ordd^2}{\ordd^2 x} \paren{ x^2 e^{-x} }
+				|};${|
+					|= \frac{e^x}{2} \paren{2 - 2 \cdot 2x + x^2} e^{-x}
+				|};${|
+					|= 1 - 2x + \frac{1}{2}x^2
+				|}];
+				+align[${|
+					\app{L_3}{x}
+					|= \frac{e^x}{3\!} \frac{\ordd^3}{\ordd^3 x} \paren{ x^3 e^{-x} }
+				|};${|
+					|= \frac{e^x}{6} \paren{6 - 3 \cdot 6x + 3 \cdot 3x^2 - x^3} e^{-x}
+				|};${|
+					|= 1 - 3x + \frac{3}{2} x^2 - \frac{1}{6} x^3
+				|}];
+			>
+			+subsection{(b)}<
+				+math(${ \app{L_7}{x} = \frac{1}{0\!} - \frac{7}{1\!} x + \frac{21}{2\!} x^2 - \frac{35}{3\!} x^3 + \frac{35}{4\!} x^4 - \frac{21}{5\!} x^5 + \frac{7}{6\!} x^6 - \frac{1}{7\!} x^7 });
+				+align[${|
+					\app{L_2^5}{x}
+					|= -\frac{\ordd^5}{\ordd x^5} \app{L_7}{x}
+				|};${|
+					|= -\frac{\ordd^5}{\ordd x^5} \paren{ -\frac{21}{5\!} x^5 + \frac{7}{6\!} x^6 - \frac{1}{7\!} x^7 }
+				|};${|
+					|= \frac{21}{0\!} - \frac{7}{1\!} x + \frac{1}{2\!} x^2
+				|};${|
+					|= 21 - 7x + \frac{1}{2} x^2
+				|}];
+				+align[${|
+					\app{v}{\rho}
+					|= \app{L_2^5}{2\rho}
+				|};${|
+					|= 21 - 14\rho + 2\rho^2
+				|}];
+			>
+			+subsection{(c)}<
+				+p{
+					${ n = 5 }，${ l = 2 } のときの方程式
+					\eqn(${ \rho \frac{\ordd^2 v}{\ordd \rho^2} + 2\paren{3 - \rho}\frac{\ordd v}{\ordd \rho} + 4v = 0 });
+					において ${ v = c_0 + c_1 \rho + c_2 \rho^2 } とすると
+					\eqn(${ 2 c_2 \rho + 2\paren{3 - \rho}\paren{c_1 + 2c_2\rho} + 4\paren{ c_0 + c_1\rho + c_2\rho^2 } = 0 });
+					\eqn(${ \paren{14 c_2 + 2 c_1}\rho + 6c_1 + 4c_0 = 0 });
+				}
+				+p{
+					よって ${ c_1 = -\frac{2}{3} c_0 }， ${ c_2 = \frac{2}{21}c_0 } であるから
+					\eqn(${ \app{v}{\rho} = c_0\paren{1 - \frac{2}{3}\rho + \frac{2}{21}\rho^2} });
+				}
+				+p{
+					${ c_0 = 21 } とすれば (b) と一致する．
+				}
+			>
+		>
+	>
 >
