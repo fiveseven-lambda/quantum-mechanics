@@ -2485,4 +2485,28 @@ document(|
 			>
 		>
 	>
+	+chapter{2021/6/4}<
+		+section{要点（交換子）}<
+			+p{
+				環 ${ R } の元 ${ A, B \in R } に対し，
+				交換子 ${ \sqbracket{A, B} } を
+				\eqn(${ \sqbracket{A, B} = AB - BA });
+				で定義する．このとき，次が成り立つ．
+				\listing { 
+					* ${ \sqbracket{A, A} = 0 }
+					* ${ \sqbracket{A, B} = -\sqbracket{B, A} }
+					* ${ \sqbracket{A, B_1 + B_2} = \sqbracket{A, B_1} + \sqbracket{A, B_2} } 
+					* ${ \sqbracket{A_1 + A_2, B} = \sqbracket{A_1, B} + \sqbracket{A_2, B} }
+					* ${ \sqbracket{A, B_1 B_2} = \sqbracket{A, B_1} B_2 + B_1 \sqbracket{A, B_2} }
+					（特に ${ \sqbracket{A, B_1} = \sqbracket{A, B_2} = 0 } ならば ${ \sqbracket{A, B_1 B_2} = 0 } ）
+					* ${ \sqbracket{A_1 A_2, B} = \sqbracket{A_1, B} A_2 + A_1 \sqbracket{A_2, B} }
+					（特に ${ \sqbracket{A_1, B} = \sqbracket{A_2, B} = 0 } ならば ${ \sqbracket{A_1 A_2, B} = 0 } ）
+					* ${ \sqbracket{A, B} = 0 } ならば ${ \sqbracket{A^m, B^n} = 0 }
+					* ${ \sqbracket{A, B_1} = 0 } ならば ${ \sqbracket{A, B_1 B_2} = B_1\sqbracket{A, B_2} } ， ${ \sqbracket{A, B_2 B_1} = \sqbracket{A, B_2}B_1 }
+					* ${ \sqbracket{A_1, B} = 0 } ならば ${ \sqbracket{A_1 A_2, B} = A_1\sqbracket{A_2, B} } ， ${ \sqbracket{A_2 A_1, B} = \sqbracket{A_2, B}A_1 }
+					* ${ \sqbracket{\sqbracket{A, B}, C} + \sqbracket{\sqbracket{B, C}, A} + \sqbracket{\sqbracket{C, A}, B} = 0 } （ヤコビ恒等式）
+				}
+			}
+		>
+	>
 >

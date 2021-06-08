@@ -1,0 +1,163 @@
+\documentclass[uplatex]{jsarticle}
+\usepackage{amsmath, amssymb, physics}
+
+\begin{document}
+極座標で表された点 $ r \mqty( \sin\theta\cos\phi \\ \sin\theta\sin\phi \\ \cos\theta ) $ を
+$ \theta $ 方向に $ \dd\theta $ だけ回転させたもの
+\begin{align*}
+	\mqty( \cos\dd\theta & 0 & \sin\dd\theta \\ 0 & 1 & 0 \\ -\sin\dd\theta & 0 & \cos\dd\theta )
+	r \mqty( \sin\theta\cos\phi \\ \sin\theta\sin\phi \\ \cos\theta )
+	&= \mqty( 1 & 0 & \dd\theta \\ 0 & 1 & 0 \\ -\dd\theta & 0 & 1 )
+	r \mqty( \sin\theta\cos\phi \\ \sin\theta\sin\phi \\ \cos\theta ) \\
+	&= r \mqty( \sin\theta\cos\phi + \dd\theta\cos\theta \\ \sin\theta\sin\phi \\ \cos\theta - \dd\theta\sin\theta\cos\phi )
+\end{align*}
+が $ r\mqty( \sin\theta'\cos\phi' \\ \sin\theta'\sin\phi' \\ \cos\theta' ) $ となるように $ \theta', \phi' $ を定める．
+すると，
+\[
+	\cos\theta' = \cos\theta - \dd\theta\sin\theta\cos\phi
+\]
+より
+\begin{align*}
+	\sin^2\theta'
+	&= 1 - \cos^2\theta' \\
+	&= 1 - \cos^2\theta + 2\dd\theta\sin\theta\cos\theta\cos\phi \\
+	&= \sin^2\theta + 2\dd\theta\sin\theta\cos\theta\cos\phi
+\end{align*}
+\[
+	\therefore \sin\theta' = \sin\theta + \dd\theta\cos\theta\cos\phi
+\]
+であり，
+\begin{align*}
+	\sin\phi'
+	&= \frac{\sin\theta'\sin\phi'}{\sin\theta'} \\
+	&= \frac{\sin\theta\sin\phi}{\sin\theta + \dd\theta\cos\theta\cos\phi} \\
+	&= \frac{\sin\theta\sin\phi}{\sin\theta}\biggl(1 - \frac{\dd\theta\cos\theta\cos\phi}{\sin\theta}\biggr) \\
+	&= \sin\phi - \frac{\dd\theta\cos\theta\sin\phi\cos\phi}{\sin\theta}
+\end{align*}
+\begin{align*}
+	\cos\phi'
+	&= \frac{\sin\theta'\cos\phi'}{\sin\theta'} \\
+	&= \frac{\sin\theta\cos\phi + \dd\theta\cos\theta}{\sin\theta + \dd\theta\cos\theta\cos\phi} \\
+	&= \frac{\sin\theta\cos\phi + \dd\theta\cos\theta}{\sin\theta}\biggl(1 - \frac{\dd\theta\cos\theta\cos\phi}{\sin\theta}\biggr) \\
+	&= \cos\phi + \frac{\dd\theta\cos\theta\sin^2\phi}{\sin\theta}
+\end{align*}
+となる．ここで，
+\begin{align*}
+	\pdv{\theta}\sin\theta'
+	&= \cos\theta - \dd\theta\sin\theta\cos\phi \\
+	&= \cos\theta'
+\end{align*}
+より
+\begin{align*}
+	\pdv{\theta'}{\theta}
+	&= \frac{1}{\cos\theta'}\pdv{\theta}\sin\theta' \\
+	&= 1
+\end{align*}
+であり，
+\[
+	\pdv{\theta}\sin\phi' = \frac{\dd\theta\sin\phi\cos\phi}{\sin^2\theta}
+\]
+より
+\begin{align*}
+	\pdv{\phi'}{\theta}
+	&= \frac{1}{\cos\phi'}\pdv{\theta}\sin\phi' \\
+	&= \frac{\frac{\dd\theta\sin\phi\cos\phi}{\sin^2\theta}}{\cos\phi + \frac{\dd\theta\cos\theta\sin^2\phi}{\sin\theta}} \\
+	&= \frac{\dd\theta\sin\phi}{\sin^2\theta}\biggl(1 - \frac{\dd\theta\cos\theta\sin^2\phi}{\sin\theta\cos\phi}\biggr) \\
+	&= \frac{\dd\theta\sin\phi}{\sin^2\theta}
+\end{align*}
+であるから，
+\begin{align*}
+	\pdv{\theta}
+	&= \pdv{\theta'}{\theta}\pdv{\theta'} + \pdv{\phi'}{\theta}\pdv{\phi'} \\
+	&= \pdv{\theta'} + \frac{\dd\theta\sin\phi}{\sin^2\theta} \pdv{\phi'}
+\end{align*}
+である．
+同様に
+\[
+	\pdv{\phi}\sin\theta' = -\dd\theta\cos\theta\sin\phi
+\]
+より
+\begin{align*}
+	\pdv{\theta'}{\phi}
+	&= \frac{1}{\cos\theta'}\pdv{\phi}\sin\theta' \\
+	&= \frac{-\dd\theta\cos\theta\sin\phi}{\cos\theta - \dd\theta\sin\theta\cos\phi} \\
+	&= -\dd\theta\sin\phi\biggl(1 + \frac{\dd\theta\sin\theta\cos\phi}{\cos\theta}\biggr) \\
+	&= -\dd\theta\sin\phi
+\end{align*}
+であり，
+\[
+	\pdv{\phi}\sin\phi' = \cos\phi - \frac{\dd\theta\cos\theta\cos^2\phi}{\sin\theta} + \frac{\dd\theta\cos\theta\sin^2\phi}{\sin\theta}
+\]
+より
+\begin{align*}
+	\pdv{\phi'}{\phi}
+	&= \frac{1}{\cos\phi'}\pdv{\phi}\sin\phi' \\
+	&= \frac{
+		\cos\phi - \frac{\dd\theta\cos\theta\cos^2\phi}{\sin\theta} + \frac{\dd\theta\cos\theta\sin^2\phi}{\sin\theta}
+	}{
+		\cos\phi + \frac{\dd\theta\cos\theta\sin^2\phi}{\sin\theta}
+	} \\
+	&= 1 - \frac{
+		\frac{\dd\theta\cos\theta\cos^2\phi}{\sin\theta}
+	}{
+		\cos\phi + \frac{\dd\theta\cos\theta\sin^2\phi}{\sin\theta}
+	} \\
+	&= 1 - \frac{\dd\theta\cos\theta\cos\phi}{\sin\theta} \biggl( 1 - \frac{\dd\theta\cos\theta\sin^2\phi}{\sin\theta\cos\phi} \biggr) \\
+	&= 1 - \frac{\dd\theta\cos\theta\cos\phi}{\sin\theta}
+\end{align*}
+であるから，
+\begin{align*}
+	\pdv{\phi}
+	&= \pdv{\theta'}{\phi'} \pdv{\theta'} + \pdv{\phi'}{\phi} \pdv{\phi'} \\
+	&= -\dd\theta\sin\phi\pdv{\theta'} + \biggl(1 - \frac{\dd\theta\cos\theta\cos\phi}{\sin\theta}\biggr) \pdv{\phi'}
+\end{align*}
+
+これらを用いて
+\[
+	\sin\theta\pdv{\theta}\biggl(\sin\theta\pdv{Y}{\theta}\biggr)
+	= \sin\theta\cos\theta\pdv{Y}{\theta'}
+	- \frac{\dd\theta\cos\theta\sin\phi}{\sin\theta}\pdv{Y}{\phi'}
+	+ \sin^2\theta\pdv[2]{Y}{{\theta'}}
+	+ 2\dd\theta\sin\phi\pdv{Y}{\theta'}{\phi'}
+\] \[
+	\pdv[2]{Y}{\phi}
+	= -\dd\theta\cos\phi\pdv{Y}{\theta'}
+	+ \frac{\dd\theta\cos\theta\sin\phi}{\sin\theta}\pdv{Y}{\phi'}
+	- 2\dd\theta\sin\phi\pdv{Y}{\theta'}{\phi'}
+	+ \biggl(1 - \frac{2\dd\theta\cos\theta\cos\phi}{\sin\theta}\biggr)\pdv[2]{Y}{{\phi'}}
+\]
+\begin{align*}
+	& \therefore \frac{1}{\sin^2\theta}\biggl(\sin\theta\pdv{\theta}\biggl(\sin\theta\pdv{Y}{\theta}\biggr) + \pdv[2]{Y}{\phi}\biggr) \\
+	&= \frac{1}{\sin^2\theta} \biggl(
+	(\sin\theta\cos\theta - \dd\theta\cos\phi) \pdv{Y}{\theta'}
+	+ \sin^2\theta \pdv[2]{Y}{{\theta'}}
+	+ \biggl(1 - \frac{2\dd\theta\cos\theta\cos\phi}{\sin\theta}\biggr)\pdv[2]{Y}{{\phi'}}
+	\biggr) \\
+	&= \frac{\sin\theta\cos\theta - \dd\theta\cos\phi}{\sin^2\theta}\pdv{Y}{\theta'}
+	+ \pdv[2]{Y}{{\theta'}}
+	+ \frac{1}{\sin^2\theta}\biggl(1 - \frac{2\dd\theta\cos\theta\cos\phi}{\sin\theta}\biggr)\pdv[2]{Y}{{\phi'}}
+\end{align*}
+
+一方で
+\begin{align*}
+	& \frac{1}{\sin^2\theta'} \biggl( \sin\theta'\pdv{\theta'}\biggl(\sin\theta'\pdv{Y}{\theta'}\biggr) + \pdv[2]{Y}{{\phi'}} \biggr) \\
+	&= \frac{\cos\theta'}{\sin\theta'}\pdv{Y}{\theta'} + \pdv[2]{Y}{{\theta'}} + \frac{1}{\sin^2\theta'} \pdv[2]{Y}{{\phi'}} \\
+	&= \frac{\cos\theta - \dd\theta\sin\theta\cos\phi}{\sin\theta + \dd\theta\cos\theta\cos\phi} \pdv{Y}{\theta'}
+	+ \pdv[2]{Y}{{\theta'}} + \frac{1}{\sin^2\theta + 2\dd\theta\sin\theta\cos\theta\cos\phi}\pdv[2]{Y}{{\phi'}} \\
+	&= \frac{\cos\theta - \dd\theta\sin\theta\cos\phi}{\sin\theta}\biggl(1 - \frac{\dd\theta\cos\theta\cos\phi}{\sin\theta}\biggr) \pdv{Y}{\theta'}
+	+ \pdv[2]{Y}{{\theta'}} + \frac{1}{\sin^2\theta} \biggl(1 - \frac{2\dd\theta\cos\theta\cos\phi}{\sin\theta}\biggr) \pdv[2]{Y}{{\phi'}} \\
+	&= \frac{\sin\theta\cos\theta - \dd\theta\cos\phi}{\sin^2\theta} \pdv{Y}{\theta'}
+	+ \pdv[2]{Y}{{\theta'}} + \frac{1}{\sin^2\theta} \biggl(1 - \frac{2\dd\theta\cos\theta\cos\phi}{\sin\theta}\biggr) \pdv[2]{Y}{{\phi'}} \\
+\end{align*}
+であるから，
+\[
+	\frac{1}{\sin^2\theta}\biggl(\sin\theta\pdv{\theta}\biggl(\sin\theta\pdv{Y}{\theta}\biggr) + \pdv[2]{Y}{\phi}\biggr)
+	= \frac{1}{\sin^2\theta'} \biggl( \sin\theta'\pdv{\theta'}\biggl(\sin\theta'\pdv{Y}{\theta'}\biggr) + \pdv[2]{Y}{{\phi'}} \biggr)
+\]
+
+よって，微分方程式
+\[ \sin\theta\pdv{\theta}\biggl(\sin\theta\pdv{Y}{\theta}\biggr) + \pdv[2]{Y}{\phi} = -l(l + 1)\sin^2\theta Y \]
+の解 $ Y $ は，微分方程式
+\[ \sin\theta'\pdv{\theta'}\biggl(\sin\theta'\pdv{Y}{\theta'}\biggr) + \pdv[2]{Y}{{\phi'}} = -l(l + 1)\sin^2\theta' Y \]
+も満たす．
+\end{document}
