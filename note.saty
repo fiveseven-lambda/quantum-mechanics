@@ -7,6 +7,9 @@
 
 open EasyTableAlias
 
+  
+
+
 let-math \hbar = math-char MathOrd `ℏ`
 let-math \dagger = math-char MathOrd `†`
 let-math \erf = math-char MathOrd `erf`
